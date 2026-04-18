@@ -8,17 +8,17 @@
 
 ## 🎯 Visión general
 
-| Aspecto                | Estado       | Detalles                                                               |
-| ---------------------- | ------------ | ---------------------------------------------------------------------- |
-| **Fase actual**        | ✅ Beta 1    | Bloque 1 + 2 Completados                                               |
-| **Autoload**           | ✅ PSR-4     | Composer + Manual fallback                                             |
-| **PHP**                | ✅ 8.1+      | Type-safe                                                              |
-| **Dependencias**       | ✅ Mínimas   | Solo smalot/pdfparser para feature                                     |
-| **Interfaces**         | ✅ 3/3       | ExtractorInterface, StructurerInterface, SchemaInterface               |
-| **Implementaciones**   | ✅ 6/6       | +2 nuevos extractores de PDF                                           |
-| **Extractores**        | ✅ 2/2       | TextFileExtractor + PdfTextExtractor                                   |
-| **Pruebas**            | ✅ Funcional | 5+ tests exitosos (Bloques 1 y 2)                                     |
-| **Framework-agnostic** | ✅ Sí        | Funciona en CLI, Laravel, Symfony, etc.                                |
+| Aspecto                | Estado       | Detalles                                                 |
+| ---------------------- | ------------ | -------------------------------------------------------- |
+| **Fase actual**        | ✅ Beta 1    | Bloque 1 + 2 Completados                                 |
+| **Autoload**           | ✅ PSR-4     | Composer + Manual fallback                               |
+| **PHP**                | ✅ 8.1+      | Type-safe                                                |
+| **Dependencias**       | ✅ Mínimas   | Solo smalot/pdfparser para feature                       |
+| **Interfaces**         | ✅ 3/3       | ExtractorInterface, StructurerInterface, SchemaInterface |
+| **Implementaciones**   | ✅ 6/6       | +2 nuevos extractores de PDF                             |
+| **Extractores**        | ✅ 2/2       | TextFileExtractor + PdfTextExtractor                     |
+| **Pruebas**            | ✅ Funcional | 5+ tests exitosos (Bloques 1 y 2)                        |
+| **Framework-agnostic** | ✅ Sí        | Funciona en CLI, Laravel, Symfony, etc.                  |
 
 ---
 
@@ -59,7 +59,7 @@
 
 ## 📦 Entregables del Bloque 1
 
-**Estado:**  ✅ COMPLETADO E ÍNTACTO (no modificado en B2)
+**Estado:** ✅ COMPLETADO E ÍNTACTO (no modificado en B2)
 
 ### Archivos de configuración
 
@@ -96,6 +96,7 @@
 - ✅ [examples/sample_cv_2.txt](./examples/sample_cv_2.txt)
 
 ---
+
 - ✅ [src/Structurers/SimpleLineStructurer.php](./src/Structurers/SimpleLineStructurer.php)
 
 ### Ejemplos y pruebas
