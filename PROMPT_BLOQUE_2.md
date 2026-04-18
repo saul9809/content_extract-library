@@ -32,6 +32,7 @@ Existe una librería PHP llamada **Content Processor**, ya en producción intern
 ✅ Documentación y arquitectura definidas
 
 **⚠️ IMPORTANTE:**
+
 - La librería NO debe reestructurarse
 - Solo debe extenderse correctamente
 - El Bloque 1 es INMUTABLE
@@ -47,11 +48,13 @@ Debes implementar **EL BLOQUE 2 COMPLETO**, con foco exclusivo en:
 ### Concretamente:
 
 **Crear un nuevo extractor:**
+
 - `PdfTextExtractor`
 - Implementa `ExtractorInterface`
 - Extrae texto REAL desde archivos `.pdf`
 
 **Usar una dependencia PHP adecuada:**
+
 - Recomendada: `smalot/pdfparser`
 
 ### El extractor debe:
@@ -166,6 +169,7 @@ La librería ya tiene estos archivos que debes respetar:
 ---
 
 > 💡 **Instrucciones para usar este prompt:**
+>
 > 1. Copia este prompt completo
 > 2. Pégalo en Claude Code
 > 3. Claude generará el Bloque 2 exactamente como se especifica

@@ -17,7 +17,7 @@ use ContentProcessor\Structurers\SimpleLineStructurer;
 use ContentProcessor\Schemas\ArraySchema;
 
 echo "📋 BLOQUE 2: Extracción PDF → JSON\n";
-echo "=".str_repeat("=", 50)."\n\n";
+echo "=" . str_repeat("=", 50) . "\n\n";
 
 // PDF de prueba
 $pdfPath = __DIR__ . '/sample_cv.pdf';
@@ -31,7 +31,7 @@ if (!file_exists($pdfPath)) {
 // PASO 1: Extracción de Texto (PdfTextExtractor)
 // ============================================
 echo "📖 PASO 1: Extracción de Texto desde PDF\n";
-echo "─".str_repeat("─", 50)."\n";
+echo "─" . str_repeat("─", 50) . "\n";
 
 $extractor = new PdfTextExtractor();
 
@@ -43,7 +43,7 @@ if (!$extractor->canHandle($pdfPath)) {
 $textContent = $extractor->extract($pdfPath);
 echo "✅ Texto extraído del PDF:\n";
 foreach ($textContent as $i => $text) {
-    echo "\n[Sección " . ($i+1) . "]:\n";
+    echo "\n[Sección " . ($i + 1) . "]:\n";
     echo $text . "\n";
 }
 
@@ -51,7 +51,7 @@ foreach ($textContent as $i => $text) {
 // PASO 2: Procesamiento con ContentProcessor (Batch)
 // ============================================
 echo "\n📋 PASO 2: Procesamiento en Batch\n";
-echo "─".str_repeat("─", 50)."\n";
+echo "─" . str_repeat("─", 50) . "\n";
 
 // Schema simple sin campos requeridos
 $schema = new ArraySchema([
@@ -74,7 +74,7 @@ echo "   Errores: " . $results['failed'] . "\n";
 // PASO 3: JSON de Salida
 // ============================================
 echo "\n📤 PASO 3: Salida JSON\n";
-echo "─".str_repeat("─", 50)."\n";
+echo "─" . str_repeat("─", 50) . "\n";
 
 $output = [];
 foreach ($results['results'] as $file => $result) {
@@ -99,7 +99,7 @@ echo json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n\n";
 // Confirmación
 // ============================================
 echo "✅ BLOQUE 2: PDF → JSON COMPLETADO\n";
-echo "=".str_repeat("=", 50)."\n";
+echo "=" . str_repeat("=", 50) . "\n";
 echo "✅ PdfTextExtractor funcionando\n";
 echo "✅ Batch processing completo\n";
 echo "✅ JSON generado correctamente\n";

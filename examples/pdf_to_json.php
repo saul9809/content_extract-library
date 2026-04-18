@@ -15,7 +15,7 @@ use ContentProcessor\Schemas\ArraySchema;
 use ContentProcessor\Structurers\SimpleLineStructurer;
 
 echo "📋 BLOQUE 2: PDF → JSON (Pipeline Completo)\n";
-echo "=".str_repeat("=", 50)."\n\n";
+echo "=" . str_repeat("=", 50) . "\n\n";
 
 // ============================================
 // 1. Genera PDF si no existe
@@ -80,7 +80,7 @@ try {
     // 4. Mostrar Resultados
     // ============================================
     echo "✅ PIPELINE COMPLETADO\n";
-    echo "=".str_repeat("=", 50)."\n\n";
+    echo "=" . str_repeat("=", 50) . "\n\n";
 
     // Resumen
     echo "📊 Resumen de procesamiento:\n";
@@ -110,7 +110,7 @@ try {
     // JSON Final
     if (!empty($jsonResults)) {
         echo "📤 SALIDA FINAL EN JSON:\n";
-        echo "=".str_repeat("=", 50)."\n";
+        echo "=" . str_repeat("=", 50) . "\n";
         echo json_encode($jsonResults, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n\n";
     }
 
@@ -118,7 +118,7 @@ try {
     // 5. Verificación Técnica
     // ============================================
     echo "✨ INFORMACIÓN TÉCNICA\n";
-    echo "=".str_repeat("=", 50)."\n";
+    echo "=" . str_repeat("=", 50) . "\n";
     echo "✅ PdfTextExtractor: Extrae contenido PDF\n";
     echo "✅ SimpleLineStructurer: Estructura según esquema\n";
     echo "✅ ArraySchema: Valida campos requeridos\n";
@@ -126,8 +126,7 @@ try {
     echo "✅ Batch Processing: Compatible (múltiples PDFs)\n\n";
 
     echo "✅ BLOQUE 2 COMPLETO Y FUNCIONAL\n";
-    echo "=".str_repeat("=", 50)."\n";
-
+    echo "=" . str_repeat("=", 50) . "\n";
 } catch (\Exception $e) {
     echo "❌ ERROR: " . $e->getMessage() . "\n";
     exit(1);
