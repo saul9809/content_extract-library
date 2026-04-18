@@ -1,0 +1,5 @@
+nombre: María López
+carnet_identidad: 9876543210
+especialidad: Diseñadora UX/UI
+plaza: Senior Designer
+anos_experiencia: 6
