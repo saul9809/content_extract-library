@@ -56,6 +56,7 @@ Necesito que generes paso a paso la extensión BLOQUE 2, comenzando SOLO por la 
 ✅ Usar: smalot/pdfparser
 
 El extractor debe:
+
 - Recibir la ruta del PDF
 - Validar existencia del archivo
 - Extraer TODO el texto del PDF
@@ -63,6 +64,7 @@ El extractor debe:
 - Lanzar excepción controlada si falla
 
 Mantener 100% compatibilidad con:
+
 - ContentProcessor
 - Extractores existentes
 - Ejemplos del Bloque 1

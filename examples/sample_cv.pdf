@@ -6,28 +6,26 @@ endobj
 << /Type /Pages /Kids [3 0 R] /Count 1 >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 4 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 224 >>
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 213 >>
 stream
 BT
 /F1 12 Tf
 50 750 Td
-(JUAN GARCIA PEREZ) Tj
-0 -20 Td
-(Carnet de Identidad: 1234567890) Tj
-0 -20 Td
-(Especialidad: Ingeniero de Software) Tj
-0 -20 Td
-(Plaza: Desarrollador Senior) Tj
-0 -20 Td
-(Anos de Experiencia: 8) Tj
+(name: Juan García López
+email: juan.garcia@example.com
+phone: +34 912 345 678
+experience_years: 8
+skills: PHP, Laravel, MySQL, Docker, Git
+education: Licenciatura en Informática
+) Tj
 ET
 endstream
-endobj
-5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 xref
 0 6
@@ -36,9 +34,9 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000000515 00000 n 
+0000000311 00000 n 
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-585
+574
 %%EOF

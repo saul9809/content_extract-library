@@ -4,7 +4,10 @@ namespace ContentProcessor\Core;
 
 use ContentProcessor\Contracts\ExtractorInterface;
 use ContentProcessor\Contracts\StructurerInterface;
+use ContentProcessor\Contracts\SemanticStructurerInterface;
 use ContentProcessor\Contracts\SchemaInterface;
+use ContentProcessor\Models\DocumentContext;
+use ContentProcessor\Models\StructuredDocumentResult;
 
 /**
  * Procesador de contenido principal.
@@ -171,6 +174,9 @@ class ContentProcessor
     /**
      * Procesa una fuente individual.
      * 
+     * Soporta tanto Structurers tradicionales como SemanticStructurers.
+     * Si el Structurer implementa SemanticStructurerInterface, se capturan warnings.
+     * 
      * @param string $source
      * @return void
      */
@@ -193,7 +199,19 @@ class ContentProcessor
                 throw new \RuntimeException('Structurer no configurado. Usa withStructurer() primero.');
             }
 
-            $structured = $this->structurer->structure($content, $this->schema);
+            // Detecta si es un SemanticStructurer (Bloque 3) o un Structurer tradicional (Bloque 1)
+            if ($this->structurer instanceof SemanticStructurerInterface) {
+                // Bloque 3: Estructuración Semántica con warnings
+                $documentName = basename($source);
+                $context = new DocumentContext($source, $documentName, $content);
+                $result = $this->structurer->structureWithContext($context, $this->schema);
+                $structured = $result->getData();
+                $warnings = $result->getWarnings();
+            } else {
+                // Bloque 1: Estructuración tradicional (sin warnings)
+                $structured = $this->structurer->structure($content, $this->schema);
+                $warnings = [];
+            }
 
             // Valida contra el esquema
             $validation = $this->schema->validate($structured);
@@ -205,7 +223,7 @@ class ContentProcessor
                 }
             }
 
-            $this->recordResult($source, true, $structured);
+            $this->recordResult($source, true, $structured, null, $warnings);
         } catch (\Throwable $e) {
             $this->recordResult($source, false, null, $e->getMessage());
         }
@@ -214,25 +232,42 @@ class ContentProcessor
     /**
      * Registra el resultado del procesamiento de una fuente.
      * 
+     * Bloque 1 y 2: registro simple (success, data, error)
+     * Bloque 3: también captura warnings semánticos
+     * 
      * @param string $source
      * @param bool $success
      * @param array|null $data
      * @param string|null $error
+     * @param array $warnings Warnings del Bloque 3 (opcional)
      * @return void
      */
-    private function recordResult(string $source, bool $success, ?array $data = null, ?string $error = null): void
-    {
+    private function recordResult(
+        string $source,
+        bool $success,
+        ?array $data = null,
+        ?string $error = null,
+        array $warnings = []
+    ): void {
         if ($success) {
             $this->results['success']++;
         } else {
             $this->results['failed']++;
         }
 
-        $this->results['results'][$source] = [
+        $result = [
             'success' => $success,
             'data' => $data,
             'error' => $error,
         ];
+
+        // Bloque 3: Si hay warnings, incluirlos
+        if (!empty($warnings)) {
+            $result['warnings'] = $warnings;
+            $result['warnings_count'] = count($warnings);
+        }
+
+        $this->results['results'][$source] = $result;
     }
 
     /**
