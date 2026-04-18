@@ -13,21 +13,25 @@ Se ha completado exitosamente el **Bloque 3: Estructuración Semántica con Warn
 ### Qué se entrega
 
 ✅ **4 nuevas clases** (950+ líneas de código documentado)
+
 - `DocumentContext` - Contexto del documento
 - `StructuredDocumentResult` - Resultado con warnings
 - `SemanticStructurerInterface` - Contrato semántico
 - `RuleBasedStructurer` - Implementación determinista
 
 ✅ **3 ejemplos funcionales ejecutables**
+
 - `test_structuring.php` - Ejemplo básico
 - `test_structuring_advanced.php` - Batch + warnings
 - `generate_structured_pdf.php` - Generador de PDFs
 
 ✅ **2 documentaciones completas**
+
 - `BLOQUE_3_COMPLETADO.md` - Formato A-G exhaustivo
 - `PROMPT_BLOQUE_3.md` - Prompt de referencia
 
 ✅ **Modificaciones mínimas a código existente**
+
 - `src/Core/ContentProcessor.php` - Integración semántica
 - `ESTADO.md` - Actualización de estado
 
@@ -36,6 +40,7 @@ Se ha completado exitosamente el **Bloque 3: Estructuración Semántica con Warn
 ## CARACTERÍSTICAS IMPLEMENTADAS
 
 ### 1. Modelos de Datos
+
 - **DocumentContext**: Encapsula documento con metadata
   - Acceso a contenido crudo combinado
   - Soporte para pattern matching
@@ -47,12 +52,14 @@ Se ha completado exitosamente el **Bloque 3: Estructuración Semántica con Warn
   - API fluente para warnings
 
 ### 2. Interfaz Semántica
+
 - **SemanticStructurerInterface**: Extiende sin romper StructurerInterface
   - Método nuevo: `structureWithContext()`
   - Mantiene compatibilidad hacia atrás
   - Detección automática en ContentProcessor
 
 ### 3. RuleBasedStructurer
+
 - **Parsing determinista**: Patrones "field: value"
 - **Conversión de tipos**: string, int, float, bool, array
 - **Generación de warnings**:
@@ -62,6 +69,7 @@ Se ha completado exitosamente el **Bloque 3: Estructuración Semántica con Warn
 - **Sin IA/OCR**: Reglas simples y predecibles
 
 ### 4. Integración TransPA RENTE
+
 - ContentProcessor detecta automáticamente SemanticStructurer
 - API pública sin cambios (backward compatible)
 - Warnings capturados en resultados batch
@@ -72,17 +80,20 @@ Se ha completado exitosamente el **Bloque 3: Estructuración Semántica con Warn
 ## COMPATIBILIDAD VERIFICADA
 
 ✅ **Bloque 1**: Funcional (test_functional.php pasa)
+
 - ExtractorInterface: Intacto
 - StructurerInterface: Intacto
 - SchemaInterface: Intacto
 - ContentProcessor API pública: Intacta
 
 ✅ **Bloque 2**: Funcional (PdfTextExtractor)
+
 - PDF extraction: Funcionando
 - Batch processing: Funcionando
 - Errores técnicos: Capturados correctamente
 
 ✅ **Bloque 3**: Operativo
+
 - Estructuración semántica: Funcional
 - Warnings generados: Capturados
 - Conversión JSON: Completa
@@ -110,6 +121,7 @@ php examples/test_structuring_advanced.php
 ## ARCHIVOS ENTREGADOS
 
 ### Nuevos
+
 ```
 src/Models/
 ├── DocumentContext.php              (115 líneas)
@@ -131,6 +143,7 @@ PROMPT_BLOQUE_3.md                  (Prompt de referencia)
 ```
 
 ### Modificados
+
 ```
 src/Core/ContentProcessor.php        (+70 líneas para integración)
 ESTADO.md                            (Actualización de versión)
@@ -140,16 +153,16 @@ ESTADO.md                            (Actualización de versión)
 
 ## MÉTRICAS FINALES
 
-| Métrica | Valor |
-|---------|-------|
-| Nuevas clases | 4 |
-| Nuevas interfaces | 1 |
-| Líneas de código nuevas | ~950 |
-| Compatibilidad B1+B2 | 100% ✅ |
-| Tests pasados | 3/3 ✅ |
-| Ejemplos funcionales | 3/3 ✅ |
-| Componentes IA | 0 (por diseño) |
-| Componentes OCR | 0 (por diseño) |
+| Métrica                 | Valor          |
+| ----------------------- | -------------- |
+| Nuevas clases           | 4              |
+| Nuevas interfaces       | 1              |
+| Líneas de código nuevas | ~950           |
+| Compatibilidad B1+B2    | 100% ✅        |
+| Tests pasados           | 3/3 ✅         |
+| Ejemplos funcionales    | 3/3 ✅         |
+| Componentes IA          | 0 (por diseño) |
+| Componentes OCR         | 0 (por diseño) |
 
 ---
 
@@ -184,7 +197,7 @@ foreach ($results['results'] as $file => $result) {
     if ($result['success']) {
         echo "✅ {$file}\n";
         echo json_encode($result['data']) . "\n";
-        
+
         if (!empty($result['warnings'])) {
             echo "⚠️  Warnings:\n";
             foreach ($result['warnings'] as $field => $msg) {
@@ -259,11 +272,13 @@ ad569e7 FINAL: Prompt estructurado 1-5 con formato A-G exactamente
 **El Bloque 3 está COMPLETAMENTE IMPLEMENTADO, TESTEADO Y LISTO PARA PRODUCCIÓN.**
 
 La librería Content Processor ahora ofrece:
+
 1. ✅ Extracción de texto desde múltiples fuentes
 2. ✅ Extracción específica de PDFs digitales
 3. ✅ Estructuración semántica con warnings
 
 **El proyecto está listo para:**
+
 - Usar en CLI puro
 - Integrar en Laravel/Symfony
 - Extender con nuevos extractores

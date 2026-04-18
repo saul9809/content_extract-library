@@ -30,37 +30,37 @@ use ContentProcessor\Schemas\ArraySchema;
 function createTestPdf($filename, $content)
 {
     $pdf = "%PDF-1.1\n";
-    
+
     $obj1 = "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
     $obj2 = "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n";
     $obj4 = "4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n";
-    
+
     $streamCmd = "BT\n/F1 12 Tf\n50 750 Td\n(" . addslashes($content) . ") Tj\nET\n";
     $streamLen = strlen($streamCmd);
     $obj5 = "5 0 obj\n<< /Length $streamLen >>\nstream\n" . $streamCmd . "endstream\nendobj\n";
-    
+
     $obj3 = "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 4 0 R >> >> >>\nendobj\n";
-    
+
     $pos = strlen($pdf);
     $offset1 = $pos;
     $pdf .= $obj1;
-    
+
     $pos = strlen($pdf);
     $offset2 = $pos;
     $pdf .= $obj2;
-    
+
     $pos = strlen($pdf);
     $offset3 = $pos;
     $pdf .= $obj3;
-    
+
     $pos = strlen($pdf);
     $offset4 = $pos;
     $pdf .= $obj4;
-    
+
     $pos = strlen($pdf);
     $offset5 = $pos;
     $pdf .= $obj5;
-    
+
     $xref_pos = strlen($pdf);
     $pdf .= "xref\n0 6\n0000000000 65535 f \n";
     $pdf .= sprintf("%010d 00000 n \n", $offset1);
@@ -68,9 +68,9 @@ function createTestPdf($filename, $content)
     $pdf .= sprintf("%010d 00000 n \n", $offset3);
     $pdf .= sprintf("%010d 00000 n \n", $offset4);
     $pdf .= sprintf("%010d 00000 n \n", $offset5);
-    
+
     $pdf .= "trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n$xref_pos\n%%EOF\n";
-    
+
     file_put_contents($filename, $pdf);
 }
 
@@ -79,13 +79,15 @@ $tmpDir = __DIR__ . '/tmp';
 @mkdir($tmpDir);
 
 // PDF 1: Completo (por contrastarlo, en teoría tiene todos los campos requeridos)
-createTestPdf("$tmpDir/cv_completo.pdf", 
+createTestPdf(
+    "$tmpDir/cv_completo.pdf",
     "name: Maria Garcia\nemail: maria@example.com\nphone: 555-1234\n" .
-    "experience_years: 5\nskills: PHP, Java, SQL\neducation: CS Degree"
+        "experience_years: 5\nskills: PHP, Java, SQL\neducation: CS Degree"
 );
 
 // PDF 2: Incompleto (falta email requerido)
-createTestPdf("$tmpDir/cv_incompleto.pdf",
+createTestPdf(
+    "$tmpDir/cv_incompleto.pdf",
     "name: Carlos Lopez\nphone: 555-5678\nexperience_years: 3"
 );
 
@@ -139,18 +141,18 @@ $docsWithWarnings = 0;
 
 foreach ($results['results'] as $filePath => $result) {
     $fileName = basename($filePath);
-    
+
     echo "─────────────────────────────────────────────────────────────\n";
     echo "📄 {$fileName}\n";
     echo "─────────────────────────────────────────────────────────────\n";
-    
+
     if (!$result['success']) {
         echo "❌ ERROR TÉCNICO\n";
         echo "   {$result['error']}\n";
         echo "\n";
         continue;
     }
-    
+
     // Datos
     echo "✅ PROCESADO EXITOSAMENTE\n";
     echo "📝 DATOS EXTRAÍDOS:\n";
@@ -164,7 +166,7 @@ foreach ($results['results'] as $filePath => $result) {
         echo "   • {$key}: {$val}\n";
     }
     echo "\n";
-    
+
     // Warnings
     if (isset($result['warnings']) && !empty($result['warnings'])) {
         $warningCount = $result['warnings_count'] ?? count($result['warnings']);
@@ -179,7 +181,7 @@ foreach ($results['results'] as $filePath => $result) {
         echo "✓ SIN WARNINGS - Datos de Excelente Calidad\n";
         echo "\n";
     }
-    
+
     // Calidad
     $quality = 100;
     if (isset($result['warnings'])) {

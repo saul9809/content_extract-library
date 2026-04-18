@@ -29,8 +29,9 @@ Validación técnica de documentos
 Extracción REAL de texto desde PDFs digitales
 PdfTextExtractor funcionando
 Separación correcta de:
-  - documentos exitosos
-  - errores técnicos por documento
+
+- documentos exitosos
+- errores técnicos por documento
 
 Backward compatibility garantizada
 
@@ -46,41 +47,47 @@ con manejo de warnings y sin afectar errores técnicos previos.
 Concretamente debes:
 
 A. Definir los modelos de datos semánticos
-   Crear clases claras para:
-   - DocumentContext: referencia al archivo, texto crudo, metadatos
-   - StructuredDocumentResult: nombre documento, JSON, warnings
+Crear clases claras para:
+
+- DocumentContext: referencia al archivo, texto crudo, metadatos
+- StructuredDocumentResult: nombre documento, JSON, warnings
 
 B. Definir el contrato del Structurer
-   Crear/extender StructurerInterface para:
-   - structure(DocumentContext, SchemaInterface): StructuredDocumentResult
+Crear/extender StructurerInterface para:
+
+- structure(DocumentContext, SchemaInterface): StructuredDocumentResult
 
 C. Implementar un Structurer inicial (NO IA)
-   Implementar un Structurer determinista, por ejemplo:
-   - RuleBasedStructurer o RegexStructurer
-   
-   Este Structurer debe:
-   - Leer el texto crudo
-   - Aplicar reglas simples basadas en el Schema
-   - Poblar campos del JSON
-   - Detectar campos ambiguos o ausentes → warnings (no errores)
+Implementar un Structurer determinista, por ejemplo:
+
+- RuleBasedStructurer o RegexStructurer
+
+Este Structurer debe:
+
+- Leer el texto crudo
+- Aplicar reglas simples basadas en el Schema
+- Poblar campos del JSON
+- Detectar campos ambiguos o ausentes → warnings (no errores)
 
 D. Integrar con ContentProcessor
-   El ContentProcessor debe:
-   - Tomar resultados del Bloque 2
-   - Aplicar el Structurer
-   - Generar un resultado final batch con:
-     • data (JSON)
-     • errors (del Bloque 2)
-     • warnings (del Bloque 3)
-   
-   ⚠️ No romper el API pública existente.
+El ContentProcessor debe:
+
+- Tomar resultados del Bloque 2
+- Aplicar el Structurer
+- Generar un resultado final batch con:
+  • data (JSON)
+  • errors (del Bloque 2)
+  • warnings (del Bloque 3)
+
+⚠️ No romper el API pública existente.
 
 E. Ejemplo funcional real
-   Agregar un ejemplo ejecutable que:
-   - Procese múltiples PDFs
-   - Aplique un Schema definido por el usuario
-   - Produzca JSON estructurado por documento
-   - Liste errores y warnings
+Agregar un ejemplo ejecutable que:
+
+- Procese múltiples PDFs
+- Aplique un Schema definido por el usuario
+- Produzca JSON estructurado por documento
+- Liste errores y warnings
 
 4️⃣ Restricciones y reglas (¿Qué límites hay?)
 Debes cumplir TODAS estas reglas:

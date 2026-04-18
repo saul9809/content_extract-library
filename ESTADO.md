@@ -8,19 +8,19 @@
 
 ## 🎯 Visión general
 
-| Aspecto                | Estado       | Detalles                                                 |
-| ---------------------- | ------------ | -------------------------------------------------------- |
-| **Fase actual**        | ✅ RC 1      | Bloque 1 + 2 + 3 Completados                             |
-| **Autoload**           | ✅ PSR-4     | Composer + Manual fallback                               |
-| **PHP**                | ✅ 8.1+      | Type-safe                                                |
-| **Dependencias**       | ✅ Mínimas   | Solo smalot/pdfparser para feature                       |
+| Aspecto                | Estado       | Detalles                                                                              |
+| ---------------------- | ------------ | ------------------------------------------------------------------------------------- |
+| **Fase actual**        | ✅ RC 1      | Bloque 1 + 2 + 3 Completados                                                          |
+| **Autoload**           | ✅ PSR-4     | Composer + Manual fallback                                                            |
+| **PHP**                | ✅ 8.1+      | Type-safe                                                                             |
+| **Dependencias**       | ✅ Mínimas   | Solo smalot/pdfparser para feature                                                    |
 | **Interfaces**         | ✅ 4/4       | ExtractorInterface, StructurerInterface, SemanticStructurerInterface, SchemaInterface |
-| **Implementaciones**   | ✅ 9/9       | +3 nuevos para estructuración semántica                  |
-| **Extractores**        | ✅ 2/2       | TextFileExtractor + PdfTextExtractor                     |
-| **Estructuradores**    | ✅ 2/2       | SimpleLineStructurer (B1) + RuleBasedStructurer (B3)    |
-| **Modelos**            | ✅ 2/2       | DocumentContext + StructuredDocumentResult              |
-| **Pruebas**            | ✅ Funcional | 5+ tests exitosos (B1 B2 B3)                            |
-| **Framework-agnostic** | ✅ Sí        | Funciona en CLI, Laravel, Symfony, etc.                  |
+| **Implementaciones**   | ✅ 9/9       | +3 nuevos para estructuración semántica                                               |
+| **Extractores**        | ✅ 2/2       | TextFileExtractor + PdfTextExtractor                                                  |
+| **Estructuradores**    | ✅ 2/2       | SimpleLineStructurer (B1) + RuleBasedStructurer (B3)                                  |
+| **Modelos**            | ✅ 2/2       | DocumentContext + StructuredDocumentResult                                            |
+| **Pruebas**            | ✅ Funcional | 5+ tests exitosos (B1 B2 B3)                                                          |
+| **Framework-agnostic** | ✅ Sí        | Funciona en CLI, Laravel, Symfony, etc.                                               |
 
 ---
 

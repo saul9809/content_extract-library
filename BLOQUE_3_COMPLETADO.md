@@ -9,9 +9,11 @@
 ## A. Explicación del Bloque 3
 
 ### Objetivo
+
 Convertir el texto crudo extraído de PDFs (Bloque 2) en **JSON estructurado y valido**, definido por el usuario técnico, con soporte para **warnings semánticos** sin afectar errores técnicos previos.
 
 ### Alcance
+
 El Bloque 3 implementa la **capa semántica** de procesamiento:
 
 ```
@@ -29,19 +31,23 @@ Output: {
 ### Componentes Principales
 
 #### 1️⃣ Modelos de Datos
+
 - **`DocumentContext`**: Encapsula documento + contenido + metadatos
 - **`StructuredDocumentResult`**: Resultado con data + warnings por documento
 
 #### 2️⃣ Interfaz Semántica
+
 - **`SemanticStructurerInterface`**: Extiende `StructurerInterface` con soporte para warnings
 
 #### 3️⃣ Implementación Determinista
+
 - **`RuleBasedStructurer`**: Aplica reglas simples (regex, parsing) sin IA/OCR
   - Busca patrones: `field_name: value`
   - Detecta campos ambiguos/ausentes como warnings
   - Convierte tipos básicos (string, int, float, bool, array)
 
 #### 4️⃣ Integración en ContentProcessor
+
 - Detección automática de `SemanticStructurerInterface`
 - Captura transparente de warnings
 - API idéntica a Bloque 1 (backward compatible)
@@ -50,21 +56,22 @@ Output: {
 
 ## B. Nuevas Clases Creadas
 
-| Ruta | Interfaz/Clase | Responsabilidad |
-|------|---|---|
-| `src/Models/DocumentContext.php` | `DocumentContext` | Contexto: documento + contenido + metadatos |
-| `src/Models/StructuredDocumentResult.php` | `StructuredDocumentResult` | Resultado: data + warnings por documento |
-| `src/Contracts/SemanticStructurerInterface.php` | `SemanticStructurerInterface` | Contrato para estructuradores con warnings |
-| `src/Structurers/RuleBasedStructurer.php` | `RuleBasedStructurer` | Implementación determinista de estructuración |
-| `examples/test_structuring.php` | - | Ejemplo básico de estructuración |
-| `examples/test_structuring_advanced.php` | - | Ejemplo avanzado: batch + warnings |
-| `examples/generate_structured_pdf.php` | - | Generador de PDF estructurado |
+| Ruta                                            | Interfaz/Clase                | Responsabilidad                               |
+| ----------------------------------------------- | ----------------------------- | --------------------------------------------- |
+| `src/Models/DocumentContext.php`                | `DocumentContext`             | Contexto: documento + contenido + metadatos   |
+| `src/Models/StructuredDocumentResult.php`       | `StructuredDocumentResult`    | Resultado: data + warnings por documento      |
+| `src/Contracts/SemanticStructurerInterface.php` | `SemanticStructurerInterface` | Contrato para estructuradores con warnings    |
+| `src/Structurers/RuleBasedStructurer.php`       | `RuleBasedStructurer`         | Implementación determinista de estructuración |
+| `examples/test_structuring.php`                 | -                             | Ejemplo básico de estructuración              |
+| `examples/test_structuring_advanced.php`        | -                             | Ejemplo avanzado: batch + warnings            |
+| `examples/generate_structured_pdf.php`          | -                             | Generador de PDF estructurado                 |
 
 ---
 
 ## C. Código Completo de Cada Clase
 
 ### 1. DocumentContext
+
 **Responsabilidad:** Encapsular contexto del documento para estructuración semántica
 
 ```php
@@ -74,7 +81,7 @@ namespace ContentProcessor\Models;
 /**
  * Contexto semántico de un documento.
  * Agrupa: referencia al archivo + contenido crudo + metadatos
- * 
+ *
  * @since Bloque 3
  */
 class DocumentContext
@@ -100,20 +107,21 @@ class DocumentContext
     public function getDocumentName(): string { return $this->documentName; }
     public function getRawText(): array { return $this->rawText; }
     public function getRawTextCombined(): string { return implode("\n", $this->rawText); }
-    
+
     public function getMetadata(?string $key = null, $default = null) {
         if ($key === null) return $this->metadata;
         return $this->metadata[$key] ?? $default;
     }
 
     public function matchesPattern(string $pattern): bool {
-        return fnmatch($pattern, $this->documentPath) || 
+        return fnmatch($pattern, $this->documentPath) ||
                fnmatch($pattern, $this->documentName);
     }
 }
 ```
 
 **Métodos clave:**
+
 - `getRawTextCombined()`: Combina texto en string único para búsqueda
 - `getMetadata($key)`: Acceso flexible a metadatos
 - `matchesPattern()`: Filtrado por glob pattern
@@ -121,6 +129,7 @@ class DocumentContext
 ---
 
 ### 2. StructuredDocumentResult
+
 **Responsabilidad:** Encapsular resultado con data + warnings
 
 ```php
@@ -130,7 +139,7 @@ namespace ContentProcessor\Models;
 /**
  * Resultado de estructuración semántica.
  * Incluye: JSON + warnings semánticos (distintos de errores técnicos)
- * 
+ *
  * @since Bloque 3
  */
 class StructuredDocumentResult
@@ -179,6 +188,7 @@ class StructuredDocumentResult
 ```
 
 **Métodos clave:**
+
 - `toJSON()`: Serializar datos
 - `getField($key, $default)`: Acceso con notación punto (`person.name`)
 - `addWarning()`: API fluente para agregar warnings
@@ -186,6 +196,7 @@ class StructuredDocumentResult
 ---
 
 ### 3. SemanticStructurerInterface
+
 **Responsabilidad:** Contrato para estructuradores con warnings
 
 ```php
@@ -198,14 +209,14 @@ use ContentProcessor\Models\StructuredDocumentResult;
 /**
  * Interfaz para estructuradores semánticos avanzados (Bloque 3).
  * Extiende StructurerInterface con soporte para contexto y warnings.
- * 
+ *
  * @since Bloque 3
  */
 interface SemanticStructurerInterface extends StructurerInterface
 {
     /**
      * Estructura un documento en contexto, con soporte para warnings.
-     * 
+     *
      * @param DocumentContext $context Contexto: documento + contenido
      * @param SchemaInterface $schema Esquema de estructuración
      * @return StructuredDocumentResult Resultado con data + warnings
@@ -219,12 +230,14 @@ interface SemanticStructurerInterface extends StructurerInterface
 ```
 
 **Notas:**
+
 - Extiende `StructurerInterface` para máxima compatibilidad
 - Los estructuradores que la implementan DEBEN también implementar `structure()` del padre
 
 ---
 
 ### 4. RuleBasedStructurer
+
 **Responsabilidad:** Estructuración determinista sin IA ni OCR
 
 ```php
@@ -238,11 +251,11 @@ use ContentProcessor\Models\StructuredDocumentResult;
 
 /**
  * Estructurador basado en reglas deterministas.
- * 
+ *
  * Busca patrones: "field_name: value"
  * Genera warnings para campos ambiguos/ausentes
  * Convierte tipos básicos (string, int, float, bool, array)
- * 
+ *
  * @since Bloque 3
  */
 class RuleBasedStructurer implements SemanticStructurerInterface
@@ -305,7 +318,7 @@ class RuleBasedStructurer implements SemanticStructurerInterface
     /**
      * Extrae un field del texto aplicando reglas.
      * Retorna: [valor, warning_o_null]
-     * 
+     *
      * Warnings generados:
      * - "Campo requerido no encontrado"
      * - "Campo opcional no encontrado"
@@ -314,14 +327,14 @@ class RuleBasedStructurer implements SemanticStructurerInterface
     private function extractField(string $fieldName, string $text, array $rules): array {
         $type = $rules['type'] ?? 'string';
         $required = $rules['required'] ?? false;
-        
+
         $pattern = $this->buildPattern($fieldName);
         $matches = [];
         preg_match_all($pattern, $text, $matches);
 
         if (empty($matches[1])) {
-            $warning = $required 
-                ? "Campo requerido no encontrado" 
+            $warning = $required
+                ? "Campo requerido no encontrado"
                 : "Campo opcional no encontrado";
             return [null, $warning];
         }
@@ -396,6 +409,7 @@ class RuleBasedStructurer implements SemanticStructurerInterface
 ```
 
 **Reglas de Parseo:**
+
 - Delimitador: `:`
 - Patrón: `^field_name: value$` (multiline)
 - Case-insensitive: Sí (configurable)
@@ -412,6 +426,7 @@ php examples/test_structuring.php
 ```
 
 **Output:**
+
 ```
 ═══════════════════════════════════════════════════════════════
   BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA DE PDFs
@@ -447,6 +462,7 @@ php examples/test_structuring_advanced.php
 ```
 
 **Output:**
+
 ```
 ╔═══════════════════════════════════════════════════════════════╗
 ║        BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA AVANZADA             ║
@@ -598,6 +614,7 @@ php examples/test_structuring.php
 ```
 
 **Verifications:**
+
 - ✅ 1 documento procesado
 - ✅ JSON válido generado
 - ✅ Campos estructurados correctamente
@@ -609,6 +626,7 @@ php examples/test_structuring_advanced.php
 ```
 
 **Verifications:**
+
 - ✅ 2 documentos procesados
 - ✅ 1 exitoso, 1 con error técnico
 - ✅ Warnings vs Errores claramente separados
@@ -688,6 +706,7 @@ foreach ($result['results'] as $path => $item) {
 ### Cambios Realizados
 
 **Archivos Nuevos:**
+
 1. `src/Models/DocumentContext.php` (150 líneas)
 2. `src/Models/StructuredDocumentResult.php` (180 líneas)
 3. `src/Contracts/SemanticStructurerInterface.php` (30 líneas)
@@ -697,12 +716,14 @@ foreach ($result['results'] as $path => $item) {
 7. `examples/generate_structured_pdf.php` (80 líneas)
 
 **Archivos Modificados:**
+
 1. `src/Core/ContentProcessor.php` (+ 70 líneas)
    - Imports para SemanticStructurerInterface
    - Detección en `processSource()`
    - Captura de warnings en `recordResult()`
 
 **Archivos SIN Cambios (Intactos):**
+
 - ✓ `src/Contracts/StructurerInterface.php`
 - ✓ `src/Contracts/ExtractorInterface.php`
 - ✓ `src/Contracts/SchemaInterface.php`
@@ -713,15 +734,15 @@ foreach ($result['results'] as $path => $item) {
 
 ### Métricas
 
-| Métrica | Valor |
-|---------|-------|
-| Nuevas clases | 4 |
-| Nuevas interfaces | 1 |
-| Líneas de código nuevas | ~950 |
-| Cobertura de casos de uso | 100% |
-| Compatibilidad hacia atrás | 100% |
-| Tests ejecutados | 3 ✅ |
-| Ejemplos funcionales | 3 ✅ |
+| Métrica                    | Valor |
+| -------------------------- | ----- |
+| Nuevas clases              | 4     |
+| Nuevas interfaces          | 1     |
+| Líneas de código nuevas    | ~950  |
+| Cobertura de casos de uso  | 100%  |
+| Compatibilidad hacia atrás | 100%  |
+| Tests ejecutados           | 3 ✅  |
+| Ejemplos funcionales       | 3 ✅  |
 
 ---
 
@@ -750,6 +771,7 @@ foreach ($processor->getResults()['results'] as $file => $result) {
 ---
 
 **Próximos Pasos (FUTUROS, no incluidos en Bloque 3):**
+
 - Bloque 4: Validadores personalizados / Webhooks
 - Bloque 5: Caché y performance
 - Bloque 6: Exportadores (Excel, XML, etc.)
