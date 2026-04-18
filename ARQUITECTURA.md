@@ -1,4 +1,36 @@
-# Content Processor - Arquitectura del Proyecto
+src/ ← Código fuente (PSR-4)
+├── Contracts/ ← 3 interfaces
+├── Core/ ← Clase principal
+├── Schemas/ + Extractors/ + Structurers/ ← Implementaciones
+
+examples/ ← Ejemplos y pruebas
+├── test*functional.php ← ✅ Ejecutado exitosamente
+├── example_basic.php
+└── sample_cv*\*.txt ← Datos de prueba
+
+Documentación:
+├── README.md ← Introducción
+├── GUIA_RAPIDA.md ← Primeros pasos
+├── ARQUITECTURA.md ← Diseño completo
+├── BLOQUE_1_COMPLETADO.md ← Estado detallado
+├── ESTADO.md ← Resumen ejecutivo
+└── VERIFICACION.md ← Checklistsrc/ ← Código fuente (PSR-4)
+├── Contracts/ ← 3 interfaces
+├── Core/ ← Clase principal
+├── Schemas/ + Extractors/ + Structurers/ ← Implementaciones
+
+examples/ ← Ejemplos y pruebas
+├── test*functional.php ← ✅ Ejecutado exitosamente
+├── example_basic.php
+└── sample_cv*\*.txt ← Datos de prueba
+
+Documentación:
+├── README.md ← Introducción
+├── GUIA_RAPIDA.md ← Primeros pasos
+├── ARQUITECTURA.md ← Diseño completo
+├── BLOQUE_1_COMPLETADO.md ← Estado detallado
+├── ESTADO.md ← Resumen ejecutivo
+└── VERIFICACION.md ← Checklist# Content Processor - Arquitectura del Proyecto
 
 ## 🏗️ Estructura General
 
