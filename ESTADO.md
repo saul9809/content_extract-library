@@ -1,8 +1,8 @@
 # 📊 Estado del Proyecto - Content Processor
 
 **Última actualización:** 18 de Abril, 2026  
-**Versión:** 1.0.0-alpha  
-**Estatus:** ✅ **BLOQUE 1 COMPLETADO Y FUNCIONAL**
+**Versión:** 1.1.0  
+**Estatus:** ✅ **BLOQUE 2 COMPLETADO | BLOQUE 1 ÍNTACTO**
 
 ---
 
@@ -10,18 +10,56 @@
 
 | Aspecto                | Estado       | Detalles                                                               |
 | ---------------------- | ------------ | ---------------------------------------------------------------------- |
-| **Fase actual**        | ✅ Alpha 1   | Fundaciones completadas                                                |
+| **Fase actual**        | ✅ Beta 1    | Bloque 1 + 2 Completados                                               |
 | **Autoload**           | ✅ PSR-4     | Composer + Manual fallback                                             |
 | **PHP**                | ✅ 8.1+      | Type-safe                                                              |
-| **Dependencias**       | ✅ Zero      | Solo Composer para dev                                                 |
+| **Dependencias**       | ✅ Mínimas   | Solo smalot/pdfparser para feature                                     |
 | **Interfaces**         | ✅ 3/3       | ExtractorInterface, StructurerInterface, SchemaInterface               |
-| **Implementaciones**   | ✅ 4/4       | ContentProcessor, ArraySchema, TextFileExtractor, SimpleLineStructurer |
-| **Pruebas**            | ✅ Funcional | 2/2 documentos procesados exitosamente                                 |
+| **Implementaciones**   | ✅ 6/6       | +2 nuevos extractores de PDF                                           |
+| **Extractores**        | ✅ 2/2       | TextFileExtractor + PdfTextExtractor                                   |
+| **Pruebas**            | ✅ Funcional | 5+ tests exitosos (Bloques 1 y 2)                                     |
 | **Framework-agnostic** | ✅ Sí        | Funciona en CLI, Laravel, Symfony, etc.                                |
 
 ---
 
+## 📦 Entregables del Bloque 2
+
+### ✅ Extracción de PDF Digitales
+
+**Nuevos archivos:**
+
+- ✅ [src/Extractors/PdfTextExtractor.php](./src/Extractors/PdfTextExtractor.php) — Extractor de PDFs
+- ✅ [examples/generate_sample_pdf.php](./examples/generate_sample_pdf.php) — Generador de PDF
+- ✅ [examples/test_pdf_simple.php](./examples/test_pdf_simple.php) — Test de extracción pura
+- ✅ [examples/test_pdf_extraction.php](./examples/test_pdf_extraction.php) — Test completo
+- ✅ [examples/sample_cv.pdf](./examples/sample_cv.pdf) — PDF de prueba
+
+**Dependencias agregadas:**
+
+- ✅ `smalot/pdfparser ^2.0` — Parser profesional de PDFs
+
+**Características:**
+
+- ✅ Extracción de texto real desde PDFs digitales
+- ✅ Multipage support (si aplica)
+- ✅ Validación robusta de archivos
+- ✅ Manejo de excepciones completo
+- ✅ 100% compatible con ContentProcessor
+- ✅ Batch processing ready
+
+**Estado Bloque 2:**
+
+- ✅ Implementación: COMPLETA
+- ✅ Pruebas: EXITOSAS
+- ✅ Documentación: COMPLETA
+- ✅ Compatibilidad B1: ÍNTACTA
+- Ver [BLOQUE_2_COMPLETADO.md](./BLOQUE_2_COMPLETADO.md)
+
+---
+
 ## 📦 Entregables del Bloque 1
+
+**Estado:**  ✅ COMPLETADO E ÍNTACTO (no modificado en B2)
 
 ### Archivos de configuración
 
@@ -48,6 +86,16 @@
 
 - ✅ [src/Schemas/ArraySchema.php](./src/Schemas/ArraySchema.php)
 - ✅ [src/Extractors/TextFileExtractor.php](./src/Extractors/TextFileExtractor.php)
+- ✅ [src/Structurers/SimpleLineStructurer.php](./src/Structurers/SimpleLineStructurer.php)
+
+### Ejemplos
+
+- ✅ [examples/example_basic.php](./examples/example_basic.php)
+- ✅ [examples/test_functional.php](./examples/test_functional.php)
+- ✅ [examples/sample_cv_1.txt](./examples/sample_cv_1.txt)
+- ✅ [examples/sample_cv_2.txt](./examples/sample_cv_2.txt)
+
+---
 - ✅ [src/Structurers/SimpleLineStructurer.php](./src/Structurers/SimpleLineStructurer.php)
 
 ### Ejemplos y pruebas
