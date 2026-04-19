@@ -1,0 +1,131 @@
+{
+    "success": false,
+    "perfect": false,
+    "data": {
+        "count": 3,
+        "items": [
+            {
+                "document": "incompleto.txt",
+                "path": "C:\\Equipo\\Ingeniería\\Tesis\\TESIS\\SISTEMA\\librery\\examples\/test_bloque4_batch\\incompleto.txt",
+                "data": {
+                    "nombre": "Carlos Años de Experiencia: 10",
+                    "carnet_identidad": null,
+                    "anos_experiencia": null,
+                    "email": null
+                }
+            },
+            {
+                "document": "valido_1.txt",
+                "path": "C:\\Equipo\\Ingeniería\\Tesis\\TESIS\\SISTEMA\\librery\\examples\/test_bloque4_batch\\valido_1.txt",
+                "data": {
+                    "nombre": "Juan García Pérez Carnet de Identidad: 12345678-K Años de Experiencia: 5 Email: juan@example.com",
+                    "carnet_identidad": null,
+                    "anos_experiencia": null,
+                    "email": "juan@example.com"
+                }
+            },
+            {
+                "document": "valido_2.txt",
+                "path": "C:\\Equipo\\Ingeniería\\Tesis\\TESIS\\SISTEMA\\librery\\examples\/test_bloque4_batch\\valido_2.txt",
+                "data": {
+                    "nombre": "María López Martínez Años de Experiencia: 8 Email: maria@example.com",
+                    "carnet_identidad": null,
+                    "anos_experiencia": null,
+                    "email": "maria@example.com"
+                }
+            }
+        ]
+    },
+    "errors": {
+        "count": 2,
+        "items": [
+            {
+                "type": "validation",
+                "message": "Validación fallida: Campo 'nombre' es requerido.",
+                "code": null,
+                "context": {
+                    "file": "malformado.txt",
+                    "source": "C:\\Equipo\\Ingeniería\\Tesis\\TESIS\\SISTEMA\\librery\\examples\/test_bloque4_batch\\malformado.txt"
+                },
+                "timestamp": 1776557624
+            },
+            {
+                "type": "validation",
+                "message": "Validación fallida: Campo 'nombre' es requerido.",
+                "code": null,
+                "context": {
+                    "file": "vacio.txt",
+                    "source": "C:\\Equipo\\Ingeniería\\Tesis\\TESIS\\SISTEMA\\librery\\examples\/test_bloque4_batch\\vacio.txt"
+                },
+                "timestamp": 1776557624
+            }
+        ]
+    },
+    "warnings": {
+        "count": 7,
+        "items": [
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            },
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            },
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            },
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            },
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            },
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            },
+            {
+                "field": "unknown",
+                "category": "unknown",
+                "message": "Unknown warning",
+                "value": null,
+                "timestamp": 1776557624
+            }
+        ]
+    },
+    "summary": {
+        "total_documents": 5,
+        "successful": 3,
+        "failed": 2,
+        "total_warnings": 7,
+        "total_errors": 2,
+        "success_rate": 60,
+        "failure_rate": 40,
+        "average_warnings_per_document": 1.4,
+        "processing_time_seconds": 0.015026092529296875,
+        "started_at": 1776557624,
+        "finished_at": 1776557624
+    }
+}

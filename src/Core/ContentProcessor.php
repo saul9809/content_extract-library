@@ -8,6 +8,12 @@ use ContentProcessor\Contracts\SemanticStructurerInterface;
 use ContentProcessor\Contracts\SchemaInterface;
 use ContentProcessor\Models\DocumentContext;
 use ContentProcessor\Models\StructuredDocumentResult;
+use ContentProcessor\Models\FinalResult;
+use ContentProcessor\Models\Error;
+use ContentProcessor\Models\Warning;
+use ContentProcessor\Models\Summary;
+use ContentProcessor\Security\SecurityValidator;
+use ContentProcessor\Security\SecurityException;
 
 /**
  * Procesador de contenido principal.
@@ -93,11 +99,17 @@ class ContentProcessor
     /**
      * Añade múltiples archivos como fuentes.
      * 
+     * BLOQUE 5: Se valida que el batch no exceda el máximo permitido.
+     * 
      * @param array $files Array de rutas a archivos
      * @return $this
+     * @throws SecurityException Si el batch excede los límites
      */
     public function fromFiles(array $files): self
     {
+        // Validar tamaño del batch (Bloque 5 - Seguridad)
+        SecurityValidator::validateBatchSize($files);
+
         $this->sources = array_merge($this->sources, $files);
         return $this;
     }
@@ -105,9 +117,12 @@ class ContentProcessor
     /**
      * Añade todos los archivos de un directorio como fuentes.
      * 
+     * BLOQUE 5: Se valida que el batch no exceda el máximo permitido.
+     * 
      * @param string $directory Ruta del directorio
      * @param string $pattern Patrón de archivos (ej: '*.pdf')
      * @return $this
+     * @throws SecurityException Si el batch excede los límites
      */
     public function fromDirectory(string $directory, string $pattern = '*'): self
     {
@@ -117,6 +132,9 @@ class ContentProcessor
 
         $files = glob(rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $pattern);
         $files = $files === false ? [] : $files;
+
+        // Validar tamaño del batch (Bloque 5 - Seguridad)
+        SecurityValidator::validateBatchSize($files);
 
         $this->sources = array_merge($this->sources, $files);
         return $this;
@@ -224,7 +242,12 @@ class ContentProcessor
             }
 
             $this->recordResult($source, true, $structured, null, $warnings);
+        } catch (SecurityException $se) {
+            // Bloque 5: Manejo seguro de excepciones de seguridad
+            // Nunca exponemos detalles internos del filesystem o stack traces
+            $this->recordResult($source, false, null, $se->getClientMessage());
         } catch (\Throwable $e) {
+            // Otras excepciones (se mantiene compatible con comportamiento anterior)
             $this->recordResult($source, false, null, $e->getMessage());
         }
     }
@@ -296,5 +319,120 @@ class ContentProcessor
             }
         }
         return $data;
+    }
+
+    /**
+     * Procesa todas las fuentes y retorna un FinalResult robusto (Bloque 4).
+     * 
+     * Este método es la API recomendada para Bloque 4+.
+     * Retorna un objeto FinalResult unificado con:
+     * - Datos estructurados exitosos
+     * - Errores normalizados
+     * - Warnings semánticos normalizados
+     * - Estadísticas y métricas
+     * 
+     * @return FinalResult
+     * @throws \RuntimeException Si se requiere schema pero no está configurado
+     */
+    public function processFinal(): FinalResult
+    {
+        if (!$this->schema) {
+            throw new \RuntimeException('Esquema requerido. Usa withSchema() primero.');
+        }
+
+        $this->results = [
+            'success' => 0,
+            'failed' => 0,
+            'total' => count($this->sources),
+            'results' => [],
+        ];
+
+        $startTime = microtime(true);
+
+        foreach ($this->sources as $source) {
+            $this->processSource($source);
+        }
+
+        $processingTime = microtime(true) - $startTime;
+
+        // Construye el FinalResult a partir de los resultados acumulados
+        return $this->buildFinalResult($processingTime);
+    }
+
+    /**
+     * Construye un objeto FinalResult a partir de los resultados acumulados.
+     * 
+     * Normaliza errores y warnings, y genera el resumen de estadísticas.
+     * 
+     * @param float $processingTime Tiempo total de procesamiento
+     * @return FinalResult
+     */
+    private function buildFinalResult(float $processingTime): FinalResult
+    {
+        $data = [];
+        $errors = [];
+        $warnings = [];
+        $fullResults = [];
+
+        foreach ($this->results['results'] as $source => $result) {
+            // Registro completo para debugging
+            $fullResults[] = array_merge(
+                ['source' => $source],
+                $result
+            );
+
+            if ($result['success']) {
+                // Documentos exitosos
+                $data[] = [
+                    'document' => basename($source),
+                    'path' => $source,
+                    'data' => $result['data'],
+                ];
+
+                // Warnings del Bloque 3
+                if (!empty($result['warnings'] ?? [])) {
+                    foreach ($result['warnings'] as $fieldWarning) {
+                        $warnings[] = new Warning(
+                            $fieldWarning['field'] ?? 'unknown',
+                            $fieldWarning['category'] ?? 'unknown',
+                            $fieldWarning['message'] ?? 'Unknown warning',
+                            $fieldWarning['value'] ?? null
+                        );
+                    }
+                }
+            } else {
+                // Documento con error
+                $errorType = 'runtime';
+                if (strpos($result['error'] ?? '', 'Validación fallida') !== false) {
+                    $errorType = 'validation';
+                } elseif (strpos($result['error'] ?? '', 'no puede procesar') !== false) {
+                    $errorType = 'extraction';
+                }
+
+                $errors[] = new Error(
+                    $errorType,
+                    $result['error'] ?? 'Unknown error',
+                    ['file' => basename($source), 'source' => $source]
+                );
+            }
+        }
+
+        // Crea el Summary
+        $summary = new Summary(
+            $this->results['total'],
+            $this->results['success'],
+            $this->results['failed'],
+            count($warnings),
+            count($errors),
+            $processingTime
+        );
+
+        return new FinalResult(
+            $data,
+            $errors,
+            $warnings,
+            $summary,
+            $fullResults
+        );
     }
 }

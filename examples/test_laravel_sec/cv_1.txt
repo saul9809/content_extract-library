@@ -1,0 +1,3 @@
+Nombre: Candidato 1
+Email: candidato1@example.com
+Telefono: 555-0001
