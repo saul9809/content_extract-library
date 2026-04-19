@@ -110,6 +110,22 @@ class Warning
     }
 
     /**
+     * Generic factory for creating warnings with custom data
+     * 
+     * @param array $data Must contain 'field', 'category', 'message'
+     * @return self
+     */
+    public static function create(array $data): self
+    {
+        return new self(
+            $data['field'] ?? 'unknown',
+            $data['category'] ?? 'generic',
+            $data['message'] ?? 'Warning occurred',
+            $data['value'] ?? null
+        );
+    }
+
+    /**
      * Factory para warnings de parsing ambiguous.
      * 
      * @param string $field
@@ -120,7 +136,7 @@ class Warning
     {
         return new self(
             $field,
-            'ambiguousus',
+            'ambiguous',
             $message
         );
     }
