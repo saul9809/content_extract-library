@@ -6,15 +6,15 @@ use ContentProcessor\Contracts\StructurerInterface;
 use ContentProcessor\Contracts\SchemaInterface;
 
 /**
- * Estructurador simple con parsing línea-por-línea.
+ * Simple structurer with line-by-line parsing.
  * 
- * Parse contenido de texto en pares clave:valor simples.
- * Formato esperado:
+ * Parses text content into simple key:value pairs.
+ * Expected format:
  *     field_name: value
  *     other_field: another value
  * 
- * Diseñado para pruebas y como base para estructuradores más sofisticados.
- * En el futuro, se extenderá con regex, IA, OCR, etc.
+ * Designed for testing and as a base for more sophisticated structurers.
+ * In the future, will be extended with regex, AI, OCR, etc.
  */
 class SimpleLineStructurer implements StructurerInterface
 {
@@ -27,24 +27,24 @@ class SimpleLineStructurer implements StructurerInterface
             return [];
         }
 
-        // Combina todo el contenido (múltiples "páginas")
+        // Combine all content (multiple "pages")
         $text = implode("\n", $content);
 
-        // Parse simple basado en el esquema
+        // Simple parsing based on schema
         $structured = [];
         $definition = $schema->getDefinition();
 
         foreach ($definition as $fieldName => $rules) {
-            // Busca líneas que comiencen con el nombre del campo
+            // Search for lines that begin with the field name
             $pattern = '/^' . preg_quote($fieldName) . ':\s*(.*)$/mi';
             if (preg_match($pattern, $text, $matches)) {
                 $value = trim($matches[1]);
 
-                // Convierte al tipo esperado
+                // Convert to expected type
                 $type = $rules['type'] ?? 'string';
                 $structured[$fieldName] = $this->castValue($value, $type);
             } else {
-                // Campo no encontrado, usa null
+                // Field not found, use null
                 $structured[$fieldName] = null;
             }
         }
@@ -61,7 +61,7 @@ class SimpleLineStructurer implements StructurerInterface
     }
 
     /**
-     * Convierte un valor a su tipo correspondiente.
+     * Converts a value to its corresponding type.
      * 
      * @param string $value
      * @param string $type

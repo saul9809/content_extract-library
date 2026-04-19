@@ -6,18 +6,18 @@ use ContentProcessor\Contracts\ExtractorInterface;
 use Smalot\PdfParser\Parser;
 
 /**
- * Extractor de contenido desde archivos PDF digitales.
+ * Extractor for text content from PDF files.
  * 
- * Utiliza smalot/pdfparser para extraer el texto de PDFs digitales
- * (no escaneados, no requiere OCR).
+ * Uses smalot/pdfparser to extract text from digital PDFs
+ * (not scanned, OCR not required).
  * 
- * @author Tu Nombre
- * @version 1.0
+ * @author Contributor
+ * @version 1.3.1
  */
 class PdfTextExtractor implements ExtractorInterface
 {
     /**
-     * Instancia del parser de PDF.
+     * PDF parser instance.
      * 
      * @var Parser
      */
@@ -26,7 +26,7 @@ class PdfTextExtractor implements ExtractorInterface
     /**
      * Constructor.
      * 
-     * Inicializa el parser de PDFs.
+     * Initializes the PDF parser.
      */
     public function __construct()
     {
@@ -34,18 +34,18 @@ class PdfTextExtractor implements ExtractorInterface
     }
 
     /**
-     * Extrae el contenido textual de un archivo PDF.
+     * Extracts text content from a PDF file.
      * 
-     * @param string $source Ruta absoluta del archivo PDF
-     * @return array Array con el texto extraído (una entrada por página/PDF)
-     * @throws \RuntimeException Si el archivo no existe o no puede procesarse
+     * @param string $source Absolute path to the PDF file
+     * @return array Array of extracted text (one entry per page/file)
+     * @throws \RuntimeException If file does not exist or cannot be processed
      */
     public function extract(string $source): array
     {
-        // Validar que el archivo existe
+        // Validate that the file exists and is a valid PDF
         if (!$this->canHandle($source)) {
             throw new \RuntimeException(
-                "No se puede procesar el archivo: '{$source}'. Verifique que existe y es un PDF válido."
+                "Cannot process file: '{$source}'. Verify that it exists and is a valid PDF."
             );
         }
 
@@ -53,16 +53,16 @@ class PdfTextExtractor implements ExtractorInterface
             // Parsear el PDF
             $pdf = $this->parser->parseFile($source);
 
-            // Extraer texto de todas las páginas
+            // Extract text from all pages
             $pages = $pdf->getPages();
 
             if (empty($pages)) {
                 throw new \RuntimeException(
-                    "El PDF '{$source}' no contiene páginas o el contenido no es accesible."
+                    "PDF '{$source}' contains no pages or content is not accessible."
                 );
             }
 
-            // Acumular texto de todas las páginas
+            // Accumulate text from all pages
             $extractedText = [];
             foreach ($pages as $page) {
                 $text = $page->getText();
@@ -71,7 +71,7 @@ class PdfTextExtractor implements ExtractorInterface
                 }
             }
 
-            // Si no se extrajo texto de ninguna página, retornar array vacío pero válido
+            // If no text was extracted, return valid empty array
             if (empty($extractedText)) {
                 $extractedText[] = '';
             }
@@ -79,7 +79,7 @@ class PdfTextExtractor implements ExtractorInterface
             return $extractedText;
         } catch (\Exception $e) {
             throw new \RuntimeException(
-                "Error al procesar el PDF '{$source}': " . $e->getMessage(),
+                "Error processing PDF '{$source}': " . $e->getMessage(),
                 0,
                 $e
             );
@@ -87,35 +87,43 @@ class PdfTextExtractor implements ExtractorInterface
     }
 
     /**
-     * Valida si este extractor puede procesar la fuente.
+     * Validates if this extractor can process the source.
      * 
-     * Verifica:
-     * - Que el archivo existe
-     * - Que tiene extensión .pdf
-     * - Que es legible
+     * Verifies:
+     * - That the file exists and is readable
+     * - That the file contains a valid PDF header
      * 
-     * @param string $source Ruta del archivo a validar
-     * @return bool True si puede procesarse, false en caso contrario
+     * Note: Checks PDF binary signature instead of extension to support
+     * temporary files from HTTP uploads (phpXXXX.tmp, etc.).
+     * 
+     * @param string $source Path to the file to validate
+     * @return bool True if can be processed, false otherwise
      */
     public function canHandle(string $source): bool
     {
-        // Verifica que sea un archivo, exista y sea legible
+        // Verify that it is a file and is readable
         if (!is_file($source) || !is_readable($source)) {
             return false;
         }
 
-        // Verifica que tenga extensión .pdf
-        if (strtolower(pathinfo($source, PATHINFO_EXTENSION)) !== 'pdf') {
+        // Check PDF binary signature (magic bytes: %PDF)
+        // This handles temporary files from HTTP uploads that don't have .pdf extension
+        $handle = @fopen($source, 'rb');
+        if ($handle === false) {
             return false;
         }
 
-        return true;
+        $header = fread($handle, 4);
+        fclose($handle);
+
+        // PDF files begin with %PDF
+        return $header === '%PDF';
     }
 
     /**
-     * Retorna el nombre identificador de este extractor.
+     * Returns the identifier name of this extractor.
      * 
-     * @return string Nombre del extractor
+     * @return string Extractor name
      */
     public function getName(): string
     {

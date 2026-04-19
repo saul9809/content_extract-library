@@ -5,12 +5,12 @@ namespace ContentProcessor\Extractors;
 use ContentProcessor\Contracts\ExtractorInterface;
 
 /**
- * Extractor simple para archivos de texto plano.
+ * Simple extractor for plain text files.
  * 
- * Lee archivos .txt y los convierte en un array de contenido.
- * Diseñado para pruebas y como base para extractores más complejos.
+ * Reads .txt files and converts them into a content array.
+ * Designed for testing and as a base for more complex extractors.
  * 
- * En el futuro, se extenderá para PDF, OCR, etc.
+ * In the future, will be extended to support PDF, OCR, etc.
  */
 class TextFileExtractor implements ExtractorInterface
 {
@@ -22,20 +22,20 @@ class TextFileExtractor implements ExtractorInterface
     public function extract(string $source): array
     {
         if (!file_exists($source)) {
-            throw new \RuntimeException("Archivo '$source' no existe.");
+            throw new \RuntimeException("File '$source' does not exist.");
         }
 
         if (!is_readable($source)) {
-            throw new \RuntimeException("Archivo '$source' no es legible.");
+            throw new \RuntimeException("File '$source' is not readable.");
         }
 
         $content = file_get_contents($source);
         if ($content === false) {
-            throw new \RuntimeException("No se pudo leer el archivo '$source'.");
+            throw new \RuntimeException("Could not read file '$source'.");
         }
 
-        // Retorna como array con un elemento (una sola página/sección)
-        // En PDFs multipágina, sería un array con múltiples elementos
+        // Return as array with one element (single page/section)
+        // For multi-page PDFs, would be an array with multiple elements
         return [$content];
     }
 

@@ -3,34 +3,34 @@
 namespace ContentProcessor\Contracts;
 
 /**
- * Interfaz para extractores de contenido.
+ * Interface for content extractors.
  * 
- * Define el contrato que debe cumplir cualquier estrategia de extracción
- * de contenido desde diferentes fuentes (PDF, texto, etc.).
+ * Defines the contract that any content extraction strategy must implement
+ * for different sources (PDF, text, etc.).
  */
 interface ExtractorInterface
 {
     /**
-     * Extrae contenido de una fuente.
+     * Extracts content from a source.
      * 
-     * @param string $source Ruta o identificador de la fuente
-     * @return array Contenido extraído como array de strings (por página/sección)
-     * @throws \Exception Si la extracción falla
+     * @param string $source Path or identifier of the source
+     * @return array Extracted content as array of strings (by page/section)
+     * @throws \Exception If extraction fails
      */
     public function extract(string $source): array;
 
     /**
-     * Valida que la fuente sea procesable por este extractor.
+     * Validates that the source can be processed by this extractor.
      * 
-     * @param string $source Ruta o identificador de la fuente
-     * @return bool True si puede procesarse, false en caso contrario
+     * @param string $source Path or identifier of the source
+     * @return bool True if can be processed, false otherwise
      */
     public function canHandle(string $source): bool;
 
     /**
-     * Retorna el nombre del extractor.
+     * Returns the name of the extractor.
      * 
-     * @return string Nombre identificador del extractor
+     * @return string Identifier name of the extractor
      */
     public function getName(): string;
 }

@@ -3,32 +3,32 @@
 namespace ContentProcessor\Contracts;
 
 /**
- * Interfaz para esquemas de estructuración.
+ * Interface for structuring schemas.
  * 
- * Define el contrato que debe cumplir cualquier estrategia de definición
- * de esquemas para validar y estructurar contenido extraído.
+ * Defines the contract that any schema definition strategy must implement
+ * to validate and structure extracted content.
  */
 interface SchemaInterface
 {
     /**
-     * Retorna la definición del esquema.
+     * Returns the schema definition.
      * 
-     * @return array Definición del esquema (estructura de campos y reglas)
+     * @return array Schema definition (field structure and rules)
      */
     public function getDefinition(): array;
 
     /**
-     * Valida que un contenido cumpla con este esquema.
+     * Validates that content conforms to this schema.
      * 
-     * @param array $data Datos a validar
-     * @return array ['valid' => bool, 'errors' => array] Resultado de validación
+     * @param array $data Data to validate
+     * @return array ['valid' => bool, 'errors' => array] Validation result
      */
     public function validate(array $data): array;
 
     /**
-     * Retorna el nombre del esquema.
+     * Returns the name of the schema.
      * 
-     * @return string Nombre identificador del esquema
+     * @return string Identifier name of the schema
      */
     public function getName(): string;
 }

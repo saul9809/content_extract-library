@@ -9,26 +9,26 @@ use ContentProcessor\Models\DocumentContext;
 use ContentProcessor\Models\StructuredDocumentResult;
 
 /**
- * Estructurador basado en reglas deterministas.
+ * Rule-based structurer with deterministic rules.
  * 
- * Implementa un sistema de reglas simples para transformar texto crudo
- * en JSON estructurado, sin usar IA, OCR ni heurísticas complejas.
+ * Implements a simple rule system to transform raw text
+ * into structured JSON, without using AI, OCR or complex heuristics.
  * 
- * **Enfoque:**
- * - Lee el texto crudo línea por línea
- * - Busca patrones simples: "field_name: value"
- * - Detecta campos ambiguos (múltiples coincidencias) como warnings
- * - Detecta campos ausentes como warnings
- * - Convierte tipos básicos (string → int, float, bool, etc.)
+ * **Approach:**
+ * - Reads raw text line by line
+ * - Searches for simple patterns: "field_name: value"
+ * - Detects ambiguous fields (multiple matches) as warnings
+ * - Detects missing fields as warnings
+ * - Converts basic types (string → int, float, bool, etc.)
  * 
- * **Ejemplo de entrada:**
+ * **Input example:**
  * ```
- * name: Juan Pérez
+ * name: Juan Perez
  * age: 30
  * email: juan@example.com
  * ```
  * 
- * **Schema esperado:**
+ * **Expected schema:**
  * ```php
  * [
  *     'name' => ['type' => 'string', 'required' => true],
@@ -37,31 +37,31 @@ use ContentProcessor\Models\StructuredDocumentResult;
  * ]
  * ```
  * 
- * **Warnings generados:**
- * - 'name': "Campo encontrado múltiples veces (ambiguo)"
- * - 'age': "Campo requerido no encontrado"
+ * **Generated warnings:**
+ * - 'name': "Field found multiple times (ambiguous)"
+ * - 'age': "Required field not found"
  * - etc.
  * 
- * Bloque 3: Estructuración Semántica
+ * Block 3: Semantic Structuring
  * @package ContentProcessor\Structurers
  * @since 1.2.0
  */
 class RuleBasedStructurer implements SemanticStructurerInterface
 {
     /**
-     * Delimitador de campo estándar.
+     * Field standard delimiter.
      * @var string
      */
     private string $fieldDelimiter = ':';
 
     /**
-     * Si usar case-insensitive en la búsqueda de campos.
+     * Whether to use case-insensitive field search.
      * @var bool
      */
     private bool $caseInsensitive = true;
 
     /**
-     * Si limpiar valores (trim, espacios múltiples).
+     * Whether to clean values (trim, multiple spaces).
      * @var bool
      */
     private bool $cleanValues = true;
@@ -69,9 +69,9 @@ class RuleBasedStructurer implements SemanticStructurerInterface
     /**
      * Constructor.
      * 
-     * @param string $fieldDelimiter El delimitador usado en el texto
-     * @param bool $caseInsensitive Búsqueda case-insensitive
-     * @param bool $cleanValues Limpiar valores
+     * @param string $fieldDelimiter The delimiter used in the text
+     * @param bool $caseInsensitive Case-insensitive search
+     * @param bool $cleanValues Clean values
      */
     public function __construct(
         string $fieldDelimiter = ':',
@@ -86,8 +86,8 @@ class RuleBasedStructurer implements SemanticStructurerInterface
     /**
      * {@inheritDoc}
      * 
-     * Método heredado de StructurerInterface para compatibilidad.
-     * Usa el método nuevo structureWithContext() internamente.
+     * Inherited method from StructurerInterface for compatibility.
+     * Uses the new structureWithContext() method internally.
      */
     public function structure(array $content, SchemaInterface $schema): array
     {
@@ -103,7 +103,7 @@ class RuleBasedStructurer implements SemanticStructurerInterface
     /**
      * {@inheritDoc}
      * 
-     * Método nuevo que soporta contexto y retorna warnings.
+     * New method that supports context and returns warnings.
      */
     public function structureWithContext(
         DocumentContext $context,
@@ -114,7 +114,7 @@ class RuleBasedStructurer implements SemanticStructurerInterface
         $structured = [];
         $warnings = [];
 
-        // Procesa cada field en el schema
+        // Process each field in the schema
         foreach ($definition as $fieldName => $rules) {
             [$value, $warning] = $this->extractField($fieldName, $text, $rules);
 
@@ -133,13 +133,13 @@ class RuleBasedStructurer implements SemanticStructurerInterface
     }
 
     /**
-     * Extrae un campo del texto según las reglas.
+     * Extracts a field from the text according to the rules.
      * 
-     * Retorna un array: [valor_extraído, warning_o_null]
+     * Returns an array: [extracted_value, warning_or_null]
      * 
-     * @param string $fieldName Nombre del field
-     * @param string $text Texto crudo combind
-     * @param array $rules Reglas del field del schema
+     * @param string $fieldName Field name
+     * @param string $text Combined raw text
+     * @param array $rules Field rules from schema
      * @return array [$value, $warning]
      */
     private function extractField(string $fieldName, string $text, array $rules): array
@@ -147,54 +147,54 @@ class RuleBasedStructurer implements SemanticStructurerInterface
         $type = $rules['type'] ?? 'string';
         $required = $rules['required'] ?? false;
 
-        // Busca el patrón "field_name: value"
+        // Search for the pattern "field_name: value"
         $pattern = $this->buildPattern($fieldName);
         $matches = [];
         preg_match_all($pattern, $text, $matches);
 
-        // Si no hay coincidencias
+        // If there are no matches
         if (empty($matches[1])) {
             $warning = $required
-                ? "Campo requerido no encontrado"
-                : "Campo opcional no encontrado";
+                ? "Required field not found"
+                : "Optional field not found";
             return [null, $warning];
         }
 
-        // Si hay múltiples coincidencias (ambiguo)
+        // If there are multiple matches (ambiguous)
         if (count($matches[1]) > 1) {
             $value = $this->castValue($matches[1][0], $type);
-            $warning = "Campo encontrado múltiples veces (ambiguo). Se usó el primero.";
+            $warning = "Field found multiple times (ambiguous). Using the first one.";
             return [$value, $warning];
         }
 
-        // Coincidencia única (caso ideal)
+        // Single match (ideal case)
         $value = $this->castValue($matches[1][0], $type);
         return [$value, null];
     }
 
     /**
-     * Construye el patrón regex para buscar un field.
+     * Builds the regex pattern to search for a field.
      * 
-     * @param string $fieldName Nombre del field
-     * @return string Patrón regex
+     * @param string $fieldName Field name
+     * @return string Regex pattern
      */
     private function buildPattern(string $fieldName): string
     {
-        // Escapa caracteres especiales en el nombre del field
+        // Escape special characters in the field name
         $escaped = preg_quote($fieldName, '/');
         $delimiter = preg_quote($this->fieldDelimiter, '/');
 
         $flags = $this->caseInsensitive ? 'ims' : 'ms';
 
-        // Patrón: "^fieldName: (.*)$" (multiline)
+        // Pattern: "^fieldName: (.*)$" (multiline)
         return "/{$escaped}{$delimiter}\s*(.*)$/{$flags}";
     }
 
     /**
-     * Convierte un valor string al tipo especificado.
+     * Converts a string value to the specified type.
      * 
-     * @param string $value Valor a convertir
-     * @param string $type Tipo destino (string, integer, float, boolean, array)
+     * @param string $value Value to convert
+     * @param string $type Target type (string, integer, float, boolean, array)
      * @return mixed
      */
     private function castValue(string $value, string $type)

@@ -6,41 +6,41 @@ use ContentProcessor\Models\DocumentContext;
 use ContentProcessor\Models\StructuredDocumentResult;
 
 /**
- * Interfaz para estructuradores semánticos avanzados.
+ * Interface for advanced semantic structurers.
  * 
- * Extiende la capacidad del StructurerInterface tradicional
- * para soportar contexto de documentos y retornar resultados
- * con warnings (Bloque 3 - Estructuración Semántica).
+ * Extends the capability of traditional StructurerInterface
+ * to support document context and return results
+ * with warnings (Block 3 - Semantic Structuring).
  * 
- * Un Structurer que implemente esta interfaz puede:
- * - Acceder a metadatos del documento (ruta, nombre, etc.)
- * - Genera warnings para campos ambiguos o ausentes
- * - Retornar un StructuredDocumentResult con datos + warnings
+ * A Structurer implementing this interface can:
+ * - Access document metadata (path, name, etc.)
+ * - Generate warnings for ambiguous or missing fields
+ * - Return a StructuredDocumentResult with data + warnings
  * 
- * Los Structurers que implementen solo StructurerInterface
- * seguirán funcionando sin cambios (backward compatibility).
+ * Structurers implementing only StructurerInterface
+ * will continue working unchanged (backward compatibility).
  * 
  * @package ContentProcessor\Contracts
- * @since 1.2.0 (Bloque 3)
+ * @since 1.2.0 (Block 3)
  */
 interface SemanticStructurerInterface extends StructurerInterface
 {
     /**
-     * Estructura un documento en contexto, con soporte para warnings.
+     * Structures a document in context, with support for warnings.
      * 
-     * Este es el método principal para la estructuración semántica.
-     * El Structurer recibe el DocumentContext (con metadatos y contenido),
-     * aplica el Schema, y retorna un StructuredDocumentResult que incluye
-     * tanto los datos estructurados como los warnings generados.
+     * This is the main method for semantic structuring.
+     * The Structurer receives the DocumentContext (with metadata and content),
+     * applies the Schema, and returns a StructuredDocumentResult that includes
+     * both the structured data and generated warnings.
      * 
-     * Los warnings son distintos de los errores:
-     * - Errores técnicos (Bloque 2): archivos corrupt, no legibles, etc.
-     * - Warnings semánticos (Bloque 3): campos ambiguos, valores incompletos, etc.
+     * Warnings are distinct from errors:
+     * - Technical errors (Block 2): corrupt files, unreadable, etc.
+     * - Semantic warnings (Block 3): ambiguous fields, incomplete values, etc.
      * 
-     * @param DocumentContext $context Contexto del documento
-     * @param SchemaInterface $schema Esquema de estructuración
-     * @return StructuredDocumentResult Resultado con data + warnings
-     * @throws \Exception Si la estructuración resulta completamente imposible
+     * @param DocumentContext $context Document context
+     * @param SchemaInterface $schema Structuring schema
+     * @return StructuredDocumentResult Result with data + warnings
+     * @throws \Exception If structuring is completely impossible
      */
     public function structureWithContext(
         DocumentContext $context,
