@@ -16,10 +16,6 @@
   "type": "library",
   "license": "MIT",
   "homepage": "https://github.com/saul9809/content_extract-library",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/saul9809/content_extract-library.git"
-  },
   "authors": [
     {
       "name": "Content Extract Contributors",
