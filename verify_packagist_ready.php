@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Script de verificación: ¿Está el paquete listo para Packagist?
  */
@@ -109,7 +110,7 @@ if (!is_dir('.git')) {
     $errors[] = "❌ No es un repositorio Git";
 } else {
     $passed[] = "✅ Es un repositorio Git";
-    
+
     // Verificar tag v1.3.0
     $tags = shell_exec('git tag --list v1.3.0 2>&1');
     if (strpos($tags, 'v1.3.0') !== false) {
@@ -144,4 +145,3 @@ if (count($errors) > 0) {
     echo "   Command: composer require content-extract/content-processor\n";
     exit(0);
 }
-?>

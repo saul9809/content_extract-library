@@ -46,25 +46,27 @@
 ## 🎯 BLOQUES IMPLEMENTED
 
 ### BLOQUE 1: Core Content Extraction
+
 ```
 ✅ TextFileExtractor
    - Extrae texto de archivos .txt
    - Implementa ExtractorInterface
    - Manejo robusto de errores
 
-✅ SimpleLineStructurer  
+✅ SimpleLineStructurer
    - Estructura por líneas
    - Implementa StructurerInterface
    - API simplificada
 ```
 
 ### BLOQUE 2: PDF Processing & Batch
+
 ```
 ✅ PdfTextExtractor
    - Extrae texto de PDFs con smalot/pdfparser
    - Soporte para múltiples archivos
    - Batch processing API
-   
+
 ✅ Batch Processing
    - Procesa colecciones de documentos
    - Manejo de errores por archivo
@@ -72,12 +74,13 @@
 ```
 
 ### BLOQUE 3: Semantic Structuring
+
 ```
 ✅ RuleBasedStructurer
    - Extracción de campos específicos
    - Mapeo de keys
    - Procesamiento de valores
-   
+
 ✅ Warning System
    - Validaciones sin fallar el proceso
    - Sistema de alertas normalizadas
@@ -85,13 +88,14 @@
 ```
 
 ### BLOQUE 4: Final Result API
+
 ```
 ✅ FinalResult Object
    - Interfaz unificada de resultados
    - Acceso a: data, errors, warnings, summary
    - Métodos de estado: hasErrors(), isSuccessful()
    - Serialización JSON
-   
+
 ✅ Normalized Classes
    - Error: estructura estándar de errores
    - Warning: estructura estándar de advertencias
@@ -99,17 +103,18 @@
 ```
 
 ### BLOQUE 5: Security Hardening
+
 ```
 ✅ SecurityValidator
    - Validación de tipos
    - Validación de limites
    - Validación de estructura
-   
+
 ✅ SecurityConfig
    - MAX_FILE_SIZE: límite de tamaño
    - MAX_MEMORY: límite de memoria
    - TIMEOUT: límite de ejecución
-   
+
 ✅ SecurityException
    - Excepciones específicas de seguridad
    - Stack traces informativos
@@ -243,7 +248,7 @@ $final = $processor->processFinal([$file1, $file2], $config);
 // Access data
 $result->data()        // array - extracted structured data
 $result->errors()      // array - normalized errors
-$result->warnings()    // array - normalized warnings  
+$result->warnings()    // array - normalized warnings
 $result->summary()     // Summary - statistics
 
 // Check status
@@ -260,18 +265,18 @@ $result->toJSON()      // string - JSON serialization
 
 ## 📊 PROJECT STATISTICS
 
-| Metric | Value |
-|--------|-------|
-| **Total Lines of Code** | ~2,500 |
-| **Classes Implemented** | 15 |
-| **Interfaces Defined** | 4 |
-| **Public Methods** | 40+ |
-| **Functional Examples** | 10+ |
-| **Bloques Complete** | 5/5 |
-| **Security Checks** | 8 |
-| **Tests Created** | 2 comprehensive |
-| **Known Issues** | 0 |
-| **Breaking Changes** | 0 |
+| Metric                  | Value           |
+| ----------------------- | --------------- |
+| **Total Lines of Code** | ~2,500          |
+| **Classes Implemented** | 15              |
+| **Interfaces Defined**  | 4               |
+| **Public Methods**      | 40+             |
+| **Functional Examples** | 10+             |
+| **Bloques Complete**    | 5/5             |
+| **Security Checks**     | 8               |
+| **Tests Created**       | 2 comprehensive |
+| **Known Issues**        | 0               |
+| **Breaking Changes**    | 0               |
 
 ---
 
@@ -295,12 +300,14 @@ $result->toJSON()      // string - JSON serialization
 ## 📋 NEXT STEPS TO PUBLISH
 
 ### Step 1: Create Packagist Account
+
 ```
 Visit: https://packagist.org
 Click: "Sign up" (use GitHub auth for convenience)
 ```
 
 ### Step 2: Submit Package
+
 ```
 Go to: https://packagist.org/packages/submit
 Paste Repository URL:
@@ -309,6 +316,7 @@ Click: "Check"
 ```
 
 ### Step 3: Configure Auto-Update (Recommended)
+
 ```
 GitHub Settings > Webhooks
 Add webhook from Packagist (URL provided after submission)
@@ -316,6 +324,7 @@ This enables automatic sync of new tags
 ```
 
 ### Step 4: Publish ✅
+
 ```
 Packagist will validate and publish automatically
 Your package becomes installable globally
@@ -327,6 +336,7 @@ Command: composer require content-extract/content-processor
 ## 🎓 LEARNING OUTCOMES
 
 This project demonstrates:
+
 - ✅ Professional PHP package development
 - ✅ PSR-4 autoloading standards
 - ✅ Composer package management
@@ -342,18 +352,18 @@ This project demonstrates:
 
 ## 📞 PROJECT METADATA
 
-| Field | Value |
-|-------|-------|
-| **Package Name** | content-extract/content-processor |
-| **Version** | 1.3.0 |
-| **License** | MIT |
-| **Repository** | https://github.com/saul9809/content_extract-library |
-| **PHP Requirement** | >=8.1 |
-| **Main Dependency** | smalot/pdfparser ^2.0 |
-| **Type** | Library |
-| **PSR Standard** | PSR-4 |
-| **Maintainer** | @saul9809 |
-| **Status** | Production Ready |
+| Field               | Value                                               |
+| ------------------- | --------------------------------------------------- |
+| **Package Name**    | content-extract/content-processor                   |
+| **Version**         | 1.3.0                                               |
+| **License**         | MIT                                                 |
+| **Repository**      | https://github.com/saul9809/content_extract-library |
+| **PHP Requirement** | >=8.1                                               |
+| **Main Dependency** | smalot/pdfparser ^2.0                               |
+| **Type**            | Library                                             |
+| **PSR Standard**    | PSR-4                                               |
+| **Maintainer**      | @saul9809                                           |
+| **Status**          | Production Ready                                    |
 
 ---
 
