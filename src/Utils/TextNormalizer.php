@@ -175,8 +175,9 @@ class TextNormalizer
         $text = preg_replace('/[–—−]/u', '-', $text);
 
         // Normalize quotes
-        $text = preg_replace('/[""]/u', '"', $text);
-        $text = preg_replace('/['']/u', "'", $text);
+
+        $text = preg_replace('/[“”]/u', '"', $text);
+        $text = preg_replace('/[‘’]/u', "'", $text);
 
         // Remove trailing punctuation from lines (except for meaningful delimiters)
         // This helps with "field:" vs "field :" matching
