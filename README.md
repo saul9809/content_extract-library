@@ -11,16 +11,28 @@ Procesar múltiples documentos (PDFs, textos, etc.), extraer su contenido y conv
 ### Ejemplo inicial esperado:
 
 ```php
-$processor = ContentProcessor::make()
+$result = ContentProcessor::make()
     ->withSchema($schema)
+    ->withExtractor(new PdfTextExtractor())
+    ->withStructurer(new RuleBasedStructurer())
     ->fromDirectory('/cvs')
-    ->process();
+    ->processFinal();  // Retorna FinalResult con API limpia
 ```
 
 ## 📦 Instalación
 
 ```bash
-composer install
+composer require content-extract/content-processor
+```
+
+Or add to your `composer.json`:
+
+```json
+{
+  "require": {
+    "content-extract/content-processor": "^1.3.0"
+  }
+}
 ```
 
 ## 🏗️ Estructura del proyecto
@@ -55,8 +67,8 @@ use ContentProcessor\Schemas\ArraySchema;
 
 $schema = new ArraySchema([
     'nombre' => ['type' => 'string', 'required' => true],
-    'carnet_identidad' => ['type' => 'string', 'required' => false],
-    'anos_experiencia' => ['type' => 'int', 'required' => false],
+    'email' => ['type' => 'string', 'required' => true],
+    'anos_experiencia' => ['type' => 'integer', 'required' => false],
 ]);
 ```
 
@@ -65,37 +77,65 @@ $schema = new ArraySchema([
 ```php
 use ContentProcessor\Core\ContentProcessor;
 use ContentProcessor\Extractors\TextFileExtractor;
-use ContentProcessor\Structurers\SimpleLineStructurer;
+use ContentProcessor\Structurers\RuleBasedStructurer;
 
-$processor = ContentProcessor::make()
+$result = ContentProcessor::make()
     ->withSchema($schema)
     ->withExtractor(new TextFileExtractor())
-    ->withStructurer(new SimpleLineStructurer())
+    ->withStructurer(new RuleBasedStructurer())
     ->fromDirectory('/path/to/docs', '*.txt')
-    ->process();
+    ->processFinal();  // Returns FinalResult
 ```
 
-### 3. Procesar y obtener resultados
+### 3. Consumir resultados
 
 ```php
-$results = $processor->process();
+// Verificar estatus
+if (!$result->isSuccessful()) {
+    echo "Algunos documentos fallaron:\n";
+    foreach ($result->errors() as $error) {
+        echo "  - " . $error->getMessage() . "\n";
+    }
+}
 
-echo $results['success'];             // 10 (exitosos)
-echo $results['failed'];              // 2  (fallidos)
+// Procesar datos exitosos
+foreach ($result->data() as $item) {
+    echo "Procesado: " . $item['document'] . "\n";
+    // $item['data'] contiene los datos estructurados
+}
 
-// Obtener solo datos exitosos
-$data = $processor->getSuccessfulData();
-echo json_encode($data);              // JSON listo para exportar
+// Inspeccionar warnings (calidad de datos)
+if ($result->hasWarnings()) {
+    foreach ($result->warnings() as $warning) {
+        echo "⚠️ Campo '{$warning->getField()}': {$warning->getMessage()}\n";
+    }
+}
+
+// Exportar a JSON
+echo $result->toJSONPretty();
 ```
 
-## 🧪 Probar
+## 🧪 Testing
+
+### Run examples
 
 ```bash
 cd examples
-php example_basic.php
+php example_bloque4_basic.php
+php example_bloque4_laravel_style.php
 ```
 
-Esperado: Dos archivos procesados correctamente con su estructura JSON.
+### Full test suite
+
+```bash
+composer test
+```
+
+### Code style
+
+```bash
+composer lint
+```
 
 ## 🔌 Interfaces disponibles
 
@@ -137,16 +177,82 @@ $processor->withOptions([
 ]);
 ```
 
-## 🚀 Próximos pasos planeados
+## ✅ Características implementadas (Bloques 1-5)
 
-- [ ] Extractor para PDFs
-- [ ] Extractor con OCR
-- [ ] Integración de IA para extracción inteligente
-- [ ] Estructurador avanzado con regex/ML
-- [ ] CLI para batch processing desde terminal
-- [ ] Integración Laravel (como optional package)
-- [ ] Tests exhaustivos (PHPUnit)
-- [ ] Documentación API completa
+### Bloque 1: Core ✅
+
+- Framework-agnostic design con interfaces limpias
+- Extractor/Structurer pattern
+- JSON schema validation
+- Batch processing
+
+### Bloque 2: PDF Support ✅
+
+- PdfTextExtractor con smalot/pdfparser
+- Batch processing con múltiples PDFs
+- Error handling robusto
+
+### Bloque 3: Semantic Structuring ✅
+
+- RuleBasedStructurer para extracción avanzada
+- DocumentContext para información de procesamiento
+- Warning system para calidad de datos
+
+### Bloque 4: Final Result API ✅
+
+- FinalResult object unificado
+- Normalización de errores y warnings
+- Summary con estadísticas
+- JSON export y serialización completa
+
+### Bloque 5: Security & Hardening ✅
+
+- File size limits (10 MB por defecto)
+- Batch document limits (50 documentos por defecto)
+- Path traversal protection
+- Security configuration y validation
+- Production-ready defaults
+
+## 📚 Documentation
+
+- [SECURITY.md](SECURITY.md) - Política de seguridad y límites configurables
+- [ARQUITECTURA.md](ARQUITECTURA.md) - Diseño arquitectónico completo
+- [GUIA_RAPIDA.md](GUIA_RAPIDA.md) - Referencia rápida de uso
+
+## 🔌 API Reference
+
+### FinalResult
+
+```php
+$result = ContentProcessor::make()->...->processFinal();
+
+// Access data
+$result->data();           // Array de documentos exitosos
+$result->errors();         // Array de errores normalizados
+$result->warnings();       // Array de warnings semánticos
+$result->summary();        // Summary con estadísticas
+
+// Status checks
+$result->isSuccessful();   // bool - ¿Al menos 1 exitoso?
+$result->isPerfect();      // bool - ¿Sin errores ni warnings?
+$result->hasErrors();      // bool
+$result->hasWarnings();    // bool
+
+// Filtering
+$result->errorsByType('validation');
+$result->warningsByField('email');
+$result->warningsByCategory('missing_value');
+
+// Serialization
+$result->toArray();        // array
+$result->toJSON();         // string (compact)
+$result->toJSONPretty();   // string (formatted)
+$result->fullResults();    // array (complete audit trail)
+```
+
+## 🚀 Next steps
+
+Ready for production. See [SECURITY.md](SECURITY.md) for deployment recommendations.
 
 ## 📋 Requisitos
 
