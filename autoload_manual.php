@@ -1,9 +1,9 @@
 <?php
 
 /**
- * AUTOLOADER MANUAL (temporal para prueba sin composer)
+ * AUTOLOADER MANUAL (temporal for test sin composer)
  * 
- * En producción, usar el autoloader de Composer generado automáticamente.
+ * En producción, usar the autoloader de Composer generado automáticamente.
  * Este es solo para demostración cuando composer install aún no termina.
  */
 
@@ -15,7 +15,7 @@ spl_autoload_register(function ($class) {
         return;
     }
 
-    // Remueve el prefijo del namespace
+    // Remueve el prefix del namespace
     $relative_class = substr($class, strlen($prefix));
 
     // Convierte namespace a ruta

@@ -12,7 +12,7 @@ $passed = [];
 
 // 1. Verificar composer.json existe
 if (!file_exists('composer.json')) {
-    $errors[] = "❌ composer.json no existe";
+    $errors[] = "❌ composer.json does not exist";
 } else {
     $passed[] = "✅ composer.json existe";
 }
@@ -65,7 +65,7 @@ if (!isset($json['require']['php'])) {
     $passed[] = "✅ PHP requirement: " . $json['require']['php'];
 }
 
-// 8. Verificar que no hay Laravel/framework en require
+// 8. Verify that no hay Laravel/framework en require
 $frameworks = ['laravel/framework', 'symfony/console', 'yii2', 'zend-framework'];
 $hasFramework = false;
 foreach ($frameworks as $fw) {

@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Script de prueba: Verificar que el paquete funciona cuando se instala
+ * Test script: Verify that el package works cuando is installed
  */
 
 echo "\n========== INSTALLATION SIMULATION TEST ==========\n\n";
 
-// Simular que el paquete está instalado (como si composer lo hubiera instalado)
-// Verificar que el autoload funciona
+// Simulate that el paquete is installed (as if composer lo had installed)
+// Verify that the autoload funciona
 
 $vendorPath = __DIR__ . '/vendor';
 $autoloadPath = $vendorPath . '/autoload.php';
 
 if (!file_exists($autoloadPath)) {
-    echo "⚠️  vendor/autoload.php no existe (es normal en desarrollo)\n";
-    echo "Intentando cargar directamente desde src/\n\n";
+    echo "⚠️  vendor/autoload.php does not exist (is normal in development)\n";
+    echo "Attempting to load directly from src/\n\n";
 
-    // Simular autoload manual para prueba
+    // Simulate autoload manual for test
     spl_autoload_register(function ($class) {
         $prefix = 'ContentProcessor\\';
         if (strpos($class, $prefix) === 0) {
@@ -72,7 +72,7 @@ try {
         echo "❌ Missing methods: " . implode(', ', $missing) . "\n";
     }
 
-    // Test 7: Verificar que el namespace está correcto
+    // Test 7: Verify that el namespace está correcto
     echo "Test 7: Verifying namespaces... ";
     $reflClass = new ReflectionClass('ContentProcessor\Core\ContentProcessor');
     $namespace = $reflClass->getNamespaceName();
