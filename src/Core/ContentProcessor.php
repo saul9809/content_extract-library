@@ -16,9 +16,9 @@ use ContentProcessor\Security\SecurityValidator;
 use ContentProcessor\Security\SecurityException;
 
 /**
- * Procesador de contenido principal.
+ * Processor de content principal.
  * 
- * Orquesta la extracción, limpieza y estructuración de contenido
+ * Orquesta la extraction, limpieza y structureción de content
  * desde múltiples fuentes usando estrategias configurables.
  * 
  * Diseñado para batch processing: procesa múltiples documentos
@@ -46,12 +46,12 @@ class ContentProcessor
     {
         $this->options = [
             'skip_invalid' => true,    // Saltar documentos inválidos
-            'preserve_empty' => false, // Preservar campos vacíos
+            'preserve_empty' => false, // Preservar  vacíos
         ];
     }
 
     /**
-     * Factory method. Crea una nueva instancia del procesador.
+     * Factory method. Crea una nueva instancia del processor.
      * 
      * @return self
      */
@@ -61,7 +61,7 @@ class ContentProcessor
     }
 
     /**
-     * Define el esquema para estructuración.
+     * Define el esquema para structureción.
      * 
      * @param SchemaInterface $schema
      * @return $this
@@ -73,7 +73,7 @@ class ContentProcessor
     }
 
     /**
-     * Define el extractor de contenido.
+     * Define el extractor de content.
      * 
      * @param ExtractorInterface $extractor
      * @return $this
@@ -85,7 +85,7 @@ class ContentProcessor
     }
 
     /**
-     * Define el estructurador de contenido.
+     * Define el structurer de content.
      * 
      * @param StructurerInterface $structurer
      * @return $this
@@ -97,17 +97,17 @@ class ContentProcessor
     }
 
     /**
-     * Añade múltiples archivos como fuentes.
+     * Añade múltiples files como fuentes.
      * 
-     * BLOQUE 5: Se valida que el batch no exceda el máximo permitido.
+     * BLOCK 5: Se valida que el batch no exceda el máximo permitido.
      * 
-     * @param array $files Array de rutas a archivos
+     * @param array $files Array de rutas a files
      * @return $this
      * @throws SecurityException Si el batch excede los límites
      */
     public function fromFiles(array $files): self
     {
-        // Validar tamaño del batch (Bloque 5 - Seguridad)
+        // Validar tamaño del batch (5 - Seguridad)
         SecurityValidator::validateBatchSize($files);
 
         $this->sources = array_merge($this->sources, $files);
@@ -115,25 +115,25 @@ class ContentProcessor
     }
 
     /**
-     * Añade todos los archivos de un directorio como fuentes.
+     * Añade todos los files de un directorio como fuentes.
      * 
-     * BLOQUE 5: Se valida que el batch no exceda el máximo permitido.
+     * BLOCK 5: Se valida que el batch no exceda el máximo permitido.
      * 
      * @param string $directory Ruta del directorio
-     * @param string $pattern Patrón de archivos (ej: '*.pdf')
+     * @param string $pattern Patrón de files (ej: '*.pdf')
      * @return $this
      * @throws SecurityException Si el batch excede los límites
      */
     public function fromDirectory(string $directory, string $pattern = '*'): self
     {
         if (!is_dir($directory)) {
-            throw new \InvalidArgumentException("El directorio '$directory' no existe.");
+            throw new \InvalidArgumentException("El directorio '$directory' does not exist.");
         }
 
         $files = glob(rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $pattern);
         $files = $files === false ? [] : $files;
 
-        // Validar tamaño del batch (Bloque 5 - Seguridad)
+        // Validar tamaño del batch (5 - Seguridad)
         SecurityValidator::validateBatchSize($files);
 
         $this->sources = array_merge($this->sources, $files);
@@ -141,7 +141,7 @@ class ContentProcessor
     }
 
     /**
-     * Configura opciones del procesador.
+     * Configura opciones del processor.
      * 
      * @param array $options Opciones a configurar
      * @return $this
@@ -156,7 +156,7 @@ class ContentProcessor
      * Procesa todas las fuentes configuradas.
      * 
      * Retorna un array con resultados de cada fuente procesada.
-     * Estructura: [
+     * Structure: [
      *     'success' => int,
      *     'failed' => int,
      *     'total' => int,
@@ -167,7 +167,7 @@ class ContentProcessor
      * ]
      * 
      * @return array
-     * @throws \RuntimeException Si se requiere schema pero no está configurado
+     * @throws \RuntimeException Si se requiere schema pero is nottá configurado
      */
     public function process(): array
     {
@@ -201,32 +201,32 @@ class ContentProcessor
     private function processSource(string $source): void
     {
         try {
-            // Extrae contenido
+            // Extrae 
             if (!$this->extractor) {
                 throw new \RuntimeException('Extractor no configurado. Usa withExtractor() primero.');
             }
 
             if (!$this->extractor->canHandle($source)) {
-                throw new \RuntimeException("El extractor '{$this->extractor->getName()}' no puede procesar '$source'.");
+                throw new \RuntimeException("El extractor '{$this->extractor->getName()}' cannot process '$source'.");
             }
 
             $content = $this->extractor->extract($source);
 
-            // Estructura el contenido
+            //  el 
             if (!$this->structurer) {
                 throw new \RuntimeException('Structurer no configurado. Usa withStructurer() primero.');
             }
 
-            // Detecta si es un SemanticStructurer (Bloque 3) o un Structurer tradicional (Bloque 1)
+            // Detecta si es un SemanticStructurer (Block 3) o un Structurer tradicional (1)
             if ($this->structurer instanceof SemanticStructurerInterface) {
-                // Bloque 3: Estructuración Semántica con warnings
+                // 3: ción Semántica con warnings
                 $documentName = basename($source);
                 $context = new DocumentContext($source, $documentName, $content);
                 $result = $this->structurer->structureWithContext($context, $this->schema);
                 $structured = $result->getData();
                 $warnings = $result->getWarnings();
             } else {
-                // Bloque 1: Estructuración tradicional (sin warnings)
+                // 1: ción tradicional (sin warnings)
                 $structured = $this->structurer->structure($content, $this->schema);
                 $warnings = [];
             }
@@ -236,14 +236,14 @@ class ContentProcessor
 
             if (!$validation['valid']) {
                 if ($this->options['skip_invalid']) {
-                    $this->recordResult($source, false, null, 'Validación fallida: ' . implode(', ', $validation['errors']));
+                    $this->recordResult($source, false, null, 'Validation fallida: ' . implode(', ', $validation['errors']));
                     return;
                 }
             }
 
             $this->recordResult($source, true, $structured, null, $warnings);
         } catch (SecurityException $se) {
-            // Bloque 5: Manejo seguro de excepciones de seguridad
+            // 5: Manejo seguro de excepciones de seguridad
             // Nunca exponemos detalles internos del filesystem o stack traces
             $this->recordResult($source, false, null, $se->getClientMessage());
         } catch (\Throwable $e) {
@@ -253,16 +253,16 @@ class ContentProcessor
     }
 
     /**
-     * Registra el resultado del procesamiento de una fuente.
+     * Registra el resultado del processing de una fuente.
      * 
-     * Bloque 1 y 2: registro simple (success, data, error)
-     * Bloque 3: también captura warnings semánticos
+     * Block 1 y 2: registro simple (success, data, error)
+     * Block 3: también captura warnings semánticos
      * 
      * @param string $source
      * @param bool $success
      * @param array|null $data
      * @param string|null $error
-     * @param array $warnings Warnings del Bloque 3 (opcional)
+     * @param array $warnings Warnings del Block 3 (opcional)
      * @return void
      */
     private function recordResult(
@@ -284,7 +284,7 @@ class ContentProcessor
             'error' => $error,
         ];
 
-        // Bloque 3: Si hay warnings, incluirlos
+        // 3: Si hay warnings, incluirlos
         if (!empty($warnings)) {
             $result['warnings'] = $warnings;
             $result['warnings_count'] = count($warnings);
@@ -294,7 +294,7 @@ class ContentProcessor
     }
 
     /**
-     * Retorna el último conjunto de resultados procesados.
+     * Retorna el último conjunto de resultados processeds.
      * 
      * @return array
      */
@@ -304,11 +304,11 @@ class ContentProcessor
     }
 
     /**
-     * Retorna solo los datos exitosos procesados.
+     * Retorna solo los data successfuls processeds.
      * 
      * Útil para batch export o carga masiva.
      * 
-     * @return array Array de datos estructurados exitosos
+     * @return array Array de data structuredos successfuls
      */
     public function getSuccessfulData(): array
     {
@@ -322,17 +322,17 @@ class ContentProcessor
     }
 
     /**
-     * Procesa todas las fuentes y retorna un FinalResult robusto (Bloque 4).
+     * Procesa todas las fuentes y retorna un FinalResult robusto (Block 4).
      * 
-     * Este método es la API recomendada para Bloque 4+.
+     * Este method es la API recomendada para Block 4+.
      * Retorna un objeto FinalResult unificado con:
-     * - Datos estructurados exitosos
-     * - Errores normalizados
+     * - Data structuredos successfuls
+     * - Errors normalizados
      * - Warnings semánticos normalizados
      * - Estadísticas y métricas
      * 
      * @return FinalResult
-     * @throws \RuntimeException Si se requiere schema pero no está configurado
+     * @throws \RuntimeException Si se requiere schema pero is nottá configurado
      */
     public function processFinal(): FinalResult
     {
@@ -362,9 +362,9 @@ class ContentProcessor
     /**
      * Construye un objeto FinalResult a partir de los resultados acumulados.
      * 
-     * Normaliza errores y warnings, y genera el resumen de estadísticas.
+     * Normaliza errors y warnings, y genera el resumen de estadísticas.
      * 
-     * @param float $processingTime Tiempo total de procesamiento
+     * @param float $processingTime Tiempo total de processing
      * @return FinalResult
      */
     private function buildFinalResult(float $processingTime): FinalResult
@@ -382,14 +382,14 @@ class ContentProcessor
             );
 
             if ($result['success']) {
-                // Documentos exitosos
+                // Documentos s
                 $data[] = [
                     'document' => basename($source),
                     'path' => $source,
                     'data' => $result['data'],
                 ];
 
-                // Warnings del Bloque 3
+                // Warnings del 3
                 if (!empty($result['warnings'] ?? [])) {
                     foreach ($result['warnings'] as $fieldWarning) {
                         $warnings[] = new Warning(
@@ -401,11 +401,11 @@ class ContentProcessor
                     }
                 }
             } else {
-                // Documento con error
+                // Documento con 
                 $errorType = 'runtime';
-                if (strpos($result['error'] ?? '', 'Validación fallida') !== false) {
+                if (strpos($result['error'] ?? '', 'Validation fallida') !== false) {
                     $errorType = 'validation';
-                } elseif (strpos($result['error'] ?? '', 'no puede procesar') !== false) {
+                } elseif (strpos($result['error'] ?? '', 'cannot process') !== false) {
                     $errorType = 'extraction';
                 }
 

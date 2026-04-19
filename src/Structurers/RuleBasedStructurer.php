@@ -17,7 +17,7 @@ use ContentProcessor\Models\StructuredDocumentResult;
  * **Approach:**
  * - Reads raw text line by line
  * - Searches for simple patterns: "field_name: value"
- * - Detects ambiguous fields (multiple matches) as warnings
+ * - Detects ambiguousus fields (multiple matches) as warnings
  * - Detects missing fields as warnings
  * - Converts basic types (string → int, float, bool, etc.)
  * 
@@ -38,7 +38,7 @@ use ContentProcessor\Models\StructuredDocumentResult;
  * ```
  * 
  * **Generated warnings:**
- * - 'name': "Field found multiple times (ambiguous)"
+ * - 'name': "Field found multiple times (ambiguousus)"
  * - 'age': "Required field not found"
  * - etc.
  * 
@@ -160,10 +160,10 @@ class RuleBasedStructurer implements SemanticStructurerInterface
             return [null, $warning];
         }
 
-        // If there are multiple matches (ambiguous)
+        // If there are multiple matches (us)
         if (count($matches[1]) > 1) {
             $value = $this->castValue($matches[1][0], $type);
-            $warning = "Field found multiple times (ambiguous). Using the first one.";
+            $warning = "Field found multiple times (ambiguousus). Using the first one.";
             return [$value, $warning];
         }
 

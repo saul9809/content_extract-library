@@ -16,7 +16,7 @@
 | ------------------------------- | --------------------------------- | ------ | ---------------- |
 | **QUICK_REFERENCE.md**          | Quick facts & verification status | 5 min  | Everyone         |
 | **PROJECT_DELIVERY_SUMMARY.md** | Visual summary with matrices      | 10 min | Project managers |
-| **CIERRE_FINAL_PACKAGIST.md**   | Complete closure document         | 15 min | Stakeholders     |
+| **CLOSURE_FINAL_PACKAGIST.md**   | Complete closure document         | 15 min | Stakeholders     |
 
 ### 📋 Detailed Guides
 
@@ -24,7 +24,7 @@
 | ------------------------------ | ------------------------------ | ------ | ---------- |
 | **PUBLICACION_PACKAGIST.md**   | A-G detailed publication guide | 30 min | Developers |
 | **PACKAGIST_RELEASE_READY.md** | Final validation checklist     | 10 min | QA team    |
-| **ARQUITECTURA.md**            | System architecture overview   | 20 min | Architects |
+| **ARCHITECTURE.md**            | System architecture overview   | 20 min | Architects |
 
 ### 🧪 Verification Scripts
 
@@ -51,7 +51,7 @@
 ```
 1. QUICK_REFERENCE.md (TL;DR)
 2. PROJECT_DELIVERY_SUMMARY.md (Status matrix)
-3. CIERRE_FINAL_PACKAGIST.md (Closure details)
+3. CLOSURE_FINAL_PACKAGIST.md (Closure details)
 ```
 
 **Time: 30 minutes**
@@ -81,7 +81,7 @@
 ### 🏗️ Architect / Code Reviewer
 
 ```
-1. ARQUITECTURA.md (System design)
+1. ARCHITECTURE.md (System design)
 2. PROJECT_DELIVERY_SUMMARY.md (Component list)
 3. README.md (API details)
 4. src/ folder (Source code review)
@@ -128,7 +128,7 @@
 | **Verification Scripts**      | 2        |
 | **Examples Provided**         | 10+      |
 | **Success Criteria Met**      | 15/15 ✅ |
-| **Bloque Completion**         | 5/5 ✅   |
+| **Block Completion**         | 5/5 ✅   |
 
 ---
 
@@ -162,14 +162,14 @@
 - **When:** Last check before submitting
 - **Read Time:** 10 minutes
 
-### CIERRE_FINAL_PACKAGIST.md
+### CLOSURE_FINAL_PACKAGIST.md
 
 - **What:** Formal project closure document
 - **Why:** Complete record of completion
 - **When:** Project handoff, archive
 - **Read Time:** 15 minutes
 
-### ARQUITECTURA.md
+### ARCHITECTURE.md
 
 - **What:** System architecture overview
 - **Why:** Understanding code structure
@@ -212,7 +212,7 @@
 - **Understand the project** → [PROJECT_DELIVERY_SUMMARY.md](PROJECT_DELIVERY_SUMMARY.md)
 - **Publish to Packagist** → [PUBLICACION_PACKAGIST.md](PUBLICACION_PACKAGIST.md)
 - **Verify everything works** → Run `php verify_packagist_ready.php`
-- **See the code structure** → [ARQUITECTURA.md](ARQUITECTURA.md)
+- **See the code structure** → [ARCHITECTURE.md](ARCHITECTURE.md)
 - **Review the API** → [README.md](README.md)
 - **Check security** → [SECURITY.md](SECURITY.md)
 - **See examples** → [examples/](examples/) folder
@@ -234,8 +234,8 @@
 ├── 📄 PROJECT_DELIVERY_SUMMARY.md        Comprehensive overview
 ├── 📄 PUBLICACION_PACKAGIST.md           A-G complete guide
 ├── 📄 PACKAGIST_RELEASE_READY.md         Final checklist
-├── 📄 CIERRE_FINAL_PACKAGIST.md          Closure document
-├── 📄 ARQUITECTURA.md                    System architecture
+├── 📄 CLOSURE_FINAL_PACKAGIST.md          Closure document
+├── 📄 ARCHITECTURE.md                    System architecture
 ├── 📄 DOCUMENTATION_INDEX.md             ← You are here
 │
 ├── 📄 verify_packagist_ready.php         Validation script
@@ -267,7 +267,7 @@
 | Metric                | Value          | Status           |
 | --------------------- | -------------- | ---------------- |
 | **Packagist Checks**  | 15/15          | ✅ PASS          |
-| **Bloque Completion** | 5/5            | ✅ COMPLETE      |
+| **Block Completion** | 5/5            | ✅ COMPLETE      |
 | **Documentation**     | 2,500+ lines   | ✅ COMPREHENSIVE |
 | **Examples**          | 10+ functional | ✅ WORKING       |
 | **Security**          | 8 checks       | ✅ VERIFIED      |
@@ -297,7 +297,7 @@ Day 1:
 └─ Review README.md (15 min)
 
 Day 2:
-├─ Read ARQUITECTURA.md (20 min)
+├─ Read ARCHITECTURE.md (20 min)
 ├─ Review src/ code (30 min)
 └─ Run examples (15 min)
 

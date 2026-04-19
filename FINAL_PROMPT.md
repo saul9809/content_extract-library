@@ -32,7 +32,7 @@ Compatible con PHP 8.1+
 Diseñada para batch processing
 Preparada para futuras extensiones (OCR, IA, etc.)
 
-Estado actual confirmado del Bloque 1:
+Status actual confirmado del Block 1:
 ✅ PHP puro (sin Laravel, Symfony ni frameworks)
 ✅ Autoload PSR‑4 funcionando
 ✅ Core ContentProcessor
@@ -41,7 +41,7 @@ Estado actual confirmado del Bloque 1:
 ✅ Structurer simple (SimpleLineStructurer)
 ✅ Batch processing funcional
 ✅ Ejemplos ejecutados correctamente
-✅ Documentación y arquitectura definidas
+✅ Documentation y architecture definidas
 
 ⚠️ IMPORTANTE: La librería NO debe reestructurarse. Solo debe extenderse correctamente.
 
@@ -67,7 +67,7 @@ Mantener 100% compatibilidad con:
 
 - ContentProcessor
 - Extractores existentes
-- Ejemplos del Bloque 1
+- Ejemplos del Block 1
 
 Agregar un ejemplo funcional nuevo que procese un PDF real usando:
 ->withExtractor(new PdfTextExtractor())
@@ -80,9 +80,9 @@ Diseña la librería para que pueda evolucionar, pero empieza mínima.
 
 Debes cumplir todas estas reglas sin excepción:
 
-Arquitectura y diseño
+Architecture y diseño
 
-❌ No modificar código del Bloque 1
+❌ No modificar código del Block 1
 ✅ SOLO agregar nuevas clases
 ✅ Respetar interfaces existentes
 ✅ PHP 8.1+

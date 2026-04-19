@@ -1,9 +1,9 @@
 <?php
 
 /**
- * BLOQUE 4 - Ejemplo Laravel-style: Consumo práctico
+ * BLOCK 4 - Ejemplo Laravel-style: Consumo práctico
  * 
- * Demuestra cómo consumir FinalResult en un contexto Laravel-like
+ * Demuestra cómo consumir FinalResult en un context Laravel-like
  * o en APIs REST comunes.
  * 
  * Ejecutar: php examples/example_bloque4_laravel_style.php
@@ -16,7 +16,7 @@ use ContentProcessor\Schemas\ArraySchema;
 use ContentProcessor\Extractors\TextFileExtractor;
 use ContentProcessor\Structurers\RuleBasedStructurer;
 
-echo "=== BLOQUE 4: Consumo Laravel-Style ===\n\n";
+echo "=== BLOCK 4: Consumo Laravel-Style ===\n\n";
 
 // Simulación de controlador Laravel
 class DocumentProcessorController
@@ -30,7 +30,7 @@ class DocumentProcessorController
     {
         try {
             $schema = new ArraySchema([
-                'nombre' => ['type' => 'string', 'required' => true],
+                'name' => ['type' => 'string', 'required' => true],
                 'carnet_identidad' => ['type' => 'string', 'required' => false],
                 'anos_experiencia' => ['type' => 'int', 'required' => false],
                 'email' => ['type' => 'string', 'required' => false],
@@ -74,27 +74,27 @@ class DocumentProcessorController
     }
 
     /**
-     * Mensaje de estado legible.
+     * Mensaje de estado readable.
      */
     private function getStatusMessage($result): string
     {
         if ($result->isPerfect()) {
-            return 'Todos los documentos procesados correctamente sin problemas';
+            return 'Todos los documentos processeds correctamente sin problemas';
         } elseif ($result->isSuccessful()) {
             $count = $result->getWarningCount();
-            return "Procesamiento exitoso con {$count} warning(s) detectado(s)";
+            return "Processing successful con {$count} warning(s) detectado(s)";
         } else {
             $count = $result->getErrorCount();
-            return "Procesamiento con {$count} error(es) detectado(s)";
+            return "Processing con {$count} error(es) detectado(s)";
         }
     }
 
     /**
-     * Carga archivos en base de datos (simulado).
+     * Carga files en base de data (simulado).
      */
     public function saveToDB($result): array
     {
-        // Solo guardamos documentos exitosos
+        // Solo guardamos documentos s
         $saved = 0;
 
         foreach ($result->dataPure() as $data) {
@@ -112,14 +112,14 @@ class DocumentProcessorController
 }
 
 // DEMO
-echo "📋 Simulando 3 documentos para procesar...\n\n";
+echo "📋 Simulando 3 documentos para process...\n\n";
 
-// Crear archivos temporales
+// Crear  temporales
 $tempDir = sys_get_temp_dir() . '/cp_demo_' . uniqid();
 @mkdir($tempDir);
 
-file_put_contents("$tempDir/doc1.txt", "Nombre: Alice\nAños de Experiencia: 3");
-file_put_contents("$tempDir/doc2.txt", "Nombre: Bob\nCarnet de Identidad: 98765432");
+file_put_contents("$tempDir/doc1.txt", "Name: Alice\nAños de Experiencia: 3");
+file_put_contents("$tempDir/doc2.txt", "Name: Bob\nCarnet de Identidad: 98765432");
 file_put_contents("$tempDir/doc3.txt", "Años de Experiencia: 5");
 
 // Usar controlador
@@ -136,7 +136,7 @@ $apiResponse = $controller->processBatch($files);
 echo "\n2️⃣  Respuesta API:\n";
 echo json_encode($apiResponse, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n";
 
-// Separar éxitos y fallos
+// Separar éxitos y 
 $successFiles = [];
 foreach ($apiResponse['data']['documents_processed'] as $doc) {
     $successFiles[] = $doc;
@@ -148,7 +148,7 @@ if (!empty($successFiles)) {
     $sqlResult = [
         'success' => true,
         'saved' => count($successFiles),
-        'message' => 'Datos guardados correctamente en BD',
+        'message' => 'Data guardados correctamente en BD',
     ];
     echo json_encode($sqlResult, JSON_PRETTY_PRINT) . "\n";
 }

@@ -5,13 +5,13 @@ namespace ContentProcessor\Schemas;
 use ContentProcessor\Contracts\SchemaInterface;
 
 /**
- * Esquema basado en array de definiciones de campos.
+ * Esquema basado en array de definiciones de fields.
  * 
- * Permite definir esquemas flexibles con validación básica.
+ * Permite definir esquemas flexibles con validation básica.
  * 
  * @example
  * $schema = new ArraySchema([
- *     'nombre' => ['type' => 'string', 'required' => true],
+ *     'name' => ['type' => 'string', 'required' => true],
  *     'carnet_identidad' => ['type' => 'string', 'required' => false],
  *     'anos_experiencia' => ['type' => 'int', 'required' => false],
  * ]);
@@ -23,7 +23,7 @@ class ArraySchema implements SchemaInterface
 
     /**
      * @param array $definition Definición del esquema
-     * @param string $name Nombre opcional del esquema
+     * @param string $name Name opcional del esquema
      */
     public function __construct(array $definition, string $name = 'ArraySchema')
     {
@@ -51,16 +51,16 @@ class ArraySchema implements SchemaInterface
             $type = $rules['type'] ?? 'string';
             $value = $data[$fieldName] ?? null;
 
-            // Validación de requerido
+            //  de requerido
             if ($required && ($value === null || $value === '')) {
-                $errors[] = "Campo '$fieldName' es requerido.";
+                $errors[] = "Field '$fieldName' es requerido.";
                 continue;
             }
 
-            // Validación de tipo
+            //  de tipo
             if ($value !== null && $value !== '') {
                 if (!$this->validateType($value, $type)) {
-                    $errors[] = "Campo '$fieldName' debe ser de tipo '$type', pero es " . gettype($value) . ".";
+                    $errors[] = "Field '$fieldName' debe ser de tipo '$type', pero es " . gettype($value) . ".";
                 }
             }
         }

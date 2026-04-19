@@ -3,26 +3,26 @@
 namespace ContentProcessor\Security;
 
 /**
- * Validador de seguridad para operaciones de archivo.
+ * Validator de seguridad para operaciones de file.
  * 
  * Centraliza todas las verificaciones de seguridad:
- * - Tamaño de archivo
+ * - Tamaño de file
  * - Integridad de PDF
  * - Path traversal
  * - Límites de batch
  * 
  * @package ContentProcessor\Security
- * @since 1.4.0 (Bloque 5)
+ * @since 1.4.0 (Block 5)
  */
 class SecurityValidator
 {
     /**
-     * Valida el tamaño de un archivo.
+     * Valida el tamaño de un file.
      * 
      * @param string $filePath
      * @param string $fileType Tipo ('pdf', 'text')
      * @return bool
-     * @throws SecurityException Si el archivo excede el máximo
+     * @throws SecurityException Si el file excede el máximo
      */
     public static function validateFileSize(string $filePath, string $fileType = 'pdf'): bool
     {
@@ -37,7 +37,7 @@ class SecurityValidator
             $sizeMB = round($fileSize / (1024 * 1024), 2);
             $maxMB = round($maxSize / (1024 * 1024), 2);
             throw SecurityException::fileTooLarge(
-                "Archivo ocupa {$sizeMB}MB (máximo: {$maxMB}MB)",
+                "File ocupa {$sizeMB}MB (máximo: {$maxMB}MB)",
                 ['file' => basename($filePath), 'size' => $fileSize, 'max' => $maxSize]
             );
         }
@@ -46,15 +46,15 @@ class SecurityValidator
     }
 
     /**
-     * Valida que un archivo es realmente un PDF basándose en su cabecera.
+     * Valida que un file es realmente un PDF basándose en su cabecera.
      * 
-     * NOTA: Esta validación es defensiva pero no es prueba absoluta.
-     * Un atacante podría crear un PDF con cabecera válida pero contenido
+     * NOTA: Esta validation es defensiva pero is not prueba absoluta.
+     * Un atacante podría crear un PDF con cabecera válida pero content
      * corrupto. La responsabilidad final recae en el integrador.
      * 
      * @param string $filePath
      * @return bool
-     * @throws SecurityException Si no es un PDF válido
+     * @throws SecurityException Si is not un PDF válido
      */
     public static function validatePdfSignature(string $filePath): bool
     {
@@ -63,20 +63,20 @@ class SecurityValidator
         }
 
         if (filesize($filePath) === 0) {
-            throw SecurityException::invalidPdf('Archivo PDF vacío');
+            throw SecurityException::invalidPdf('File PDF vacío');
         }
 
         // Leer cabecera
         $handle = fopen($filePath, 'rb');
         if ($handle === false) {
-            throw SecurityException::invalidPdf('No se puede leer el archivo');
+            throw SecurityException::invalidPdf('No se can leer el file');
         }
 
         $header = fread($handle, SecurityConfig::PDF_HEADER_CHECK_BYTES);
         fclose($handle);
 
         if ($header === false || strlen($header) < SecurityConfig::PDF_HEADER_CHECK_BYTES) {
-            throw SecurityException::invalidPdf('Archivo demasiado pequeño para ser PDF');
+            throw SecurityException::invalidPdf('File demasiado pequeño para ser PDF');
         }
 
         if (strpos($header, SecurityConfig::PDF_HEADER_SIGNATURE) !== 0) {
@@ -120,7 +120,7 @@ class SecurityValidator
     /**
      * Valida el tamaño del batch.
      * 
-     * @param array $files Array de rutas de archivos
+     * @param array $files Array de rutas de files
      * @return bool
      * @throws SecurityException Si excede el máximo
      */
@@ -160,16 +160,16 @@ class SecurityValidator
     }
 
     /**
-     * Validación defensiva completa para un archivo antes de procesarlo.
+     * Validation defensiva completa para un file antes de processlo.
      * 
      * @param string $filePath
      * @param string $fileType Tipo ('pdf', 'text')
      * @return bool
-     * @throws SecurityException Si alguna validación falla
+     * @throws SecurityException Si alguna validation falla
      */
     public static function validateFile(string $filePath, string $fileType = 'pdf'): bool
     {
-        // Validar existencia
+        // Validar ncia
         if (!file_exists($filePath)) {
             throw SecurityException::fileNotFound();
         }

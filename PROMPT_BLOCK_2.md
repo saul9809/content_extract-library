@@ -8,18 +8,18 @@ Eres un arquitecto senior de software PHP con más de 15 años de experiencia, e
 - Composer / Packagist
 - PSR‑4, PSR‑12, SOLID
 - Procesamiento de documentos (PDF)
-- Arquitecturas framework‑agnostic
+- Architectures framework‑agnostic
 - Evolución por bloques sin romper compatibilidad
 
-Tu misión es extender una librería existente, respetando estrictamente su arquitectura, sin introducir acoplamientos innecesarios ni romper bloques ya validados.
+Tu misión es extender una librería existente, respetando estrictamente su architecture, sin introducir acoplamientos innecesarios ni romper bloques ya validados.
 
 ---
 
 ## 2️⃣ Contexto (¿Dónde estamos?)
 
-Existe una librería PHP llamada **Content Processor**, ya en producción interna, con el Bloque 1 completamente finalizado y probado.
+Existe una librería PHP llamada **Content Processor**, ya en producción interna, con el Block 1 completamente finalizado y probado.
 
-### Estado actual confirmado:
+### Status actual confirmado:
 
 ✅ PHP puro (sin Laravel, Symfony ni frameworks)
 ✅ Autoload PSR‑4 funcionando
@@ -29,13 +29,13 @@ Existe una librería PHP llamada **Content Processor**, ya en producción intern
 ✅ Structurer simple (SimpleLineStructurer)
 ✅ Batch processing funcional
 ✅ Ejemplos ejecutados correctamente
-✅ Documentación y arquitectura definidas
+✅ Documentation y architecture definidas
 
 **⚠️ IMPORTANTE:**
 
 - La librería NO debe reestructurarse
 - Solo debe extenderse correctamente
-- El Bloque 1 es INMUTABLE
+- El Block 1 es INMUTABLE
 
 ---
 
@@ -69,7 +69,7 @@ Debes implementar **EL BLOQUE 2 COMPLETO**, con foco exclusivo en:
 
 - ContentProcessor
 - Extractores existentes
-- Ejemplos del Bloque 1
+- Ejemplos del Block 1
 
 ### Agregar un ejemplo funcional nuevo que procese un PDF real:
 
@@ -83,9 +83,9 @@ Debes implementar **EL BLOQUE 2 COMPLETO**, con foco exclusivo en:
 
 Debes cumplir TODAS estas reglas sin excepción:
 
-### Arquitectura y diseño
+### Architecture y diseño
 
-❌ No modificar código del Bloque 1
+❌ No modificar código del Block 1
 ✅ SOLO agregar nuevas clases
 ✅ Respetar interfaces existentes
 ✅ PHP 8.1+
@@ -110,9 +110,9 @@ Debes cumplir TODAS estas reglas sin excepción:
 
 ## 5️⃣ Formato de salida (¿Cómo lo quiero?)
 
-Entrega el resultado de forma estrictamente ordenada, siguiendo este esquema:
+Delivery el resultado de forma estrictamente ordenada, siguiendo este esquema:
 
-### A. Explicación breve del Bloque 2
+### A. Explicación breve del Block 2
 
 ### B. Dependencia a instalar (comando Composer)
 
@@ -124,13 +124,13 @@ Entrega el resultado de forma estrictamente ordenada, siguiendo este esquema:
 
 ### F. Pasos exactos para probar
 
-### G. Confirmación explícita de cierre del Bloque 2
+### G. Confirmación explícita de closure del Block 2
 
-### ❗ RESTRICCIONES DE ENTREGA
+### ❗ RESTRICCIONES DE DELIVERY
 
 - No adelantes bloques futuros
 - No generes código innecesario
-- No reformules la arquitectura existente
+- No reformules la architecture existente
 
 ---
 
@@ -158,9 +158,9 @@ La librería ya tiene estos archivos que debes respetar:
 
 - `composer.json` — Configuración
 - `src/Contracts/ExtractorInterface.php` — Interfaz base
-- `src/Core/ContentProcessor.php` — Orquestador
-- `examples/test_functional.php` — Test Bloque 1
-- `README.md`, `ARQUITECTURA.md` — Documentación
+- `src/Core/ContentProcessor.php` — Orqustatusr
+- `examples/test_functional.php` — Test Block 1
+- `README.md`, `ARCHITECTURE.md` — Documentation
 
 ---
 
@@ -172,6 +172,6 @@ La librería ya tiene estos archivos que debes respetar:
 >
 > 1. Copia este prompt completo
 > 2. Pégalo en Claude Code
-> 3. Claude generará el Bloque 2 exactamente como se especifica
-> 4. Integra los archivos en tu proyecto
+> 3. Claude generará el Block 2 exactamente como se especifica
+> 4. Integra los archivos en tu project
 > 5. Ejecuta: `php examples/test_pdf_extraction.php`

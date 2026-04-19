@@ -1,4 +1,4 @@
-# ✅ VERIFICACIÓN RÁPIDA DEL PROYECTO
+# ✅ VERIFICATION QUICK DEL PROJECT
 
 ## 📍 Ubicación
 
@@ -14,7 +14,7 @@ c:\equipo\Ingeniería\tesis\TESIS\sistema\librery
 librery/
 ├── ✅ src/
 │   ├── ✅ Contracts/          (3 interfaces)
-│   ├── ✅ Core/               (1 clase orquestadora)
+│   ├── ✅ Core/               (1 clase orqustatusra)
 │   ├── ✅ Schemas/            (1 esquema)
 │   ├── ✅ Extractors/         (1 extractor)
 │   └── ✅ Structurers/        (1 estructurador)
@@ -28,12 +28,12 @@ librery/
 ├── ✅ composer.lock           (lock file)
 ├── ✅ autoload_manual.php     (autoloader fallback)
 ├── ✅ .gitignore              (control de versiones)
-└── 📚 Documentación:
+└── 📚 Documentation:
     ├── ✅ README.md                    (intro principal)
     ├── ✅ GUIA_RAPIDA.md               (primeros pasos)
-    ├── ✅ ARQUITECTURA.md              (diseño)
-    ├── ✅ BLOQUE_1_COMPLETADO.md       (estado del bloque)
-    └── ✅ ESTADO.md                    (resumen general)
+    ├── ✅ ARCHITECTURE.md              (diseño)
+    ├── ✅ BLOQUE_1_COMPLETED.md       (status del bloque)
+    └── ✅ STATUS.md                    (summary general)
 ```
 
 ---
@@ -58,7 +58,7 @@ PS> php test_functional.php
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║   ✅ BLOQUE 1 COMPLETADO EXITOSAMENTE                       ║
+║   ✅ BLOQUE 1 COMPLETED EXITOSAMENTE                       ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -66,7 +66,7 @@ PS> php test_functional.php
 
 ---
 
-## 📝 Checklist de verificación
+## 📝 Checklist de verification
 
 ### Archivos esenciales
 
@@ -86,13 +86,13 @@ PS> php test_functional.php
 - [ ] ✅ `examples/sample_cv_1.txt` existe
 - [ ] ✅ `examples/sample_cv_2.txt` existe
 
-### Documentación
+### Documentation
 
 - [ ] ✅ `README.md` existe
 - [ ] ✅ `GUIA_RAPIDA.md` existe
-- [ ] ✅ `ARQUITECTURA.md` existe
-- [ ] ✅ `BLOQUE_1_COMPLETADO.md` existe
-- [ ] ✅ `ESTADO.md` existe (este archivo)
+- [ ] ✅ `ARCHITECTURE.md` existe
+- [ ] ✅ `BLOQUE_1_COMPLETED.md` existe
+- [ ] ✅ `STATUS.md` existe (este archivo)
 
 ### Configuración
 
@@ -133,16 +133,16 @@ composer dump-autoload
 
 ---
 
-## 📊 Resumen del Bloque 1
+## 📊 Summary del Block 1
 
-| Componente    | Cantidad   | Estado          |
+| Componente    | Cantidad   | Status          |
 | ------------- | ---------- | --------------- |
 | Interfaces    | 3          | ✅ Completas    |
 | Clases        | 4          | ✅ Funcionales  |
 | Métodos       | ~30        | ✅ Documentados |
 | Ejemplos      | 2          | ✅ Funcionan    |
 | Datos prueba  | 2          | ✅ Procesados   |
-| Documentación | 6 archivos | ✅ Completa     |
+| Documentation | 6 archivos | ✅ Completa     |
 
 ---
 
@@ -150,7 +150,7 @@ composer dump-autoload
 
 ### Opción A: Extender ahora
 
-1. Lee [ARQUITECTURA.md](./ARQUITECTURA.md)
+1. Lee [ARCHITECTURE.md](./ARCHITECTURE.md)
 2. Crea tu propio `PDFExtractor`
 3. Implementa `ExtractorInterface`
 
@@ -181,32 +181,32 @@ composer dump-autoload
 
 ---
 
-## 🔍 Verificación final
+## 🔍 Verification final
 
-**Antes de proceder al Bloque 2, verifique:**
+**Antes de proceder al Block 2, verifique:**
 
 1. ✅ Ejecutó `php test_functional.php` exitosamente
 2. ✅ Vio ambos documentos procesados
 3. ✅ JSON de salida fue generado correctamente
-4. ✅ El proyecto está en git (si lo desea)
+4. ✅ El project está en git (si lo desea)
 
 **Si todo el ✅ arriba es verdadero:**
-→ **El Bloque 1 está COMPLETADO y LISTO para continuar**
+→ **El Block 1 está COMPLETED y LISTO para continuar**
 
 ---
 
-## 📞 Referencia rápida de rutas
+## 📞 Referencia quick de rutas
 
 | Descripción     | Ruta                                                                   |
 | --------------- | ---------------------------------------------------------------------- |
 | Código fuente   | `c:\equipo\Ingeniería\tesis\TESIS\sistema\librery\src\`                |
 | Ejemplos        | `c:\equipo\Ingeniería\tesis\TESIS\sistema\librery\examples\`           |
-| Documentación   | `c:\equipo\Ingeniería\tesis\TESIS\sistema\librery\*.md`                |
+| Documentation   | `c:\equipo\Ingeniería\tesis\TESIS\sistema\librery\*.md`                |
 | Composer config | `c:\equipo\Ingeniería\tesis\TESIS\sistema\librery\composer.json`       |
 | Autoloader      | `c:\equipo\Ingeniería\tesis\TESIS\sistema\librery\vendor\autoload.php` |
 
 ---
 
-**Estado:** ✅ **BLOQUE 1 COMPLETADO Y VERIFICADO**
+**Status:** ✅ **BLOQUE 1 COMPLETED Y VERIFICADO**
 
-_Última verificación: 18 de Abril, 2026_
+_Última verification: 18 de Abril, 2026_

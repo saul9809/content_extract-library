@@ -2,7 +2,7 @@
 
 ## Política de Seguridad
 
-**Version:** 1.4.0 (Bloque 5)  
+**Version:** 1.4.0 (Block 5)  
 **Last Updated:** Abril 18, 2026
 
 ---
@@ -279,7 +279,7 @@ Route::post('/documents', function (Request $request) {
 - [ ] Ratelimit los endpoints
 - [ ] Auditar acceso a archivos procesados
 - [ ] Tener plan de incident response
-- [ ] Revisar esta documentación periódicamente
+- [ ] Revisar esta documentation periódicamente
 
 ---
 
@@ -298,14 +298,14 @@ Email de contacto: `security@content-extract.org`
 
 ## 9. Changelog de Seguridad
 
-### v1.4.0 (Bloque 5) - Abril 18, 2026
+### v1.4.0 (Block 5) - Abril 18, 2026
 
 ✅ Agregadas clases SecurityConfig y SecurityValidator  
 ✅ Validación de tamaño de PDF y batch  
 ✅ Protección contra path traversal  
 ✅ Manejo seguro de SecurityException  
 ✅ Validación de cabecera PDF  
-✅ Documentación de seguridad completa
+✅ Documentation de seguridad completa
 
 ---
 
@@ -322,6 +322,6 @@ No es un producto de seguridad certificado. Úsalo como parte de una estrategia 
 
 ---
 
-**Para más información:** Ver README.md y BLOQUE_5_COMPLETADO.md
+**Para más información:** Ver README.md y BLOQUE_5_COMPLETED.md
 
 _Este documento es de consulta pública. La seguridad es responsabilidad compartida._

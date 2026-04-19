@@ -3,34 +3,34 @@
 namespace ContentProcessor\Models;
 
 /**
- * Normalización de warnings semánticos.
+ * Normalization de warnings semánticos.
  * 
- * Los warnings son advertencias semánticas generadas durante
- * la estructuración de documentos (Bloque 3).
+ * Los warnings son warnings semánticas generadas durante
+ * la structureción de documentos (Block 3).
  * 
- * A diferencia de los errores, los warnings NO impiden
- * que el documento sea procesado exitosamente, pero alertan
- * al usuario técnico sobre la calidad o integridad de los datos.
+ * A diferencia de los errors, los warnings NO impiden
+ * que el documento sea processed successfully, pero alertan
+ * al usuario técnico sobre la calidad o integridad de los data.
  * 
  * Ejemplos:
- * - Campo requerido faltante o vacío
+ * - Required field faltante o vacío
  * - Valor de tipo incorrecto (fue corregido automáticamente)
  * - Regla de parsing ambigua
- * - Información incompleta
+ * - Information incompleta
  * 
  * @package ContentProcessor\Models
- * @since 1.3.0 (Bloque 4)
+ * @since 1.3.0 (Block 4)
  */
 class Warning
 {
     /**
-     * Campo o sección del documento donde se generó el warning.
+     * Field o sección del documento donde se generó el warning.
      * @var string
      */
     private string $field;
 
     /**
-     * Categoría del warning (ej: 'missing', 'ambiguous', 'incomplete')
+     * Categoría del warning (ej: 'missing', 'ambiguousus', 'incomplete')
      * @var string
      */
     private string $category;
@@ -56,7 +56,7 @@ class Warning
     /**
      * Constructor.
      * 
-     * @param string $field Campo donde ocurre el warning
+     * @param string $field Field donde ocurre el warning
      * @param string $category Categoría del warning
      * @param string $message Mensaje descriptivo
      * @param mixed $value Valor que causó el warning
@@ -75,7 +75,7 @@ class Warning
     }
 
     /**
-     * Factory para warnings de campo faltante.
+     * Factory para warnings de field faltante.
      * 
      * @param string $field
      * @param mixed $value
@@ -86,7 +86,7 @@ class Warning
         return new self(
             $field,
             'missing',
-            "Campo '$field' faltante o vacío",
+            "Field '$field' faltante o vacío",
             $value
         );
     }
@@ -104,29 +104,29 @@ class Warning
         return new self(
             $field,
             'type_mismatch',
-            "Campo '$field' esperaba tipo '$expected' pero recibió '$actual'",
+            "Field '$field' esperaba tipo '$expected' pero recibió '$actual'",
             $actual
         );
     }
 
     /**
-     * Factory para warnings de parsing ambiguo.
+     * Factory para warnings de parsing ambiguous.
      * 
      * @param string $field
      * @param string $message
      * @return self
      */
-    public static function ambiguous(string $field, string $message): self
+    public static function ambiguousus(string $field, string $message): self
     {
         return new self(
             $field,
-            'ambiguous',
+            'ambiguousus',
             $message
         );
     }
 
     /**
-     * Factory para warnings de información incompleta.
+     * Factory para warnings de information incompleta.
      * 
      * @param string $field
      * @param string $message
@@ -142,7 +142,7 @@ class Warning
     }
 
     /**
-     * Obtiene el campo.
+     * Obtiene el field.
      * @return string
      */
     public function getField(): string
@@ -202,7 +202,7 @@ class Warning
     }
 
     /**
-     * Convierte a string legible.
+     * Convierte a string readable.
      * @return string
      */
     public function __toString(): string

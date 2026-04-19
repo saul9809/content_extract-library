@@ -4,15 +4,15 @@
  * Ejemplo avanzado: Multiple PDFs con warnings semánticos
  * 
  * Demuestra:
- * 1. Procesamiento batch de múltiples PDFs
- * 2. Generación de warnings (campos ambiguos, ausentes)
- * 3. Separación clara entre errores técnicos y warnings semánticos
- * 4. Exportación de resultados estructurados
+ * 1. Processing batch de múltiples PDFs
+ * 2. Generación de warnings (fields ambiguouss, ausentes)
+ * 3. Separación clara entre errors técnicos y warnings semánticos
+ * 4. Exportación de resultados structuredos
  * 
  * Uso:
  *     php examples/test_structuring_advanced.php
  * 
- * @since Bloque 3
+ * @since Block 3
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -24,7 +24,7 @@ use ContentProcessor\Structurers\RuleBasedStructurer;
 use ContentProcessor\Schemas\ArraySchema;
 
 // ============================================================================
-// 1. Crear PDFs con contenido estructurado para demostración
+// 1. Crear PDFs con  do para demostración
 // ============================================================================
 
 function createTestPdf($filename, $content)
@@ -78,7 +78,7 @@ function createTestPdf($filename, $content)
 $tmpDir = __DIR__ . '/tmp';
 @mkdir($tmpDir);
 
-// PDF 1: Completo (por contrastarlo, en teoría tiene todos los campos requeridos)
+// PDF 1: Completo (por contrastarlo, en teoría tiene todos los  requeridos)
 createTestPdf(
     "$tmpDir/cv_completo.pdf",
     "name: Maria Garcia\nemail: maria@example.com\nphone: 555-1234\n" .
@@ -105,7 +105,7 @@ $cvSchema = new ArraySchema([
 ]);
 
 // ============================================================================
-// 3. Procesar batch
+// 3.  batch
 // ============================================================================
 
 $processor = ContentProcessor::make()
@@ -122,7 +122,7 @@ $results = $processor->process();
 
 echo "\n";
 echo "╔═══════════════════════════════════════════════════════════════╗\n";
-echo "║        BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA AVANZADA             ║\n";
+echo "║        BLOCK 3: STRUCTURECIÓN SEMÁNTICA AVANZADA             ║\n";
 echo "║     Batch Processing con Warnings y Análisis de Calidad        ║\n";
 echo "╚═══════════════════════════════════════════════════════════════╝\n";
 echo "\n";
@@ -131,8 +131,8 @@ echo "\n";
 echo "📊 ESTADÍSTICAS BATCH\n";
 echo "───────────────────────────────────────────────────────────────\n";
 echo "Total documentos:    {$results['total']}\n";
-echo "Exitosos:            {$results['success']}\n";
-echo "Con fallos técnicos:  {$results['failed']}\n";
+echo "Successfuls:            {$results['success']}\n";
+echo "Con failures técnicos:  {$results['failed']}\n";
 echo "\n";
 
 // Detalles por documento
@@ -153,9 +153,9 @@ foreach ($results['results'] as $filePath => $result) {
         continue;
     }
 
-    // Datos
-    echo "✅ PROCESADO EXITOSAMENTE\n";
-    echo "📝 DATOS EXTRAÍDOS:\n";
+    // 
+    echo "✅ PROCESSED SUCCESSFULLY\n";
+    echo "📝 DATA EXTRACTEDS:\n";
     $data = $result['data'];
     foreach ($data as $key => $value) {
         if (is_array($value)) {
@@ -178,7 +178,7 @@ foreach ($results['results'] as $filePath => $result) {
         $docsWithWarnings++;
         echo "\n";
     } else {
-        echo "✓ SIN WARNINGS - Datos de Excelente Calidad\n";
+        echo "✓ SIN WARNINGS - Data de Excelente Calidad\n";
         echo "\n";
     }
 
@@ -200,7 +200,7 @@ echo "Total warnings generados: {$totalWarnings}\n";
 echo "Tasa de éxito: " . ($results['total'] > 0 ? round(($results['success'] / $results['total']) * 100) : 0) . "%\n";
 echo "\n";
 
-echo "✅ BLOQUE 3 COMPLETADO\n";
+echo "✅ BLOCK 3 COMPLETADO\n";
 echo "\n";
 
 // Limpiar

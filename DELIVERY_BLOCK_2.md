@@ -1,14 +1,14 @@
-# ✅ BLOQUE 2: EXTRACCIÓN DE PDF DIGITALES - ENTREGA COMPLETA
+# ✅ BLOQUE 2: EXTRACCIÓN DE PDF DIGITALES - DELIVERY COMPLETA
 
 ---
 
 ## A. EXPLICACIÓN BREVE
 
-El Bloque 2 agrega soporte completo para **extracción de texto desde archivos PDF digitales** (no escaneados, sin OCR). Se implementó mediante:
+El Block 2 agrega soporte completo para **extracción de texto desde archivos PDF digitales** (no escaneados, sin OCR). Se implementó mediante:
 
 - ✅ **Nueva clase `PdfTextExtractor`** que implementa `ExtractorInterface`
 - ✅ **Dependencia `smalot/pdfparser ^2.0`** para parsing profesional de PDFs
-- ✅ **Compatibilidad 100%** con ContentProcessor y arquitectura existente
+- ✅ **Compatibilidad 100%** con ContentProcessor y architecture existente
 - ✅ **Ejemplos funcionales** que procesan PDFs reales en batch
 
 ---
@@ -47,13 +47,13 @@ examples/
 └── sample_cv.pdf                  ← PDF de prueba
 
 documentation/
-├── BLOQUE_2_COMPLETADO.md         ← Documentación técnica
+├── BLOQUE_2_COMPLETED.md         ← Documentation técnica
 ├── PROMPT_BLOQUE_2.md             ← Prompt para Claude Code
-└── ENTREGA_BLOQUE_2.md            ← Este archivo
+└── DELIVERY_BLOQUE_2.md            ← Este archivo
 
 Actualizados:
 ├── composer.json                  ← Agregada dependencia
-└── ESTADO.md                      ← Estadísticas B2
+└── STATUS.md                      ← Estadísticas B2
 ```
 
 ---
@@ -240,7 +240,7 @@ $results = ContentProcessor::make()
     ->fromFiles([$pdfPath])
     ->process();
 
-echo "✅ Procesamiento completado:\n";
+echo "✅ Procesamiento completed:\n";
 echo "   Total: " . $results['total'] . "\n";
 echo "   Exitosos: " . $results['success'] . "\n";
 echo "   Errores: " . $results['failed'] . "\n";
@@ -265,7 +265,7 @@ foreach ($results['results'] as $file => $result) {
 }
 
 echo json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n\n";
-echo "✅ BLOQUE 2: PDF → JSON COMPLETADO\n";
+echo "✅ BLOQUE 2: PDF → JSON COMPLETED\n";
 ```
 
 ### Salida al ejecutar (✅ FUNCIONAL):
@@ -287,7 +287,7 @@ Anos de Experiencia: 8
 
 📋 PASO 2: Procesamiento en Batch
 ───────────────────────────────────────────────────
-✅ Procesamiento completado:
+✅ Procesamiento completed:
    Total: 1
    Exitosos: 1
    Errores: 0
@@ -304,7 +304,7 @@ Anos de Experiencia: 8
     }
 ]
 
-✅ BLOQUE 2: PDF → JSON COMPLETADO
+✅ BLOQUE 2: PDF → JSON COMPLETED
 ```
 
 ---
@@ -349,12 +349,12 @@ php examples/pdf_batch_example.php
 **Salida esperada:**
 
 ```
-✅ BLOQUE 2: PDF → JSON COMPLETADO
+✅ BLOQUE 2: PDF → JSON COMPLETED
 📤 PASO 3: Salida JSON
 [JSON válido con datos procesados]
 ```
 
-### Paso 5: Verificar compatibilidad con Bloque 1
+### Paso 5: Verificar compatibilidad con Block 1
 
 ```bash
 php examples/test_functional.php
@@ -363,26 +363,26 @@ php examples/test_functional.php
 **Salida esperada:**
 
 ```
-✅ BLOQUE 1 COMPLETADO EXITOSAMENTE
+✅ BLOQUE 1 COMPLETED EXITOSAMENTE
 2/2 documentos procesados
 ```
 
 ---
 
-## G. CONFIRMACIÓN EXPLÍCITA DE CIERRE DEL BLOQUE 2
+## G. CONFIRMACIÓN EXPLÍCITA DE CLOSURE DEL BLOQUE 2
 
-### ✅ BLOQUE 2: COMPLETADO Y VERIFICADO
+### ✅ BLOQUE 2: COMPLETED Y VERIFICADO
 
-| Aspecto                  | Estado | Detalles                          |
+| Aspecto                  | Status | Detalles                          |
 | ------------------------ | ------ | --------------------------------- |
 | **PdfTextExtractor**     | ✅     | Implementada completamente        |
 | **smalot/pdfparser**     | ✅     | v2.12.4 instalada                 |
 | **Métodos requeridos**   | ✅     | extract(), canHandle(), getName() |
 | **Ejemplos funcionales** | ✅     | 4 ejemplos, todos ejecutables     |
 | **PDF → JSON**           | ✅     | Pipeline completo operativo       |
-| **Bloque 1 intacto**     | ✅     | 0 modificaciones, tests pasan     |
+| **Block 1 intacto**     | ✅     | 0 modificaciones, tests pasan     |
 | **Batch processing**     | ✅     | fromFiles() y fromDirectory()     |
-| **Documentación**        | ✅     | BLOQUE_2_COMPLETADO.md            |
+| **Documentation**        | ✅     | BLOQUE_2_COMPLETED.md            |
 | **Git commits**          | ✅     | 7 commits registrados             |
 | **Tests exitosos**       | ✅     | 100% (test_pdf_simple.php)        |
 
@@ -394,20 +394,20 @@ php examples/test_functional.php
 - ✅ Manejo robusto de excepciones
 - ✅ Integración transparente con ContentProcessor
 - ✅ Batch processing compatible
-- ✅ Arquitectura SOLID + PSR-4/PSR-12
+- ✅ Architecture SOLID + PSR-4/PSR-12
 - ✅ Dependency Injection (sin singletons)
-- ✅ Documentación completa en PHPDoc
+- ✅ Documentation completa en PHPDoc
 
 ### ✅ BLOQUE 2 LISTO PARA PRODUCCIÓN
 
 **Próximos bloques preparados para:**
 
-- Bloque 3: OCR para PDFs escaneados
-- Bloque 4: Estructuradores avanzados
-- Bloque 5: Validadores personalizados
+- Block 3: OCR para PDFs escaneados
+- Block 4: Estructuradores avanzados
+- Block 5: Validadores personalizados
 
 ---
 
-**Fecha de entrega:** 18 de Abril, 2026  
+**Fecha de delivery:** 18 de Abril, 2026  
 **Versión:** 1.1.0  
-**Estado:** ✅ COMPLETADO Y FUNCIONANDO
+**Status:** ✅ COMPLETED Y FUNCIONANDO

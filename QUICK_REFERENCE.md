@@ -18,7 +18,7 @@
 | Git Tag v1.3.0       | ✅ EXIST | In origin/main                              |
 | All Files Present    | ✅ YES   | composer.json, README, LICENSE, SECURITY.md |
 | Examples Functional  | ✅ YES   | 10+ scripts executed                        |
-| Security Hardening   | ✅ YES   | Bloque 5 complete                           |
+| Security Hardening   | ✅ YES   | Block 5 complete                           |
 
 ---
 
@@ -28,7 +28,7 @@
 | ------------------------------- | ------------------- | ----- |
 | **PUBLICACION_PACKAGIST.md**    | Complete A-G guide  | 485   |
 | **PACKAGIST_RELEASE_READY.md**  | Final checklist     | 386   |
-| **CIERRE_FINAL_PACKAGIST.md**   | Closure document    | 281   |
+| **CLOSURE_FINAL_PACKAGIST.md**   | Closure document    | 281   |
 | **PROJECT_DELIVERY_SUMMARY.md** | Visual summary      | 382   |
 | **verify_packagist_ready.php**  | 15-point validation | 152   |
 | **verify_installation.php**     | Installation test   | 89    |
@@ -40,11 +40,11 @@
 ## 🎯 BLOQUES BREAKDOWN
 
 ```
-Bloque 1 ✅  → TextFileExtractor, SimpleLineStructurer
-Bloque 2 ✅  → PdfTextExtractor, Batch processing
-Bloque 3 ✅  → RuleBasedStructurer, Warning system
-Bloque 4 ✅  → FinalResult, Error, Summary APIs
-Bloque 5 ✅  → SecurityValidator, SecurityConfig
+Block 1 ✅  → TextFileExtractor, SimpleLineStructurer
+Block 2 ✅  → PdfTextExtractor, Batch processing
+Block 3 ✅  → RuleBasedStructurer, Warning system
+Block 4 ✅  → FinalResult, Error, Summary APIs
+Block 5 ✅  → SecurityValidator, SecurityConfig
 ```
 
 ---
@@ -239,7 +239,7 @@ composer require content-extract/content-processor:dev-main
 
 | Phase          | Duration   | Status         |
 | -------------- | ---------- | -------------- |
-| Bloque 1-5 Dev | 5 blocks   | ✅ COMPLETE    |
+| Block 1-5 Dev | 5 blocks   | ✅ COMPLETE    |
 | Packagist Prep | 1 session  | ✅ COMPLETE    |
 | Validation     | 2 scripts  | ✅ 15/15 PASS  |
 | Documentation  | 6 files    | ✅ 1,775 lines |
@@ -252,11 +252,11 @@ composer require content-extract/content-processor:dev-main
 
 ## 🎯 SUCCESS CRITERIA - ALL MET ✅
 
-- [x] Bloque 1: Core extractors implemented
-- [x] Bloque 2: PDF processing with batch API
-- [x] Bloque 3: Semantic structuring with warnings
-- [x] Bloque 4: FinalResult unified API
-- [x] Bloque 5: Security hardening complete
+- [x] Block 1: Core extractors implemented
+- [x] Block 2: PDF processing with batch API
+- [x] Block 3: Semantic structuring with warnings
+- [x] Block 4: FinalResult unified API
+- [x] Block 5: Security hardening complete
 - [x] composer.json optimized & valid
 - [x] All required files present
 - [x] Git tag v1.3.0 in remote
@@ -280,7 +280,7 @@ composer require content-extract/content-processor:dev-main
 ┃                                                             ┃
 ┃  Questions? See:                                          ┃
 ┃  - PUBLICACION_PACKAGIST.md (complete guide)              ┃
-┃  - CIERRE_FINAL_PACKAGIST.md (closure document)           ┃
+┃  - CLOSURE_FINAL_PACKAGIST.md (closure document)           ┃
 ┃  - PROJECT_DELIVERY_SUMMARY.md (visual summary)           ┃
 ┃                                                             ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

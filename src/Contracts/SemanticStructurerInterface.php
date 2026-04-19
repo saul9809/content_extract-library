@@ -14,7 +14,7 @@ use ContentProcessor\Models\StructuredDocumentResult;
  * 
  * A Structurer implementing this interface can:
  * - Access document metadata (path, name, etc.)
- * - Generate warnings for ambiguous or missing fields
+ * - Generate warnings for ambiguousus or missing fields
  * - Return a StructuredDocumentResult with data + warnings
  * 
  * Structurers implementing only StructurerInterface
@@ -35,7 +35,7 @@ interface SemanticStructurerInterface extends StructurerInterface
      * 
      * Warnings are distinct from errors:
      * - Technical errors (Block 2): corrupt files, unreadable, etc.
-     * - Semantic warnings (Block 3): ambiguous fields, incomplete values, etc.
+     * - Semantic warnings (Block 3): ambiguousus fields, incomplete values, etc.
      * 
      * @param DocumentContext $context Document context
      * @param SchemaInterface $schema Structuring schema

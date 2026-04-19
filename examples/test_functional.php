@@ -18,7 +18,7 @@ use ContentProcessor\Extractors\TextFileExtractor;
 use ContentProcessor\Structurers\SimpleLineStructurer;
 
 echo "╔══════════════════════════════════════════════════════════════╗\n";
-echo "║   PRUEBA FUNCIONAL: Content Processor - Bloque 1             ║\n";
+echo "║   PRUEBA FUNCIONAL: Content Processor - Block 1             ║\n";
 echo "║   Autoload, Namespaces, Core, Interfaces                    ║\n";
 echo "╚══════════════════════════════════════════════════════════════╝\n\n";
 
@@ -26,7 +26,7 @@ try {
     // ===== 1. DEFINIR ESQUEMA =====
     echo "✅ Paso 1: Creando esquema...\n";
     $schema = new ArraySchema([
-        'nombre' => [
+        'name' => [
             'type' => 'string',
             'required' => true,
         ],
@@ -48,10 +48,10 @@ try {
         ],
     ], 'CVSchema');
     echo "   ✓ Esquema '{$schema->getName()}' creado.\n";
-    echo "   ✓ Campos definidos: " . count($schema->getDefinition()) . "\n\n";
+    echo "   ✓ Fields definidos: " . count($schema->getDefinition()) . "\n\n";
 
-    // ===== 2. CREAR PROCESADOR =====
-    echo "✅ Paso 2: Configurando procesador...\n";
+    // ===== 2. CREAR  =====
+    echo "✅ Paso 2: Configurando processor...\n";
     $processor = ContentProcessor::make()
         ->withSchema($schema)
         ->withExtractor(new TextFileExtractor())
@@ -61,12 +61,12 @@ try {
             'skip_invalid' => false,
             'preserve_empty' => false,
         ]);
-    echo "   ✓ Procesador configurado correctamente.\n\n";
+    echo "   ✓ Processor configurado correctamente.\n\n";
 
-    // ===== 3. PROCESAR =====
+    // ===== 3.  =====
     echo "✅ Paso 3: Procesando documentos...\n";
     $results = $processor->process();
-    echo "   ✓ Procesamiento completado.\n\n";
+    echo "   ✓ Processing completado.\n\n";
 
     // ===== 4. MOSTRAR RESUMEN =====
     echo "╔══════════════════════════════════════════════════════════════╗\n";
@@ -74,8 +74,8 @@ try {
     echo "╚══════════════════════════════════════════════════════════════╝\n\n";
 
     printf("📊 Total de documentos:  %d\n", $results['total']);
-    printf("✅ Procesados exitosamente: %d\n", $results['success']);
-    printf("❌ Con errores: %d\n\n", $results['failed']);
+    printf("✅ Processeds successfully: %d\n", $results['success']);
+    printf("❌ Con errors: %d\n\n", $results['failed']);
 
     // ===== 5. DETALLES =====
     echo "📄 DETALLES POR DOCUMENTO:\n";
@@ -83,11 +83,11 @@ try {
 
     foreach ($results['results'] as $file => $result) {
         $fileName = basename($file);
-        $status = $result['success'] ? '✅ EXITOSO' : '❌ FALLIDO';
+        $status = $result['success'] ? '✅ SUCCESSFUL' : '❌ FALLIDO';
         echo "{$status}: {$fileName}\n";
 
         if ($result['success']) {
-            echo "\n   Contenido estructurado:\n";
+            echo "\n   Content structuredo:\n";
             foreach ($result['data'] as $key => $value) {
                 $displayValue = is_array($value) ? json_encode($value) : $value;
                 printf("   • %s: %s\n", $key, $displayValue);
@@ -99,7 +99,7 @@ try {
     }
 
     // ===== 6. EXPORTAR JSON =====
-    echo "📤 DATOS ESTRUCTURADOS EN JSON:\n";
+    echo "📤 DATA STRUCTUREDOS EN JSON:\n";
     echo "─────────────────────────────────────────────────────────────\n\n";
 
     $successfulData = $processor->getSuccessfulData();
@@ -109,13 +109,13 @@ try {
 
     // ===== 7. VALIDACIONES =====
     echo "╔══════════════════════════════════════════════════════════════╗\n";
-    echo "║   VALIDACIONES ESTRUCTURALES                                 ║\n";
+    echo "║   VALIDACIONES STRUCTURELES                                 ║\n";
     echo "╚══════════════════════════════════════════════════════════════╝\n\n";
 
     // Verificar autoload PSR-4
     echo "✅ Autoload PSR-4: FUNCIONANDO\n";
     echo "   • Namespace resuelto: ContentProcessor\\Core\\ContentProcessor\n";
-    echo "   • Archivo ubicado en: src/Core/ContentProcessor.php\n\n";
+    echo "   • File ubicado en: src/Core/ContentProcessor.php\n\n";
 
     // Verificar interfaces
     echo "✅ Interfaces Base: IMPLEMENTADAS\n";
@@ -123,27 +123,27 @@ try {
     echo "   • StructurerInterface: ✓\n";
     echo "   • SchemaInterface: ✓\n\n";
 
-    // Verificar clases
-    echo "✅ Clases de Implementación: FUNCIONALES\n";
+    // Verificar s
+    echo "✅ Classs de Implementation: FUNCIONALES\n";
     echo "   • ContentProcessor: ✓ (orquestación)\n";
-    echo "   • ArraySchema: ✓ (validación)\n";
-    echo "   • TextFileExtractor: ✓ (extracción)\n";
-    echo "   • SimpleLineStructurer: ✓ (estructuración)\n\n";
+    echo "   • ArraySchema: ✓ (validation)\n";
+    echo "   • TextFileExtractor: ✓ (extraction)\n";
+    echo "   • SimpleLineStructurer: ✓ (structureción)\n\n";
 
     // Verificar pipeline
-    echo "✅ Pipeline de Procesamiento: COMPLETO\n";
-    echo "   • Extracción de contenido: ✓\n";
-    echo "   • Estructuración según esquema: ✓\n";
-    echo "   • Validación de datos: ✓\n";
+    echo "✅ Pipeline de Processing: COMPLETO\n";
+    echo "   • Extraction de content: ✓\n";
+    echo "   • Structureción según esquema: ✓\n";
+    echo "   • Validation de data: ✓\n";
     echo "   • Batch processing: ✓\n\n";
 
     echo "╔══════════════════════════════════════════════════════════════╗\n";
-    echo "║   ✅ BLOQUE 1 COMPLETADO EXITOSAMENTE                       ║\n";
+    echo "║   ✅ BLOCK 1 COMPLETADO SUCCESSFULLY                       ║\n";
     echo "║                                                              ║\n";
     echo "║   La librería está lista para:                               ║\n";
     echo "║   • Composición con Composer                                 ║\n";
     echo "║   • Integración en Laravel/Symfony                           ║\n";
-    echo "║   • Extensión con nuevos extractores/estructuradores        ║\n";
+    echo "║   • Extensión con nuevos extractores/structureres        ║\n";
     echo "║   • Batch processing masivo                                  ║\n";
     echo "╚══════════════════════════════════════════════════════════════╝\n";
 } catch (\Throwable $e) {

@@ -8,12 +8,12 @@ examples/ ← Ejemplos y pruebas
 ├── example_basic.php
 └── sample_cv*\*.txt ← Datos de prueba
 
-Documentación:
+Documentation:
 ├── README.md ← Introducción
 ├── GUIA_RAPIDA.md ← Primeros pasos
-├── ARQUITECTURA.md ← Diseño completo
-├── BLOQUE_1_COMPLETADO.md ← Estado detallado
-├── ESTADO.md ← Resumen ejecutivo
+├── ARCHITECTURE.md ← Diseño completo
+├── BLOQUE_1_COMPLETED.md ← Status detallado
+├── STATUS.md ← Summary executive
 └── VERIFICACION.md ← Checklistsrc/ ← Código fuente (PSR-4)
 ├── Contracts/ ← 3 interfaces
 ├── Core/ ← Clase principal
@@ -24,21 +24,21 @@ examples/ ← Ejemplos y pruebas
 ├── example_basic.php
 └── sample_cv*\*.txt ← Datos de prueba
 
-Documentación:
+Documentation:
 ├── README.md ← Introducción
 ├── GUIA_RAPIDA.md ← Primeros pasos
-├── ARQUITECTURA.md ← Diseño completo
-├── BLOQUE_1_COMPLETADO.md ← Estado detallado
-├── ESTADO.md ← Resumen ejecutivo
-└── VERIFICACION.md ← Checklist# Content Processor - Arquitectura del Proyecto
+├── ARCHITECTURE.md ← Diseño completo
+├── BLOQUE_1_COMPLETED.md ← Status detallado
+├── STATUS.md ← Summary executive
+└── VERIFICACION.md ← Checklist# Content Processor - Architecture del Project
 
 ## 🏗️ Estructura General
 
 ```
 librery/
 ├── 📄 composer.json                    # Configuración de Composer
-├── 📄 README.md                        # Documentación principal
-├── 📄 BLOQUE_1_COMPLETADO.md          # Estado del bloque 1
+├── 📄 README.md                        # Documentation principal
+├── 📄 BLOQUE_1_COMPLETED.md          # Status del bloque 1
 ├── 📄 .gitignore                       # Exclusiones de git
 ├── 📄 autoload_manual.php              # Autoloader fallback
 ├── 📁 src/                             # Código fuente (PSR-4)
@@ -47,7 +47,7 @@ librery/
 │   │   ├── StructurerInterface.php     # Contrato de estructuradores
 │   │   └── SchemaInterface.php         # Contrato de esquemas
 │   ├── 📁 Core/
-│   │   └── ContentProcessor.php        # Orquestador principal
+│   │   └── ContentProcessor.php        # Orqustatusr principal
 │   ├── 📁 Schemas/
 │   │   └── ArraySchema.php             # Esquema basado en array
 │   ├── 📁 Extractors/
@@ -152,7 +152,7 @@ FIN
 
 ## 🔌 Puntos de extensión
 
-La arquitectura está diseñada para ser extensible en cada capa:
+La architecture está diseñada para ser extensible en cada capa:
 
 ### Extensión 1: Nuevo extractor
 
@@ -255,7 +255,7 @@ $processor = ContentProcessor::make()
 
 ---
 
-## 🔗 Documentación referencia
+## 🔗 Documentation referencia
 
 - [PSR-4 Autoloading](https://www.php-fig.org/psr/psr-4/)
 - [PSR-12 Coding Style](https://www.php-fig.org/psr/psr-12/)

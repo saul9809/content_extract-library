@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Ejemplo Bloque 2: PDF → Texto → Procesamiento
+ * Ejemplo Block 2: PDF → Texto → Processing
  * 
  * Demuestra:
- * 1. Extracción de texto desde PDF
- * 2. Procesamiento con ContentProcessor
- * 3. Salida JSON estructurada
+ * 1. Extraction of text desde PDF
+ * 2. Processing con ContentProcessor
+ * 3. Salida JSON structureda
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -16,7 +16,7 @@ use ContentProcessor\Core\ContentProcessor;
 use ContentProcessor\Structurers\SimpleLineStructurer;
 use ContentProcessor\Schemas\ArraySchema;
 
-echo "📋 BLOQUE 2: Extracción PDF → JSON\n";
+echo "📋 BLOCK 2: Extraction PDF → JSON\n";
 echo "=" . str_repeat("=", 50) . "\n\n";
 
 // PDF de prueba
@@ -28,34 +28,34 @@ if (!file_exists($pdfPath)) {
 }
 
 // ============================================
-// PASO 1: Extracción de Texto (PdfTextExtractor)
+// PASO 1:   (PdfText)
 // ============================================
-echo "📖 PASO 1: Extracción de Texto desde PDF\n";
+echo "📖 PASO 1: Extraction de Texto desde PDF\n";
 echo "─" . str_repeat("─", 50) . "\n";
 
 $extractor = new PdfTextExtractor();
 
 if (!$extractor->canHandle($pdfPath)) {
-    echo "❌ No puede procesarse el archivo\n";
+    echo "❌ Cannot processse el file\n";
     exit(1);
 }
 
 $textContent = $extractor->extract($pdfPath);
-echo "✅ Texto extraído del PDF:\n";
+echo "✅ Texto extracted of the PDF:\n";
 foreach ($textContent as $i => $text) {
     echo "\n[Sección " . ($i + 1) . "]:\n";
     echo $text . "\n";
 }
 
 // ============================================
-// PASO 2: Procesamiento con ContentProcessor (Batch)
+// PASO 2:  con ContentProcessor (Batch)
 // ============================================
-echo "\n📋 PASO 2: Procesamiento en Batch\n";
+echo "\n📋 PASO 2: Processing en Batch\n";
 echo "─" . str_repeat("─", 50) . "\n";
 
-// Schema simple sin campos requeridos
+// Schema simple sin  requeridos
 $schema = new ArraySchema([
-    'contenido' => ['type' => 'string']
+    'content' => ['type' => 'string']
 ]);
 
 $results = ContentProcessor::make()
@@ -65,10 +65,10 @@ $results = ContentProcessor::make()
     ->fromFiles([$pdfPath])
     ->process();
 
-echo "✅ Procesamiento completado:\n";
+echo "✅ Processing completado:\n";
 echo "   Total: " . $results['total'] . "\n";
-echo "   Exitosos: " . $results['success'] . "\n";
-echo "   Errores: " . $results['failed'] . "\n";
+echo "   Successfuls: " . $results['success'] . "\n";
+echo "   Errors: " . $results['failed'] . "\n";
 
 // ============================================
 // PASO 3: JSON de Salida
@@ -80,14 +80,14 @@ $output = [];
 foreach ($results['results'] as $file => $result) {
     if ($result['success'] && $result['data']) {
         $output[] = [
-            'archivo' => basename($file),
-            'procesado' => true,
-            'datos' => $result['data']
+            'file' => basename($file),
+            'processed' => true,
+            'data' => $result['data']
         ];
     } else {
         $output[] = [
-            'archivo' => basename($file),
-            'procesado' => false,
+            'file' => basename($file),
+            'processed' => false,
             'error' => $result['error']
         ];
     }
@@ -98,7 +98,7 @@ echo json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n\n";
 // ============================================
 // Confirmación
 // ============================================
-echo "✅ BLOQUE 2: PDF → JSON COMPLETADO\n";
+echo "✅ BLOCK 2: PDF → JSON COMPLETADO\n";
 echo "=" . str_repeat("=", 50) . "\n";
 echo "✅ PdfTextExtractor funcionando\n";
 echo "✅ Batch processing completo\n";

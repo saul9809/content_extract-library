@@ -3,45 +3,45 @@
 namespace ContentProcessor\Models;
 
 /**
- * Normalización de errores técnicos.
+ * Error normalization técnicos.
  * 
- * Estructura estándar para todos los errores que ocurren durante
- * la ingesta, extracción o validación de documentos.
+ * Standard structure para todos los errors that occur durante
+ * la ingestion, extraction o validation de documentos.
  * 
- * A diferencia de los warnings (Bloque 3), los errores indican
- * que el documento NO fue procesado exitosamente.
+ * A diferencia de los warnings (Block 3), los errors indican
+ * que el documento NO fue processed successfully.
  * 
  * @package ContentProcessor\Models
- * @since 1.3.0 (Bloque 4)
+ * @since 1.3.0 (Block 4)
  */
 class Error
 {
     /**
-     * Tipo de error (ej: 'extraction', 'validation', 'runtime')
+     * Error type (ej: 'extraction', 'validation', 'runtime')
      * @var string
      */
     private string $type;
 
     /**
-     * Mensaje de error legible.
+     * Error message readable.
      * @var string
      */
     private string $message;
 
     /**
-     * Contexto adicional del error (ej: nombre del archivo, línea, etc.)
+     * Additional context del error (ej: file name, line, etc.)
      * @var array
      */
     private array $context;
 
     /**
-     * Código de error (opcional, para debugging).
+     * Error code (opcional, para debugging).
      * @var string|null
      */
     private ?string $code;
 
     /**
-     * Timestamp del error.
+     * Error timestamp.
      * @var int
      */
     private int $timestamp;
@@ -49,10 +49,10 @@ class Error
     /**
      * Constructor.
      * 
-     * @param string $type Tipo de error
+     * @param string $type Error type
      * @param string $message Mensaje descriptivo
-     * @param array $context Contexto adicional
-     * @param string|null $code Código de error opcional
+     * @param array $context Additional context
+     * @param string|null $code Error code opcional
      */
     public function __construct(
         string $type,
@@ -68,7 +68,7 @@ class Error
     }
 
     /**
-     * Factory para errores de extracción.
+     * Factory para errors de extraction.
      * 
      * @param string $message
      * @param array $context
@@ -80,7 +80,7 @@ class Error
     }
 
     /**
-     * Factory para errores de validación.
+     * Factory para errors de validation.
      * 
      * @param string $message
      * @param array $context
@@ -92,7 +92,7 @@ class Error
     }
 
     /**
-     * Factory para errores en tiempo de ejecución.
+     * Factory para errors en tiempo de ejecución.
      * 
      * @param string $message
      * @param array $context
@@ -104,7 +104,7 @@ class Error
     }
 
     /**
-     * Obtiene el tipo de error.
+     * Obtiene el error type.
      * @return string
      */
     public function getType(): string
@@ -113,7 +113,7 @@ class Error
     }
 
     /**
-     * Obtiene el mensaje de error.
+     * Obtiene el error message.
      * @return string
      */
     public function getMessage(): string
@@ -122,7 +122,7 @@ class Error
     }
 
     /**
-     * Obtiene el contexto del error.
+     * Obtiene el context del error.
      * @return array
      */
     public function getContext(): array
@@ -131,7 +131,7 @@ class Error
     }
 
     /**
-     * Obtiene un valor específico del contexto.
+     * Obtiene un valor específico del context.
      * 
      * @param string $key
      * @param mixed $default
@@ -143,7 +143,7 @@ class Error
     }
 
     /**
-     * Obtiene el código de error.
+     * Obtiene el error code.
      * @return string|null
      */
     public function getCode(): ?string
@@ -152,7 +152,7 @@ class Error
     }
 
     /**
-     * Obtiene el timestamp del error.
+     * Obtiene el error timestamp.
      * @return int
      */
     public function getTimestamp(): int
@@ -176,7 +176,7 @@ class Error
     }
 
     /**
-     * Convierte a string legible.
+     * Convierte a string readable.
      * @return string
      */
     public function __toString(): string

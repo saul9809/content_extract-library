@@ -35,7 +35,7 @@ Or add to your `composer.json`:
 }
 ```
 
-## 🏗️ Estructura del proyecto
+## 🏗️ Estructura del project
 
 ```
 src/
@@ -179,33 +179,33 @@ $processor->withOptions([
 
 ## ✅ Características implementadas (Bloques 1-5)
 
-### Bloque 1: Core ✅
+### Block 1: Core ✅
 
 - Framework-agnostic design con interfaces limpias
 - Extractor/Structurer pattern
 - JSON schema validation
 - Batch processing
 
-### Bloque 2: PDF Support ✅
+### Block 2: PDF Support ✅
 
 - PdfTextExtractor con smalot/pdfparser
 - Batch processing con múltiples PDFs
 - Error handling robusto
 
-### Bloque 3: Semantic Structuring ✅
+### Block 3: Semantic Structuring ✅
 
 - RuleBasedStructurer para extracción avanzada
 - DocumentContext para información de procesamiento
 - Warning system para calidad de datos
 
-### Bloque 4: Final Result API ✅
+### Block 4: Final Result API ✅
 
 - FinalResult object unificado
 - Normalización de errores y warnings
 - Summary con estadísticas
 - JSON export y serialización completa
 
-### Bloque 5: Security & Hardening ✅
+### Block 5: Security & Hardening ✅
 
 - File size limits (10 MB por defecto)
 - Batch document limits (50 documentos por defecto)
@@ -216,8 +216,8 @@ $processor->withOptions([
 ## 📚 Documentation
 
 - [SECURITY.md](SECURITY.md) - Política de seguridad y límites configurables
-- [ARQUITECTURA.md](ARQUITECTURA.md) - Diseño arquitectónico completo
-- [GUIA_RAPIDA.md](GUIA_RAPIDA.md) - Referencia rápida de uso
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Diseño arquitectónico completo
+- [GUIA_RAPIDA.md](GUIA_RAPIDA.md) - Referencia quick de uso
 
 ## 🔌 API Reference
 

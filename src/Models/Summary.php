@@ -3,10 +3,10 @@
 namespace ContentProcessor\Models;
 
 /**
- * Resumen de estadísticas de procesamiento batch.
+ * Resumen de estadísticas de processing batch.
  * 
  * Proporciona métricas agregadas sobre la ejecución
- * del procesamiento masivo de documentos.
+ * del processing masivo de documentos.
  * 
  * Útil para:
  * - Reportes de calidad
@@ -15,18 +15,18 @@ namespace ContentProcessor\Models;
  * - Debugging de problemas comunes
  * 
  * @package ContentProcessor\Models
- * @since 1.3.0 (Bloque 4)
+ * @since 1.3.0 (Block 4)
  */
 class Summary
 {
     /**
-     * Total de documentos procesados.
+     * Total de documentos processeds.
      * @var int
      */
     private int $totalDocuments;
 
     /**
-     * Documentos procesados exitosamente.
+     * Documentos processeds successfully.
      * @var int
      */
     private int $successfulDocuments;
@@ -44,13 +44,13 @@ class Summary
     private int $totalWarnings;
 
     /**
-     * Total de errores generados.
+     * Total de errors generados.
      * @var int
      */
     private int $totalErrors;
 
     /**
-     * Tiempo total de procesamiento en segundos.
+     * Tiempo total de processing en segundos.
      * @var float
      */
     private float $processingTime;
@@ -109,7 +109,7 @@ class Summary
     }
 
     /**
-     * Obtiene el total de documentos exitosos.
+     * Obtiene el total de documentos successfuls.
      * @return int
      */
     public function getSuccessfulDocuments(): int
@@ -136,7 +136,7 @@ class Summary
     }
 
     /**
-     * Obtiene el total de errores.
+     * Obtiene el total de errors.
      * @return int
      */
     public function getTotalErrors(): int
@@ -145,7 +145,7 @@ class Summary
     }
 
     /**
-     * Obtiene el tiempo de procesamiento en segundos.
+     * Obtiene el tiempo de processing en segundos.
      * @return float
      */
     public function getProcessingTime(): float
@@ -184,7 +184,7 @@ class Summary
     }
 
     /**
-     * Calcula la tasa de fallo como porcentaje.
+     * Calcula la tasa de failure como porcentaje.
      * @return float Entre 0 y 100
      */
     public function getFailureRate(): float
@@ -211,7 +211,7 @@ class Summary
     public function getSummaryString(): string
     {
         return sprintf(
-            '%d/%d exitosos (%.1f%%), %d errores, %d warnings, %.2fs',
+            '%d/%d successfuls (%.1f%%), %d errors, %d warnings, %.2fs',
             $this->successfulDocuments,
             $this->totalDocuments,
             $this->getSuccessRate(),

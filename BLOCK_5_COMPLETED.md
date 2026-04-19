@@ -1,25 +1,25 @@
-# 🔒 BLOQUE 5: SEGURIDAD, COMPLIANCE Y PUBLICACIÓN
+# 🔒 BLOQUE 5: SEGURIDAD, COMPLIANCE Y PUBLICATION
 
-**Fecha de Entrega:** Abril 2026  
+**Fecha de Delivery:** Abril 2026  
 **Versión Librería:** v1.4.0  
-**Estado:** ✅ **COMPLETADO**  
-**Equipo:** Arquitectura de Software / Seguridad
+**Status:** ✅ **COMPLETED**  
+**Equipo:** Architecture de Software / Seguridad
 
 ---
 
-## RESUMEN EJECUTIVO
+## SUMMARY EXECUTIVE
 
-El Bloque 5 implementa la **capa de seguridad y hardening** de Content Processor, preparando la librería para **producción y distribución pública** en Packagist. Se añadieron:
+El Block 5 implementa la **capa de seguridad y hardening** de Content Processor, preparando la librería para **producción y distribución pública** en Packagist. Se añadieron:
 
 ✅ **3 clases de seguridad** (SecurityConfig, SecurityException, SecurityValidator)  
 ✅ **0 cambios en API** (transparencia total)  
 ✅ **Protección contra DoS, path traversal, PDF spoofing**  
-✅ **Documentación legal** (LICENSE, SECURITY.md)  
+✅ **Documentation legal** (LICENSE, SECURITY.md)  
 ✅ **composer.json listo para Packagist**
 
 ---
 
-## I. OBJETIVOS CUMPLIDOS (Bloque 5)
+## I. OBJETIVOS CUMPLIDOS (Block 5)
 
 ### A. Seguridad y Hardening ✅
 
@@ -118,7 +118,7 @@ of this software...
 #### 2. **Archivo SECURITY.md**
 
 - Secciones: 10 áreas de cobertura
-- Público: Guía para usuarios, equipos de seguridad
+- Público: Guide para usuarios, equipos de seguridad
 - Referencias: RFC 9116 (Responsible Disclosure)
 
 **Contenido:**
@@ -157,7 +157,7 @@ of this software...
 }
 ```
 
-**Estado de Packagist:**
+**Status de Packagist:**
 
 - ✅ Nombre válido (vendor/package)
 - ✅ PHP versión especificada (>=8.1)
@@ -215,7 +215,7 @@ TEST 3: PDFs Corruptos
 
 ---
 
-## II. ARQUITECTURA DE SEGURIDAD
+## II. ARCHITECTURE DE SEGURIDAD
 
 ### Diagrama de Flujo
 
@@ -257,9 +257,9 @@ SecurityException
 
 ---
 
-## III. ARCHIVOS ENTREGADOS
+## III. ARCHIVOS DELIVERYDOS
 
-### Nuevos (Bloque 5)
+### Nuevos (Block 5)
 
 | Archivo                                            | Líneas | Descripción                                        |
 | -------------------------------------------------- | ------ | -------------------------------------------------- |
@@ -267,7 +267,7 @@ SecurityException
 | `src/Security/SecurityException.php`               | 89     | Excepciones seguras con separación público/privado |
 | `src/Security/SecurityValidator.php`               | 118    | Lógica de validación de seguridad                  |
 | `LICENSE`                                          | 21     | MIT License (Packagist)                            |
-| `SECURITY.md`                                      | 280+   | Documentación completa de seguridad                |
+| `SECURITY.md`                                      | 280+   | Documentation completa de seguridad                |
 | `examples/test_robustez_bloque5.php`               | 165    | 5 pruebas de robustez                              |
 | `examples/example_bloque5_laravel_integration.php` | 215    | Integración Laravel + Seguridad                    |
 
@@ -357,12 +357,12 @@ $ php examples/example_bloque4_laravel_style.php    # ✅ Funciona
 - [x] Dependencias documentadas
 - [x] Changelog de seguridad
 
-### Documentación
+### Documentation
 
 - [x] Código comentado (docblocks PHP)
 - [x] README de cada clase nueva
 - [x] Ejemplos de uso (robustez + Laravel)
-- [x] Guía de integración
+- [x] Guide de integración
 
 ### Packagist Support
 
@@ -464,17 +464,17 @@ public function upload(Request $request) {
 
 ## IX. CONCLUSIONES
 
-### Logros de Bloque 5
+### Logros de Block 5
 
 ✅ **Seguridad:** Capa completa de hardening sin cambios de API  
-✅ **Compliance:** Documentación legal y de seguridad lista  
+✅ **Compliance:** Documentation legal y de seguridad lista  
 ✅ **Robustez:** Probadas protecciones contra DoS, path traversal, PDF spoofing  
 ✅ **Producción:** composer.json listo para Packagist  
 ✅ **Integración:** Laravel examples validados completamente
 
-### Estado de Librería
+### Status de Librería
 
-| Componente        | Versión | Estado              |
+| Componente        | Versión | Status              |
 | ----------------- | ------- | ------------------- |
 | Content Processor | v1.4.0  | ✅ Production-ready |
 | Security Layer    | v1.0.0  | ✅ Completo         |
@@ -489,16 +489,16 @@ public function upload(Request $request) {
 - ✅ Security layer transparente (0 breaking changes)
 - ✅ MIT license compatible (open-source)
 - ✅ Ejemplos completos (robustez, Laravel)
-- ✅ Documentación completa (techniques, risks, reporting)
+- ✅ Documentation completa (techniques, risks, reporting)
 
 **RECOMENDACIÓN:** Publicar con tag de versión `v1.4.0` 🚀
 
 ---
 
-## X. ARCHIVOS GENERADOS RESUMEN
+## X. ARCHIVOS GENERADOS SUMMARY
 
 ```
-✅ CREADOS (Bloque 5):
+✅ CREADOS (Block 5):
    src/Security/
    ├── SecurityConfig.php
    ├── SecurityException.php
@@ -512,7 +512,7 @@ public function upload(Request $request) {
    ├── LICENSE
    └── SECURITY.md
 
-📝 MODIFICADOS (Bloque 5):
+📝 MODIFICADOS (Block 5):
    src/Core/ContentProcessor.php
    composer.json
 
@@ -524,7 +524,7 @@ public function upload(Request $request) {
 
 ---
 
-**ESTADO FINAL:** ✅ **BLOQUE 5 COMPLETADO Y VALIDADO**
+**STATUS FINAL:** ✅ **BLOQUE 5 COMPLETED Y VALIDADO**
 
 _Generado en: Abril 2026_  
 _Versión: Content Processor v1.4.0_

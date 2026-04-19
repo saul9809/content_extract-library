@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Ejemplo: Estructuración Semántica de PDFs (Bloque 3)
+ * Ejemplo: Structureción Semántica de PDFs (Block 3)
  * 
  * Demuestra el flujo completo:
- * 1. Extracta texto de múltiples PDFs (Bloque 2)
- * 2. Estructura el texto con RuleBasedStructurer (Bloque 3)
- * 3. Genera JSON estructurado + warnings + errores técnicos
+ * 1. Extracta texto de múltiples PDFs (Block 2)
+ * 2. Structure el texto con RuleBasedStructurer (Block 3)
+ * 3. Genera JSON structuredo + warnings + errors técnicos
  * 4. Output con análisis de calidad
  * 
  * Uso:
  *     php examples/test_structuring.php
  * 
- * @since Bloque 3 - Estructuración Semántica
+ * @since Block 3 - Structureción Semántica
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -26,7 +26,7 @@ use ContentProcessor\Schemas\ArraySchema;
 // ============================================================================
 // 1. Definir el Schema
 // ============================================================================
-// Este schema define la estructura esperada para un CV
+// Este schema define la  esperada para un CV
 
 $cvSchema = new ArraySchema([
     'name' => [
@@ -62,7 +62,7 @@ $cvSchema = new ArraySchema([
 $structurer = new RuleBasedStructurer();
 
 // ============================================================================
-// 3. Procesar PDFs
+// 3.  PDFs
 // ============================================================================
 
 $processor = ContentProcessor::make()
@@ -81,15 +81,15 @@ $results = $processor->process();
 
 echo "\n";
 echo "═══════════════════════════════════════════════════════════════\n";
-echo "  BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA DE PDFs\n";
+echo "  BLOCK 3: STRUCTURECIÓN SEMÁNTICA DE PDFs\n";
 echo "═══════════════════════════════════════════════════════════════\n";
 echo "\n";
 
-echo "📊 RESUMEN DE PROCESAMIENTO\n";
+echo "📊 RESUMEN DE PROCESSING\n";
 echo "───────────────────────────────────────────────────────────────\n";
 echo "Total de documentos:     {$results['total']}\n";
 echo "Éxito:                   {$results['success']}\n";
-echo "Fallos:                  {$results['failed']}\n";
+echo "Failures:                  {$results['failed']}\n";
 echo "\n";
 
 foreach ($results['results'] as $filePath => $result) {
@@ -104,11 +104,11 @@ foreach ($results['results'] as $filePath => $result) {
         continue;
     }
 
-    echo "✅ Procesado exitosamente\n";
+    echo "✅ Processed successfully\n";
     echo "\n";
 
-    // Datos estructurados
-    echo "📋 DATOS ESTRUCTURADOS:\n";
+    //  dos
+    echo "📋 DATA STRUCTUREDOS:\n";
     echo json_encode($result['data'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n";
     echo "\n";
 
@@ -120,12 +120,12 @@ foreach ($results['results'] as $filePath => $result) {
         }
         echo "\n";
     } else {
-        echo "✓ Sin warnings - Datos de alta calidad\n";
+        echo "✓ Sin warnings - Data de alta calidad\n";
         echo "\n";
     }
 }
 
 echo "═══════════════════════════════════════════════════════════════\n";
-echo "  END OF BLOQUE 3 EXAMPLE\n";
+echo "  END OF BLOCK 3 EXAMPLE\n";
 echo "═══════════════════════════════════════════════════════════════\n";
 echo "\n";

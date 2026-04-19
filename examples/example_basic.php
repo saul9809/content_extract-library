@@ -1,13 +1,13 @@
 <?php
 
 /**
- * EJEMPLO FUNCIONAL 1: Procesamiento básico
+ * EJEMPLO FUNCIONAL 1: Processing básico
  * 
  * Este script demuestra:
  * - Autoload funcional (PSR-4)
  * - Uso de interfaces
- * - Pipeline de procesamiento
- * - Estructuración de datos
+ * - Pipeline de processing
+ * - Structureción de data
  * - Output JSON
  */
 
@@ -21,7 +21,7 @@ use ContentProcessor\Structurers\SimpleLineStructurer;
 
 // ===== 1. Definir el esquema =====
 $schema = new ArraySchema([
-    'nombre' => [
+    'name' => [
         'type' => 'string',
         'required' => true,
     ],
@@ -43,7 +43,7 @@ $schema = new ArraySchema([
     ],
 ], 'CVSchema');
 
-// ===== 2. Crear y configurar el procesador =====
+// ===== 2. Crear y configurar el  =====
 $processor = ContentProcessor::make()
     ->withSchema($schema)
     ->withExtractor(new TextFileExtractor())
@@ -54,26 +54,26 @@ $processor = ContentProcessor::make()
         'preserve_empty' => false,
     ]);
 
-// ===== 3. Procesar =====
+// ===== 3.  =====
 echo "Procesando documentos...\n";
 echo "================================================\n";
 
 $results = $processor->process();
 
 // ===== 4. Mostrar resultados =====
-echo "\n📊 RESUMEN DE PROCESAMIENTO:\n";
+echo "\n📊 RESUMEN DE PROCESSING:\n";
 echo "================================================\n";
-echo sprintf("Total procesados: %d\n", $results['total']);
-echo sprintf("✅ Exitosos: %d\n", $results['success']);
+echo sprintf("Total processeds: %d\n", $results['total']);
+echo sprintf("✅ Successfuls: %d\n", $results['success']);
 echo sprintf("❌ Fallidos: %d\n", $results['failed']);
 echo "\n";
 
-// Mostrar detalles de cada archivo
-echo "📄 DETALLES POR ARCHIVO:\n";
+// Mostrar detalles de cada 
+echo "📄 DETALLES POR FILE:\n";
 echo "================================================\n";
 
 foreach ($results['results'] as $file => $result) {
-    $status = $result['success'] ? '✅ EXITOSO' : '❌ FALLIDO';
+    $status = $result['success'] ? '✅ SUCCESSFUL' : '❌ FALLIDO';
     echo "\n{$status}: {$file}\n";
 
     if ($result['success']) {
@@ -84,11 +84,11 @@ foreach ($results['results'] as $file => $result) {
     echo "\n";
 }
 
-// ===== 5. Exportar solo los datos exitosos =====
-echo "\n\n📤 EXPORTAR DATOS EXITOSOS (JSON):\n";
+// ===== 5. Exportar solo los  s =====
+echo "\n\n📤 EXPORTAR DATA SUCCESSFULS (JSON):\n";
 echo "================================================\n";
 
 $successfulData = $processor->getSuccessfulData();
 echo json_encode($successfulData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-echo "\n\n✅ Procesamiento completado.\n";
+echo "\n\n✅ Processing completado.\n";

@@ -1,30 +1,30 @@
-# 📋 Bloque 3: Estructuración Semántica - Entrega Completa
+# 📋 Block 3: Estructuración Semántica - Delivery Completa
 
 **Fecha:** 18 de Abril, 2026  
-**Estado:** ✅ **COMPLETADO Y TESTEADO**  
+**Status:** ✅ **COMPLETED Y TESTEADO**  
 **Compatibilidad:** ✅ Bloques 1 y 2 Intactos
 
 ---
 
-## A. Explicación del Bloque 3
+## A. Explicación del Block 3
 
 ### Objetivo
 
-Convertir el texto crudo extraído de PDFs (Bloque 2) en **JSON estructurado y valido**, definido por el usuario técnico, con soporte para **warnings semánticos** sin afectar errores técnicos previos.
+Convertir el texto crudo extraído de PDFs (Block 2) en **JSON estructurado y valido**, definido por el usuario técnico, con soporte para **warnings semánticos** sin afectar errores técnicos previos.
 
 ### Alcance
 
-El Bloque 3 implementa la **capa semántica** de procesamiento:
+El Block 3 implementa la **capa semántica** de procesamiento:
 
 ```
-Bloque 2: PDF → Texto Crudo
+Block 2: PDF → Texto Crudo
          ↓
-Bloque 3: Texto Crudo → JSON Estructurado + Warnings
+Block 3: Texto Crudo → JSON Estructurado + Warnings
          ↓
 Output: {
   "data": {...},
   "warnings": {"field": "descripción"},
-  "errors": {...}  // del Bloque 2, intactos
+  "errors": {...}  // del Block 2, intactos
 }
 ```
 
@@ -50,7 +50,7 @@ Output: {
 
 - Detección automática de `SemanticStructurerInterface`
 - Captura transparente de warnings
-- API idéntica a Bloque 1 (backward compatible)
+- API idéntica a Block 1 (backward compatible)
 
 ---
 
@@ -82,7 +82,7 @@ namespace ContentProcessor\Models;
  * Contexto semántico de un documento.
  * Agrupa: referencia al archivo + contenido crudo + metadatos
  *
- * @since Bloque 3
+ * @since Block 3
  */
 class DocumentContext
 {
@@ -140,7 +140,7 @@ namespace ContentProcessor\Models;
  * Resultado de estructuración semántica.
  * Incluye: JSON + warnings semánticos (distintos de errores técnicos)
  *
- * @since Bloque 3
+ * @since Block 3
  */
 class StructuredDocumentResult
 {
@@ -207,10 +207,10 @@ use ContentProcessor\Models\DocumentContext;
 use ContentProcessor\Models\StructuredDocumentResult;
 
 /**
- * Interfaz para estructuradores semánticos avanzados (Bloque 3).
+ * Interfaz para estructuradores semánticos avanzados (Block 3).
  * Extiende StructurerInterface con soporte para contexto y warnings.
  *
- * @since Bloque 3
+ * @since Block 3
  */
 interface SemanticStructurerInterface extends StructurerInterface
 {
@@ -256,7 +256,7 @@ use ContentProcessor\Models\StructuredDocumentResult;
  * Genera warnings para campos ambiguos/ausentes
  * Convierte tipos básicos (string, int, float, bool, array)
  *
- * @since Bloque 3
+ * @since Block 3
  */
 class RuleBasedStructurer implements SemanticStructurerInterface
 {
@@ -432,7 +432,7 @@ php examples/test_structuring.php
   BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA DE PDFs
 ═══════════════════════════════════════════════════════════════
 
-📊 RESUMEN DE PROCESAMIENTO
+📊 SUMMARY DE PROCESAMIENTO
 ───────────────────────────────────────────────────────────────
 Total de documentos:     1
 Éxito:                   1
@@ -497,13 +497,13 @@ Con fallos técnicos:  1
    Validación fallida: Campo 'email' es requerido.
 
 ═══════════════════════════════════════════════════════════════
-📌 RESUMEN FINAL
+📌 SUMMARY FINAL
 ───────────────────────────────────────────────────────────────
 Documentos con warnings: 0
 Total warnings generados: 0
 Tasa de éxito: 50%
 
-✅ BLOQUE 3 COMPLETADO
+✅ BLOQUE 3 COMPLETED
 ```
 
 ---
@@ -550,7 +550,7 @@ Tasa de éxito: 50%
 }
 ```
 
-### 3. Resultado con Error Técnico (Bloque 2)
+### 3. Resultado con Error Técnico (Block 2)
 
 ```json
 {
@@ -601,11 +601,11 @@ Tasa de éxito: 50%
 ### 1. Verificar Integridad General
 
 ```bash
-cd /ruta/a/proyecto
-php examples/test_functional.php  # Bloque 1 (debe pasar)
+cd /ruta/a/project
+php examples/test_functional.php  # Block 1 (debe pasar)
 ```
 
-**Resultado esperado:** ✅ Bloque 1 funciona sin cambios
+**Resultado esperado:** ✅ Block 1 funciona sin cambios
 
 ### 2. Probar Estructuración Básica
 
@@ -664,11 +664,11 @@ foreach ($result['results'] as $path => $item) {
 
 ---
 
-## G. Confirmación Explícita de Cierre del Bloque 3
+## G. Confirmación Explícita de Closure del Block 3
 
-### ✅ Bloque 3 COMPLETADO Y VERIFICADO
+### ✅ Block 3 COMPLETED Y VERIFICADO
 
-**Checklist de Entrega:**
+**Checklist de Delivery:**
 
 - ✅ **Modelos de Datos**
   - `DocumentContext`: ✓ Creado, documentado, testeado
@@ -676,7 +676,7 @@ foreach ($result['results'] as $path => $item) {
 
 - ✅ **Contratos/Interfaces**
   - `SemanticStructurerInterface`: ✓ Estendió StructurerInterface sin romper
-  - Compatibilidad: ✓ Bloque 1 sigue funcionando
+  - Compatibilidad: ✓ Block 1 sigue funcionando
 
 - ✅ **Implementación**
   - `RuleBasedStructurer`: ✓ Determinista, sin IA/OCR, con reglas simples
@@ -693,9 +693,9 @@ foreach ($result['results'] as $path => $item) {
   - Generador PDF: ✓ `generate_structured_pdf.php`
 
 - ✅ **Verificaciones**
-  - Bloque 1: ✓ Funciona (test_functional.php)
-  - Bloque 2: ✓ Funciona (PdfTextExtractor)
-  - Bloque 3: ✅ Completamente operativo
+  - Block 1: ✓ Funciona (test_functional.php)
+  - Block 2: ✓ Funciona (PdfTextExtractor)
+  - Block 3: ✅ Completamente operativo
 
 - ✅ **Características NO Implementadas** (Por diseño)
   - ❌ OCR: No incluido
@@ -730,7 +730,7 @@ foreach ($result['results'] as $path => $item) {
 - ✓ `src/Core/ContentProcessor.php` (API pública idéntica)
 - ✓ `src/Structurers/SimpleLineStructurer.php`
 - ✓ `src/Extractors/PdfTextExtractor.php`
-- ✓ Todos los ejemplos del Bloque 1 y 2
+- ✓ Todos los ejemplos del Block 1 y 2
 
 ### Métricas
 
@@ -748,14 +748,14 @@ foreach ($result['results'] as $path => $item) {
 
 ## 🎯 RESULTADO FINAL
 
-**El Bloque 3 está completamente implementado, testeado y listo para producción.**
+**El Block 3 está completamente implementado, testeado y listo para producción.**
 
 ```php
-// Uso típico (Bloque 3)
+// Uso típico (Block 3)
 $processor = ContentProcessor::make()
     ->withSchema($schema)
     ->withExtractor(new PdfTextExtractor())
-    ->withStructurer(new RuleBasedStructurer())  // ← Bloque 3
+    ->withStructurer(new RuleBasedStructurer())  // ← Block 3
     ->fromDirectory('/docs')
     ->process();
 
@@ -770,11 +770,11 @@ foreach ($processor->getResults()['results'] as $file => $result) {
 
 ---
 
-**Próximos Pasos (FUTUROS, no incluidos en Bloque 3):**
+**Próximos Pasos (FUTUROS, no incluidos en Block 3):**
 
-- Bloque 4: Validadores personalizados / Webhooks
-- Bloque 5: Caché y performance
-- Bloque 6: Exportadores (Excel, XML, etc.)
+- Block 4: Validadores personalizados / Webhooks
+- Block 5: Caché y performance
+- Block 6: Exportadores (Excel, XML, etc.)
 
 ---
 

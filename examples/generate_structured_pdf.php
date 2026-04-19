@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Generador de PDF con contenido estructurado (campo: valor)
+ * Generador de PDF con content structuredo (field: valor)
  * 
- * Crea un PDF simple con contenido en formato que el RuleBasedStructurer
- * puede parsear fácilmente: líneas con "field_name: value"
+ * Crea un PDF simple con content en formato que el RuleBasedStructurer
+ * can parsear fácilmente: lines con "field_name: value"
  * 
  * Este generador crea un PDF válido.
  * 
@@ -12,7 +12,7 @@
  *     php examples/generate_structured_pdf.php
  */
 
-// PDF válido con contenido estructurado
+// PDF válido con  do
 function createStructuredPdf($filename)
 {
     $content = "name: Juan García López\nemail: juan.garcia@example.com\nphone: +34 912 345 678\nexperience_years: 8\nskills: PHP, Laravel, MySQL, Docker, Git\neducation: Licenciatura en Informática\n";
@@ -83,5 +83,5 @@ $filename = __DIR__ . '/sample_cv.pdf';
 createStructuredPdf($filename);
 
 echo "✅ PDF creado: $filename\n";
-echo "   Contenido: CV estructurado con formato 'field: value'\n";
+echo "   Content: CV structuredo con formato 'field: value'\n";
 echo "   Listo para RuleBasedStructurer\n";

@@ -21,11 +21,11 @@
 ┌─────────────────────────────┬────────┬──────────────────────────────────┐
 │ DELIVERABLE                 │ STATUS │ VERIFICATION                     │
 ├─────────────────────────────┼────────┼──────────────────────────────────┤
-│ Bloque 1: Core Extractors   │   ✅   │ TextFileExtractor (functional)   │
-│ Bloque 2: PDF Processing    │   ✅   │ PdfTextExtractor + batch API     │
-│ Bloque 3: Semantic Structure│   ✅   │ RuleBasedStructurer + warnings   │
-│ Bloque 4: Final Result API  │   ✅   │ FinalResult + Error/Summary      │
-│ Bloque 5: Security Hardening│   ✅   │ SecurityValidator + Config       │
+│ Block 1: Core Extractors   │   ✅   │ TextFileExtractor (functional)   │
+│ Block 2: PDF Processing    │   ✅   │ PdfTextExtractor + batch API     │
+│ Block 3: Semantic Structure│   ✅   │ RuleBasedStructurer + warnings   │
+│ Block 4: Final Result API  │   ✅   │ FinalResult + Error/Summary      │
+│ Block 5: Security Hardening│   ✅   │ SecurityValidator + Config       │
 ├─────────────────────────────┼────────┼──────────────────────────────────┤
 │ composer.json               │   ✅   │ Valid & optimized                │
 │ README.md                   │   ✅   │ Complete with v1.3.0 examples    │
@@ -93,7 +93,7 @@
 ✅ FinalResult Object
    - Interfaz unificada de resultados
    - Acceso a: data, errors, warnings, summary
-   - Métodos de estado: hasErrors(), isSuccessful()
+   - Métodos de status: hasErrors(), isSuccessful()
    - Serialización JSON
 
 ✅ Normalized Classes
@@ -142,24 +142,24 @@
 │   ├── 📁 Core/
 │   │   └── ContentProcessor.php          ✅ Main orchestrator
 │   ├── 📁 Extractors/
-│   │   ├── PdfTextExtractor.php          ✅ Bloque 2
-│   │   └── TextFileExtractor.php         ✅ Bloque 1
+│   │   ├── PdfTextExtractor.php          ✅ Block 2
+│   │   └── TextFileExtractor.php         ✅ Block 1
 │   ├── 📁 Models/
 │   │   ├── DocumentContext.php
-│   │   ├── Error.php                     ✅ Bloque 4
-│   │   ├── FinalResult.php               ✅ Bloque 4
+│   │   ├── Error.php                     ✅ Block 4
+│   │   ├── FinalResult.php               ✅ Block 4
 │   │   ├── StructuredDocumentResult.php
-│   │   ├── Summary.php                   ✅ Bloque 4
-│   │   └── Warning.php                   ✅ Bloque 3
+│   │   ├── Summary.php                   ✅ Block 4
+│   │   └── Warning.php                   ✅ Block 3
 │   ├── 📁 Schemas/
 │   │   └── ArraySchema.php
 │   ├── 📁 Security/
-│   │   ├── SecurityConfig.php            ✅ Bloque 5
-│   │   ├── SecurityException.php         ✅ Bloque 5
-│   │   └── SecurityValidator.php         ✅ Bloque 5
+│   │   ├── SecurityConfig.php            ✅ Block 5
+│   │   ├── SecurityException.php         ✅ Block 5
+│   │   └── SecurityValidator.php         ✅ Block 5
 │   └── 📁 Structurers/
-│       ├── RuleBasedStructurer.php       ✅ Bloque 3
-│       └── SimpleLineStructurer.php      ✅ Bloque 1
+│       ├── RuleBasedStructurer.php       ✅ Block 3
+│       └── SimpleLineStructurer.php      ✅ Block 1
 │
 ├── 📁 examples/                          ✅ 10+ functional examples
 │   ├── example_basic.php
@@ -172,10 +172,10 @@
 ├── 📁 vendor/                            ✅ Dependencies (smalot/pdfparser)
 │
 └── 📄 Documentation (Total: 6 files)
-    ├── ARQUITECTURA.md
+    ├── ARCHITECTURE.md
     ├── PUBLICACION_PACKAGIST.md          ✅ A-G detailed guide
     ├── PACKAGIST_RELEASE_READY.md        ✅ Final checklist
-    ├── CIERRE_FINAL_PACKAGIST.md         ✅ Closure document
+    ├── CLOSURE_FINAL_PACKAGIST.md         ✅ Closure document
     ├── verify_packagist_ready.php        ✅ 15-point validation
     └── verify_installation.php           ✅ Installation test
 ```

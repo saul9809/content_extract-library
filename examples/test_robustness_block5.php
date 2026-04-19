@@ -1,14 +1,14 @@
 <?php
 
 /**
- * BLOQUE 5 - Ejemplo de Robustez: Pruebas de Límites de Seguridad
+ * BLOCK 5 - Ejemplo de Robustez: Pruebas de Límites de Seguridad
  * 
  * Demuestra cómo Content Processor maneja:
  * - PDFs vacíos
  * - PDFs corruptos
  * - PDFs muy grandes
  * - Batch demasiado grande
- * - Archivos inválidos
+ * - Files inválidos
  * 
  * Ejecutar: php examples/test_robustez_bloque5.php
  */
@@ -23,7 +23,7 @@ use ContentProcessor\Security\SecurityConfig;
 use ContentProcessor\Security\SecurityException;
 
 echo "╔════════════════════════════════════════╗\n";
-echo "║  BLOQUE 5: Pruebas de Robustez        ║\n";
+echo "║  BLOCK 5: Pruebas de Robustez        ║\n";
 echo "║         (Límites de Seguridad)         ║\n";
 echo "╚════════════════════════════════════════╝\n\n";
 
@@ -33,7 +33,7 @@ $testDir = __DIR__ . '/test_robustez_security';
 
 // Configuración
 $schema = new ArraySchema([
-    'nombre' => ['type' => 'string', 'required' => true],
+    'name' => ['type' => 'string', 'required' => true],
     'email' => ['type' => 'string', 'required' => false],
 ]);
 
@@ -64,10 +64,10 @@ try {
 
 // Test 2: PDF Corrupto (cabecera inválida)
 echo "2️⃣  Prueba: PDF Corrupto\n";
-echo "   Acción: Crear archivo que no es PDF\n";
+echo "   Acción: Crear file que is not PDF\n";
 
 $corruptPdfPath = "$testDir/corrupto.pdf";
-file_put_contents($corruptPdfPath, "Este no es un PDF\nSolo texto normal");
+file_put_contents($corruptPdfPath, "Este is not un PDF\nSolo texto normal");
 
 try {
     $result = ContentProcessor::make()
@@ -90,14 +90,14 @@ try {
 
 // Test 3: Batch Demasiado Grande
 echo "3️⃣  Prueba: Batch Demasiado Grande\n";
-echo "   Acción: Intentar procesar " . (SecurityConfig::MAX_BATCH_DOCUMENTS + 10) . " documentos\n";
+echo "   Acción: Intentar process " . (SecurityConfig::MAX_BATCH_DOCUMENTS + 10) . " documentos\n";
 echo "   Límite configurado: " . SecurityConfig::MAX_BATCH_DOCUMENTS . " documentos\n";
 
-// Crear archivos dummy
+// Crear  dummy
 $largeBatch = [];
 for ($i = 0; $i < SecurityConfig::MAX_BATCH_DOCUMENTS + 10; $i++) {
     $dummy = "$testDir/doc_{$i}.txt";
-    file_put_contents($dummy, "Nombre: Document $i");
+    file_put_contents($dummy, "Name: Document $i");
     $largeBatch[] = $dummy;
 }
 
@@ -114,17 +114,17 @@ try {
     echo "   Resultado: ✅ SecurityException lanzada correctamente\n";
     echo "   Tipo: " . $e->getSecurityType() . "\n";
     echo "   Mensaje seguro: " . $e->getClientMessage() . "\n";
-    echo "   Contexto interno (logging): " . json_encode($e->getSecurityContext()) . "\n\n";
+    echo "   Context interno (logging): " . json_encode($e->getSecurityContext()) . "\n\n";
 }
 
 // Test 4: Batch Normal (válido)
 echo "4️⃣  Prueba: Batch Normal (Válido)\n";
-echo "   Acción: Procesar " . min(5, SecurityConfig::MAX_BATCH_DOCUMENTS) . " documentos válidos\n";
+echo "   Acción: Process " . min(5, SecurityConfig::MAX_BATCH_DOCUMENTS) . " documentos válidos\n";
 
 $normalBatch = [];
 for ($i = 0; $i < 3; $i++) {
     $doc = "$testDir/valido_{$i}.txt";
-    file_put_contents($doc, "Nombre: Usuario $i\nEmail: user{$i}@example.com");
+    file_put_contents($doc, "Name: Usuario $i\nEmail: user{$i}@example.com");
     $normalBatch[] = $doc;
 }
 
@@ -137,14 +137,14 @@ try {
         ->processFinal();
 
     echo "   Resultado: ✅ Seguro\n";
-    echo "   Documentos procesados: " . count($result->data()) . "\n";
+    echo "   Documentos processeds: " . count($result->data()) . "\n";
     echo "   Éxito: " . ($result->isSuccessful() ? 'Sí' : 'No') . "\n\n";
 } catch (SecurityException $e) {
     echo "   Resultado: ❌ Error inesperado\n";
     echo "   Detalle: " . $e->getMessage() . "\n\n";
 }
 
-// Test 5: Validación de Mensaje de Error (Bloque 5 - No exponer detalles)
+// Test 5:  de  (5 - No exponer detalles)
 echo "5️⃣  Prueba: Seguridad de Excepciones\n";
 echo "   Acción: Verificar que getClientMessage() no expone detalles\n";
 
@@ -161,11 +161,11 @@ try {
     echo "   getClientMessage(): \"" . $e->getClientMessage() . "\"\n";
     echo "   (✅ Seguro - sin paths internos)\n";
     echo "   getInternalMessage(): " . $e->getInternalMessage() . "\n";
-    echo "   (✅ Con contexto para logging interno)\n\n";
+    echo "   (✅ Con context para logging interno)\n\n";
 }
 
 // Limpieza
-echo "🧹 Limpiando archivos de prueba...\n";
+echo "🧹 Limpiando files de prueba...\n";
 foreach (glob("$testDir/*") as $file) {
     @unlink($file);
 }
@@ -178,4 +178,4 @@ foreach (SecurityConfig::getSummary() as $key => $value) {
     echo "  $key: $value\n";
 }
 
-echo "\n✅ El Bloque 5 de Seguridad está activo y funcional\n";
+echo "\n✅ El Block 5 de Seguridad está activo y funcional\n";

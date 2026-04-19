@@ -1,12 +1,12 @@
 <?php
 
 /**
- * BLOQUE 4 - Ejemplo avanzado: Batch processing robusto
+ * BLOCK 4 - Ejemplo avanzado: Batch processing robusto
  * 
  * Simula:
  * - Carga de múltiples documentos
  * - Mezcla de documentos válidos e inválidos
- * - Captura de errores y warnings
+ * - Captura de errors y warnings
  * - Generación de reportes
  * 
  * Ejecutar: php examples/example_bloque4_advanced.php
@@ -19,64 +19,64 @@ use ContentProcessor\Schemas\ArraySchema;
 use ContentProcessor\Extractors\TextFileExtractor;
 use ContentProcessor\Structurers\RuleBasedStructurer;
 
-echo "=== BLOQUE 4: Batch Processing Robusto ===\n\n";
+echo "=== BLOCK 4: Batch Processing Robusto ===\n\n";
 
-// 1. Crear archivos de prueba con errores simulados
+// 1. Crear  de prueba con  simulados
 $testDir = __DIR__ . '/test_bloque4_batch';
 @mkdir($testDir, 0777, true);
 
-// Archivo válido 1
+//  válido 1
 file_put_contents(
     "$testDir/valido_1.txt",
     <<<'TXT'
-Nombre: Juan García Pérez
+Name: Juan García Pérez
 Carnet de Identidad: 12345678-K
 Años de Experiencia: 5
 Email: juan@example.com
 TXT
 );
 
-// Archivo válido 2
+//  válido 2
 file_put_contents(
     "$testDir/valido_2.txt",
     <<<'TXT'
-Nombre: María López Martínez
+Name: María López Martínez
 Años de Experiencia: 8
 Email: maria@example.com
 TXT
 );
 
-// Archivo con datos incompletos (warnings)
+//  con  incompletos (warnings)
 file_put_contents(
     "$testDir/incompleto.txt",
     <<<'TXT'
-Nombre: Carlos 
+Name: Carlos 
 
 Años de Experiencia: 10
 TXT
 );
 
-// Archivo vacío (error)
+//  vacío ()
 file_put_contents("$testDir/vacio.txt", "");
 
-// Archivo mal formado (error de validación)
+//  mal formado ( )
 file_put_contents("$testDir/malformado.txt", "edad años: treinta años");
 
-echo "📁 Directorio de prueba creado con 5 archivos\n";
+echo "📁 Directorio de prueba creado con 5 files\n";
 echo "   ✅ 2 válidos\n";
 echo "   ⚠️  1 incompleto (warnings)\n";
-echo "   ❌ 2 con errores\n\n";
+echo "   ❌ 2 con errors\n\n";
 
 // 2. Esquema de prueba
 $schema = new ArraySchema([
-    'nombre' => ['type' => 'string', 'required' => true],
+    'name' => ['type' => 'string', 'required' => true],
     'carnet_identidad' => ['type' => 'string', 'required' => false],
     'anos_experiencia' => ['type' => 'int', 'required' => false],
     'email' => ['type' => 'string', 'required' => false],
 ]);
 
-// 3. Procesar
-echo "⚙️  Procesando archivos batch...\n\n";
+// 3. 
+echo "⚙️  Procesando files batch...\n\n";
 
 $processor = ContentProcessor::make()
     ->withSchema($schema)
@@ -91,16 +91,16 @@ echo "╔═══════════════════════�
 echo "║          ANÁLISIS DE RESULTADOS        ║\n";
 echo "╚════════════════════════════════════════╝\n\n";
 
-// Datos exitosos
-echo "✅ DOCUMENTOS EXITOSOS (" . count($result->data()) . ")\n";
+//  s
+echo "✅ DOCUMENTOS SUCCESSFULS (" . count($result->data()) . ")\n";
 echo "─────────────────────────\n";
 foreach ($result->data() as $item) {
     echo "  📄 " . $item['document'] . "\n";
     echo "     └─ " . json_encode($item['data']) . "\n";
 }
 
-// Errores por tipo
-echo "\n❌ ERRORES POR TIPO\n";
+//  por tipo
+echo "\n❌ ERRORS POR TIPO\n";
 echo "─────────────────────\n";
 foreach (['extraction', 'validation', 'runtime'] as $type) {
     $byType = $result->errorsByType($type);
@@ -115,7 +115,7 @@ foreach (['extraction', 'validation', 'runtime'] as $type) {
 // Warnings por categoría
 echo "\n⚠️  WARNINGS POR CATEGORÍA\n";
 echo "──────────────────────────\n";
-$categories = ['missing', 'ambiguous', 'incomplete', 'type_mismatch'];
+$categories = ['missing', 'ambiguousus', 'incomplete', 'type_mismatch'];
 foreach ($categories as $cat) {
     $byCat = $result->warningsByCategory($cat);
     if (count($byCat) > 0) {
@@ -131,18 +131,18 @@ echo "\n📊 MÉTRICAS\n";
 echo "───────────\n";
 $summary = $result->summary();
 echo "  Total documentos: " . $summary->getTotalDocuments() . "\n";
-echo "  Exitosos: " . $summary->getSuccessfulDocuments() . " (" . $summary->getSuccessRate() . "%)\n";
+echo "  Successfuls: " . $summary->getSuccessfulDocuments() . " (" . $summary->getSuccessRate() . "%)\n";
 echo "  Fallidos: " . $summary->getFailedDocuments() . " (" . $summary->getFailureRate() . "%)\n";
-echo "  Errores totales: " . $summary->getTotalErrors() . "\n";
+echo "  Errors totales: " . $summary->getTotalErrors() . "\n";
 echo "  Warnings totales: " . $summary->getTotalWarnings() . "\n";
-echo "  Tiempo procesamiento: " . number_format($summary->getProcessingTime(), 3) . "s\n";
+echo "  Tiempo processing: " . number_format($summary->getProcessingTime(), 3) . "s\n";
 
 // APIs interesantes
 echo "\n🎯 CONSULTAS ESPECÍFICAS\n";
 echo "────────────────────────\n";
-echo "  ¿Hay errores? " . ($result->hasErrors() ? 'SÍ' : 'NO') . "\n";
+echo "  ¿Hay errors? " . ($result->hasErrors() ? 'SÍ' : 'NO') . "\n";
 echo "  ¿Hay warnings? " . ($result->hasWarnings() ? 'SÍ' : 'NO') . "\n";
-echo "  ¿Es exitoso? " . ($result->isSuccessful() ? 'SÍ' : 'NO') . "\n";
+echo "  ¿Es successful? " . ($result->isSuccessful() ? 'SÍ' : 'NO') . "\n";
 echo "  ¿Es perfecto? " . ($result->isPerfect() ? 'SÍ' : 'NO') . "\n";
 
 // JSON export
@@ -159,4 +159,4 @@ foreach (glob("$testDir/*.txt") as $file) {
 }
 @rmdir($testDir);
 
-echo "\n✨ ¡Ejemplo Bloque 4 Advanced completado!\n";
+echo "\n✨ ¡Ejemplo Block 4 Advanced completado!\n";

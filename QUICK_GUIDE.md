@@ -1,4 +1,4 @@
-# 🚀 Guía rápida de inicio
+# 🚀 Guide quick de inicio
 
 ## Instalación y primeras pruebas
 
@@ -64,7 +64,7 @@ $processor = ContentProcessor::make()
 ```php
 $results = $processor->process();
 
-// Ver resumen
+// Ver summary
 echo "Exitosos: " . $results['success'];
 echo "Fallidos: " . $results['failed'];
 
@@ -218,7 +218,7 @@ Sí, usa el autoloader manual:
 require_once 'autoload_manual.php';
 ```
 
-Pero Composer es recomendado para proyectos profesionales.
+Pero Composer es recomendado para projects profesionales.
 
 ### ¿Puedo extender las clases?
 
@@ -248,9 +248,9 @@ Sí. El diseño está optimizado para batch processing.
 
 ## Próximos pasos
 
-1. **Crear un extractor PDF** (Bloque 2)
-2. **Crear un estructurador avanzado** (Bloque 3)
-3. **Agregar tests unitarios** (Bloque 4)
+1. **Crear un extractor PDF** (Block 2)
+2. **Crear un estructurador avanzado** (Block 3)
+3. **Agregar tests unitarios** (Block 4)
 4. **Publicar en Packagist** (Producción)
 
 ---
@@ -259,4 +259,4 @@ Sí. El diseño está optimizado para batch processing.
 
 Por ahora, la librería está en fase alpha. Cambios pueden ocurrir en cada bloque.
 
-**Estado actual:** ✅ Bloque 1 funcional, lista para extensión.
+**Status actual:** ✅ Block 1 funcional, lista para extensión.

@@ -6,33 +6,33 @@ namespace ContentProcessor\Security;
  * Configuración centralizada de límites de seguridad.
  * 
  * Define los umbrales máximos para:
- * - Tamaño de archivos PDF
+ * - Tamaño de files PDF
  * - Cantidad de documentos por batch
  * - Validaciones de integridad
  * 
- * Estos valores pueden ser personalizados pero es recomendable
+ * Estos valores cann ser personalizados pero es recomendable
  * mantener los defaults para producción.
  * 
  * NOTAS DE SEGURIDAD:
  * Estos límites protegen contra:
  * - DoS (Denial of Service) por upload masivo
  * - Consumo excesivo de memoria
- * - Tiempos de procesamiento incontrolados
+ * - Tiempos de processing incontrolados
  * 
  * @package ContentProcessor\Security
- * @since 1.4.0 (Bloque 5)
+ * @since 1.4.0 (Block 5)
  */
 class SecurityConfig
 {
     /**
-     * Tamaño máximo por archivo PDF en bytes.
+     * Tamaño máximo por file PDF en bytes.
      * Default: 10 MB
      * @var int
      */
     public const MAX_PDF_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB
 
     /**
-     * Tamaño máximo por archivo de texto en bytes.
+     * Tamaño máximo por file of text en bytes.
      * Default: 5 MB
      * @var int
      */
@@ -43,7 +43,7 @@ class SecurityConfig
      * Default: 50 documentos
      * 
      * Rationale:
-     * - Previene DoS de procesamiento
+     * - Previene DoS de processing
      * - Mantiene uso de memoria controlado
      * - Batch típico en producción: 10-30 documentos
      * 
@@ -66,7 +66,7 @@ class SecurityConfig
     public const PDF_HEADER_SIGNATURE = '%PDF-';
 
     /**
-     * Tamaño mínimo de cabecera PDF a leer para validación.
+     * Tamaño mínimo de cabecera PDF a leer para validation.
      * @var int
      */
     public const PDF_HEADER_CHECK_BYTES = 5;
@@ -79,7 +79,7 @@ class SecurityConfig
     public const SAFE_PATH_REGEX = '/^[a-zA-Z0-9\._\-\/\\\\:\s]+$/';
 
     /**
-     * Obtiene el tamaño máximo legible para un tipo de archivo.
+     * Obtiene el tamaño máximo readable para un tipo de file.
      * 
      * @param string $type Tipo ('pdf', 'text', 'default')
      * @return int Bytes

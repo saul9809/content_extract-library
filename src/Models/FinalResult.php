@@ -3,28 +3,28 @@
 namespace ContentProcessor\Models;
 
 /**
- * Resultado final unificado del procesamiento batch.
+ * Resultado final unificado del processing batch.
  * 
- * Encapsula todos los resultados del procesamiento:
- * - Datos estructurados exitosos
- * - Errores técnicos normalizados
+ * Encapsula todos los resultados del processing:
+ * - Data structuredos successfuls
+ * - Errors técnicos normalizados
  * - Warnings semánticos normalizados
  * - Estadísticas y métricas
  * 
  * Proporciona una API uniforme y limpia para consumidores
  * (Laravel, PHP puro, APIs REST, etc.).
  * 
- * **Objetivo del Bloque 4:**
+ * **Objetivo del Block 4:**
  * Proveer un resultado único, robusto y fácil de consumir.
  * 
  * @package ContentProcessor\Models
- * @since 1.3.0 (Bloque 4)
+ * @since 1.3.0 (Block 4)
  */
 class FinalResult
 {
     /**
-     * Array de datos estructurados exitosos.
-     * Estructura: [
+     * Array de data structuredos successfuls.
+     * Structure: [
      *     [documentName => string, data => array],
      *     ...
      * ]
@@ -51,7 +51,7 @@ class FinalResult
     private Summary $summary;
 
     /**
-     * Detalles completos de cada documento procesado.
+     * Detalles completos de cada documento processed.
      * Matriz para debugging y auditoría.
      * @var array
      */
@@ -60,8 +60,8 @@ class FinalResult
     /**
      * Constructor.
      * 
-     * @param array $data Datos exitosos
-     * @param Error[] $errors Errores normalizados
+     * @param array $data Data successfuls
+     * @param Error[] $errors Errors normalizados
      * @param Warning[] $warnings Warnings normalizados
      * @param Summary $summary Resumen de estadísticas
      * @param array $fullResults Detalles completos
@@ -92,9 +92,9 @@ class FinalResult
     }
 
     /**
-     * Obtiene los datos estructurados exitosos.
+     * Obtiene los data structuredos successfuls.
      * 
-     * Retorna solo los documentos que fueron procesados correctamente.
+     * Retorna solo los documentos que fueron processeds correctamente.
      * Formato: [
      *     ['document' => 'file1.pdf', 'data' => [...]],
      *     ['document' => 'file2.pdf', 'data' => [...]],
@@ -109,11 +109,11 @@ class FinalResult
     }
 
     /**
-     * Obtiene solo los datos (sin metadata de documento).
+     * Obtiene solo los data (sin metadata de documento).
      * 
      * Útil para carga masiva en BD o APIs.
      * 
-     * @return array Array de arrays de datos puros
+     * @return array Array de arrays de data puros
      */
     public function dataPure(): array
     {
@@ -121,7 +121,7 @@ class FinalResult
     }
 
     /**
-     * Obtiene los errores normalizados.
+     * Obtiene los errors normalizados.
      * 
      * @return Error[]
      */
@@ -151,7 +151,7 @@ class FinalResult
     }
 
     /**
-     * Verifica si hay errores.
+     * Verifica si hay errors.
      * 
      * @return bool
      */
@@ -171,9 +171,9 @@ class FinalResult
     }
 
     /**
-     * Verifica si el procesamiento fue completamente exitoso.
+     * Verifica si el processing fue completamente successful.
      * 
-     * (Sin errores, aunque puede haber warnings)
+     * (Sin errors, aunque can haber warnings)
      * 
      * @return bool
      */
@@ -183,9 +183,9 @@ class FinalResult
     }
 
     /**
-     * Verifica si el procesamiento fue perfecto.
+     * Verifica si el processing fue perfecto.
      * 
-     * (Sin errores ni warnings)
+     * (Sin errors ni warnings)
      * 
      * @return bool
      */
@@ -195,7 +195,7 @@ class FinalResult
     }
 
     /**
-     * Obtiene el número de documentos procesados exitosamente.
+     * Obtiene el número de documentos processeds successfully.
      * 
      * @return int
      */
@@ -228,7 +228,7 @@ class FinalResult
      * Obtiene los detalles completos de todos los documentos.
      * 
      * Útil para debugging y auditoría.
-     * Incluye información de cada documento: éxito, datos, errores, warnings.
+     * Incluye information de cada documento: éxito, data, errors, warnings.
      * 
      * @return array
      */
@@ -238,9 +238,9 @@ class FinalResult
     }
 
     /**
-     * Obtiene errores filtrados por tipo.
+     * Obtiene errors filtrados por tipo.
      * 
-     * @param string $type Tipo de error (ej: 'extraction', 'validation')
+     * @param string $type Error type (ej: 'extraction', 'validation')
      * @return Error[]
      */
     public function errorsByType(string $type): array
@@ -252,7 +252,7 @@ class FinalResult
     }
 
     /**
-     * Obtiene warnings filtrados por campo.
+     * Obtiene warnings filtrados por field.
      * 
      * @param string $field
      * @return Warning[]
@@ -268,7 +268,7 @@ class FinalResult
     /**
      * Obtiene warnings filtrados por categoría.
      * 
-     * @param string $category (ej: 'missing', 'ambiguous')
+     * @param string $category (ej: 'missing', 'ambiguousus')
      * @return Warning[]
      */
     public function warningsByCategory(string $category): array
@@ -280,7 +280,7 @@ class FinalResult
     }
 
     /**
-     * Convierte errores a array.
+     * Convierte errors a array.
      * 
      * @return array Array de arrays
      */
@@ -302,7 +302,7 @@ class FinalResult
     /**
      * Convierte todo el resultado a array.
      * 
-     * Estructura útil para JSON.
+     * Structure útil para JSON.
      * 
      * @return array
      */
@@ -339,7 +339,7 @@ class FinalResult
     }
 
     /**
-     * Convierte a JSON con pretty-print (legible).
+     * Convierte a JSON con pretty-print (readable).
      * 
      * @return string
      */
@@ -349,7 +349,7 @@ class FinalResult
     }
 
     /**
-     * Retorna un resumen legible.
+     * Retorna un resumen readable.
      * 
      * @return string
      */

@@ -1,12 +1,12 @@
 # BLOQUE 4 - Resultado Final, Robustez y DX
 
-**Versión:** 1.3.0 (Bloque 4)  
+**Versión:** 1.3.0 (Block 4)  
 **Fecha:** Abril 2026  
-**Estado:** ✅ COMPLETADO
+**Status:** ✅ COMPLETED
 
 ---
 
-## 🎯 Objetivo del Bloque 4
+## 🎯 Objetivo del Block 4
 
 Proveer un resultado final único, robusto y fácil de consumir para desarrolladores que utilizan Laravel, PHP puro, o cualquier framework.
 
@@ -21,7 +21,7 @@ Proveer un resultado final único, robusto y fácil de consumir para desarrollad
 
 ---
 
-## 📦 Clases Nuevas (Bloque 4)
+## 📦 Clases Nuevas (Block 4)
 
 ### 1. `FinalResult` — Resultado Principal
 
@@ -108,7 +108,7 @@ Error::runtime('Error en tiempo de ejecución')
 
 **Ubicación:** `src/Models/Warning.php`
 
-Estructura normalizada para warnings semánticos (de Bloque 3).
+Estructura normalizada para warnings semánticos (de Block 3).
 
 ```php
 $warning = new Warning(
@@ -138,7 +138,7 @@ Warning::incomplete('experiencia', 'Datos incompletos')
 
 **Ubicación:** `src/Models/Summary.php`
 
-Resumen de estadísticas del batch processing.
+Summary de estadísticas del batch processing.
 
 ```php
 $summary = new Summary(
@@ -183,7 +183,7 @@ $summary->__toString()              // igual a getSummaryString()
 
 ```php
 /**
- * Procesa y retorna FinalResult (Bloque 4)
+ * Procesa y retorna FinalResult (Block 4)
  * API recomendada para nuevos desarrollos.
  */
 public function processFinal(): FinalResult
@@ -192,7 +192,7 @@ public function processFinal(): FinalResult
 ### Métodos Antiguos: Mantienen Compatibilidad
 
 ```php
-// Bloque 1-3: Seguir funcionando igual
+// Block 1-3: Seguir funcionando igual
 public function process(): array
 public function getResults(): array
 public function getSuccessfulData(): array
@@ -201,11 +201,11 @@ public function getSuccessfulData(): array
 ### Ejemplo Migración
 
 ```php
-// Bloque 3 (viejo)
+// Block 3 (viejo)
 $raw = $processor->process();
 $data = $processor->getSuccessfulData();
 
-// Bloque 4 (nuevo, recomendado)
+// Block 4 (nuevo, recomendado)
 $result = $processor->processFinal();
 $data = $result->dataPure();
 $errors = $result->errors();
@@ -323,23 +323,23 @@ composer install
 ### Ejecutar Ejemplos
 
 ```bash
-# Bloque 4 - Básico
+# Block 4 - Básico
 php examples/example_bloque4_basic.php
 
-# Bloque 4 - Avanzado (batch con errores)
+# Block 4 - Avanzado (batch con errores)
 php examples/example_bloque4_advanced.php
 
-# Bloque 4 - Laravel-style (consumo API)
+# Block 4 - Laravel-style (consumo API)
 php examples/example_bloque4_laravel_style.php
 ```
 
 ### Verificar Compatibilidad (Bloques 1-3)
 
 ```bash
-# Bloque 1 - Debe seguir funcionando
+# Block 1 - Debe seguir funcionando
 php examples/example_basic.php
 
-# Bloque 3 - Debe seguir funcionando
+# Block 3 - Debe seguir funcionando
 php examples/test_structuring.php
 php examples/test_structuring_advanced.php
 ```
@@ -385,12 +385,12 @@ php -r "require 'autoload_manual.php'; echo 'OK';"
   - [missing:email] Campo 'email' faltante o vacío
   - [incomplete:carnet_identidad] Información incompleta en carnet_identidad
 
-📊 RESUMEN:
+📊 SUMMARY:
   2/2 exitosos (100.0%), 0 errores, 2 warnings, 0.045s
   Tasa de éxito: 100%
   Warnings promedio/documento: 1
 
-🎯 ESTADOS:
+🎯 STATUSS:
   ¿Exitoso? SÍ
   ¿Perfecto? NO
 
@@ -405,7 +405,7 @@ php -r "require 'autoload_manual.php'; echo 'OK';"
   ...
 }
 
-✨ ¡Bloque 4 Completado!
+✨ ¡Block 4 Completed!
 ```
 
 ### ejemplo_bloque4_advanced.php
@@ -465,12 +465,12 @@ php -r "require 'autoload_manual.php'; echo 'OK';"
 Tamaño: 2456 bytes
 Guardado en: /tmp/.../resultado_batch.json
 
-✨ ¡Ejemplo Bloque 4 Advanced completado!
+✨ ¡Ejemplo Block 4 Advanced completed!
 ```
 
 ---
 
-## ✅ Checklist de Cierre
+## ✅ Checklist de Closure
 
 - [x] **Clase FinalResult** — Encapsula todo el resultado
 - [x] **Clase Error** — Normaliza errores técnicos
@@ -480,7 +480,7 @@ Guardado en: /tmp/.../resultado_batch.json
 - [x] **Ejemplos básicos** — example_bloque4_basic.php
 - [x] **Ejemplos avanzados** — example_bloque4_advanced.php
 - [x] **Ejemplos Laravel-style** — example_bloque4_laravel_style.php
-- [x] **Documentación** — Este archivo
+- [x] **Documentation** — Este archivo
 - [x] **Backward compatibility** — Bloques 1-3 intactos
 - [x] **PSR-4 / PSR-12** — Código limpio y namespaced
 
@@ -536,7 +536,7 @@ php batch_processor.php /documentos --schema=cv_schema.json
 
 ---
 
-## 📊 Resumen del Bloque 4
+## 📊 Summary del Block 4
 
 | Aspecto             | Descripción                                |
 | ------------------- | ------------------------------------------ |
@@ -549,13 +549,13 @@ php batch_processor.php /documentos --schema=cv_schema.json
 | **Export**          | ✅ JSON, Array, String                     |
 | **DX**              | ✅ API intuitiva y descubrible             |
 | **Ejemplos**        | ✅ 3 completamente funcionales             |
-| **Documentación**   | ✅ Este archivo                            |
+| **Documentation**   | ✅ Este archivo                            |
 
 ---
 
 ## 🔚 Conclusión
 
-El **Bloque 4** cierra el contrato final del Content Processor proporcionando:
+El **Block 4** cierra el contrato final del Content Processor proporcionando:
 
 1. **Resultado único y robusto** — FinalResult encapsula todo
 2. **API clara y limpia** — Métodos intuitivos y bien nombrados
@@ -568,4 +568,4 @@ El **Bloque 4** cierra el contrato final del Content Processor proporcionando:
 
 ---
 
-_Fin del Bloque 4_
+_Fin del Block 4_

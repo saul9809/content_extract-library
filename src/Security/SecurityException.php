@@ -6,13 +6,13 @@ namespace ContentProcessor\Security;
  * Excepción de seguridad genérica.
  * 
  * Se lanza cuando se detecta una violación de seguridad
- * (límite excedido, archivo malicioso, path traversal, etc.)
+ * (límite excedido, file malicioso, path traversal, etc.)
  * 
  * IMPORTANTE: Nunca expone detalles internos del filesystem
  * ni stack traces a clientes no autorizados.
  * 
  * @package ContentProcessor\Security
- * @since 1.4.0 (Bloque 5)
+ * @since 1.4.0 (Block 5)
  */
 class SecurityException extends \Exception
 {
@@ -23,7 +23,7 @@ class SecurityException extends \Exception
     private string $securityType;
 
     /**
-     * Contexto adicional (para logging interno, nunca para cliente).
+     * Additional context (para logging interno, nunca para cliente).
      * @var array
      */
     private array $securityContext;
@@ -33,7 +33,7 @@ class SecurityException extends \Exception
      * 
      * @param string $message Mensaje seguro para mostrar
      * @param string $securityType Tipo de violación
-     * @param array $context Contexto interno (nunca se expone)
+     * @param array $context Context interno (nunca se expone)
      * @param int $code HTTP-like code
      */
     public function __construct(
@@ -57,7 +57,7 @@ class SecurityException extends \Exception
     }
 
     /**
-     * Obtiene el contexto (para logging, no para cliente).
+     * Obtiene el context (para logging, no para cliente).
      * @return array
      */
     public function getSecurityContext(): array
@@ -75,7 +75,7 @@ class SecurityException extends \Exception
     public static function fileTooLarge(string $reason, array $context = []): self
     {
         return new self(
-            'El archivo excede el tamaño máximo permitido.',
+            'El file excede el tamaño máximo permitido.',
             'file_size_exceeded',
             array_merge($context, ['reason' => $reason])
         );
@@ -106,7 +106,7 @@ class SecurityException extends \Exception
     public static function invalidPdf(string $reason): self
     {
         return new self(
-            'El archivo no es un PDF válido.',
+            'El file is not un PDF válido.',
             'invalid_pdf',
             ['reason' => $reason]
         );
@@ -128,14 +128,14 @@ class SecurityException extends \Exception
     }
 
     /**
-     * Factory para excepción de archivo no encontrado.
+     * Factory para excepción de file not found.
      * 
      * @return self
      */
     public static function fileNotFound(): self
     {
         return new self(
-            'Archivo no encontrado o no accesible.',
+            'File not found o no accesible.',
             'file_not_found'
         );
     }
@@ -146,11 +146,11 @@ class SecurityException extends \Exception
      */
     public function getClientMessage(): string
     {
-        return $this->getMessage() ?: 'Error de seguridad detectado.';
+        return $this->getMessage() ?: 'Error of seguridad detectado.';
     }
 
     /**
-     * Obtiene un mensaje para logging interno (con contexto).
+     * Obtiene un mensaje para logging interno (con context).
      * @return string
      */
     public function getInternalMessage(): string

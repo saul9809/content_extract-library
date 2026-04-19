@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Prueba funcional del Bloque 2: Extracción desde PDF
+ * Prueba funcional del Block 2: Extraction desde PDF
  * 
- * Este script demuestra el uso de PdfTextExtractor para procesar
- * archivos PDF digitales completos con la arquitectura de ContentProcessor.
+ * Este script demuestra el uso de PdfTextExtractor para process
+ * files PDF digitales completos con la arquitectura de ContentProcessor.
  */
 
 // Importar autoload de Composer
@@ -16,9 +16,9 @@ use ContentProcessor\Schemas\ArraySchema;
 use ContentProcessor\Structurers\SimpleLineStructurer;
 
 // ============================================
-// 1. Generar PDF de prueba si no existe
+// 1. Generar PDF de prueba si 
 // ============================================
-echo "📋 BLOQUE 2: Extracción desde PDF Digital\n";
+echo "📋 BLOCK 2: Extraction desde PDF Digital\n";
 echo "=" . str_repeat("=", 50) . "\n\n";
 
 $pdfPath = __DIR__ . '/sample_cv.pdf';
@@ -35,10 +35,10 @@ if (!file_exists($pdfPath)) {
 echo "📝 Configurando esquema de CV...\n";
 
 $cvSchema = new ArraySchema([
-    'nombre' => [
+    'name' => [
         'type' => 'string',
         'required' => true,
-        'description' => 'Nombre completo del candidato'
+        'description' => 'Name completo del candidato'
     ],
     'carnet_identidad' => [
         'type' => 'string',
@@ -66,13 +66,13 @@ $cvSchema = new ArraySchema([
     ]
 ]);
 
-echo "✅ Esquema definido (7 campos)\n\n";
+echo "✅ Esquema definido (7 fields)\n\n";
 
 // ============================================
-// 3. Procesar PDF con ContentProcessor
+// 3.  PDF con ContentProcessor
 // ============================================
-echo "🚀 Iniciando procesamiento del PDF...\n";
-echo "   Archivo: " . basename($pdfPath) . "\n";
+echo "🚀 Iniciando processing of the PDF...\n";
+echo "   File: " . basename($pdfPath) . "\n";
 echo "   Extractor: PdfTextExtractor\n";
 echo "   Structurer: SimpleLineStructurer\n\n";
 
@@ -83,28 +83,28 @@ try {
         ->withSchema($cvSchema)
         ->fromFiles([$pdfPath]);
 
-    // Procesar el PDF
+    //  el PDF
     $result = $processor->process();
 
     // ============================================
     // 4. Mostrar resultados
     // ============================================
-    echo "✅ PROCESAMIENTO EXITOSO\n";
+    echo "✅ PROCESSING SUCCESSFUL\n";
     echo "=" . str_repeat("=", 50) . "\n\n";
 
     // Resumen general
-    echo "📊 Resumen del procesamiento:\n";
+    echo "📊 Resumen del processing:\n";
     echo "   Total documentos: " . $result['total'] . "\n";
-    echo "   ✅ Exitosos: " . $result['success'] . "\n";
-    echo "   ❌ Con errores: " . $result['failed'] . "\n\n";
+    echo "   ✅ Successfuls: " . $result['success'] . "\n";
+    echo "   ❌ Con errors: " . $result['failed'] . "\n\n";
 
     // Mostrar resultados detallados
     foreach ($result['results'] as $file => $fileResult) {
         echo "📄 " . basename($file) . ":\n";
         if ($fileResult['success']) {
-            echo "   ✅ Estado: EXITOSO\n";
+            echo "   ✅ Estado: SUCCESSFUL\n";
             if ($fileResult['data']) {
-                echo "   📋 Datos extraídos:\n";
+                echo "   📋 Data extracteds:\n";
                 foreach ($fileResult['data'] as $key => $value) {
                     echo "      • $key: $value\n";
                 }
@@ -116,7 +116,7 @@ try {
         echo "\n";
     }
 
-    // Mostrar JSON completo si hay datos exitosos
+    // Mostrar JSON completo si hay  s
     if ($result['success'] > 0) {
         echo "📤 JSON de resultados más detallado:\n";
         $jsonData = [];
@@ -129,17 +129,17 @@ try {
     }
 
     // ============================================
-    // 5. Información de extracción
+    // 5.  de 
     // ============================================
-    echo "📄 Información del PDF:\n";
-    echo "   ✅ Extracción completada\n";
-    echo "   📑 Método: Extracción de texto digital (sin OCR)\n";
-    echo "   🔤 Contenido extraído: Sí\n\n";
+    echo "📄 Information of the PDF:\n";
+    echo "   ✅ Extraction completada\n";
+    echo "   📑 Method: Extraction of text digital (sin OCR)\n";
+    echo "   🔤 Content extracted: Sí\n\n";
 } catch (\Exception $e) {
-    echo "❌ ERROR en el procesamiento:\n";
+    echo "❌ ERROR en el processing:\n";
     echo "   " . $e->getMessage() . "\n";
     echo "\n📌 Posibles causas:\n";
-    echo "   1. El PDF no existe o no es accesible\n";
+    echo "   1. El PDF does not exist o is not accesible\n";
     echo "   2. El PDF está dañado o es inválido\n";
     echo "   3. El PDF está encriptado\n";
     exit(1);
@@ -148,7 +148,7 @@ try {
 // ============================================
 // 6. Confirmación
 // ============================================
-echo "✨ BLOQUE 2 COMPLETADO Y FUNCIONAL\n";
+echo "✨ BLOCK 2 COMPLETADO Y FUNCIONAL\n";
 echo "=" . str_repeat("=", 50) . "\n";
 echo "✅ ContentProcessor + PdfTextExtractor funcionando\n";
 echo "✅ Batch compatible (aplicable a múltiples PDFs)\n";

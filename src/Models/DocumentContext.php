@@ -3,18 +3,18 @@
 namespace ContentProcessor\Models;
 
 /**
- * Contexto semántico de un documento.
+ * Context semántico de un documento.
  * 
- * Agrupa la información de referencia de un documento junto con
- * su contenido crudo extraído, para que el Structurer pueda
- * generar estructuras semánticas ricas en contexto.
+ * Agrupa la information de referencia de un documento junto con
+ * su content crudo extracted, para que el Structurer pueda
+ * generar structures semánticas ricas en context.
  * 
- * En Bloque 3, el DocumentContext es la entrada principal para
- * la estructuración semántica. Permite que los Structurers accedan
- * tanto al contenido como a los metadatos del documento.
+ * En Block 3, el DocumentContext es la entrada principal para
+ * la structureción semántica. Permite que los Structurers accedan
+ * tanto al content como a los metadata del documento.
  * 
  * @package ContentProcessor\Models
- * @since 1.2.0 (Bloque 3)
+ * @since 1.2.0 (Block 3)
  */
 class DocumentContext
 {
@@ -25,20 +25,20 @@ class DocumentContext
     private string $documentPath;
 
     /**
-     * Nombre amigable del documento (puede ser filename sin ruta).
+     * Name amigable del documento (can ser filename sin ruta).
      * @var string
      */
     private string $documentName;
 
     /**
-     * Contenido crudo extraído por el Extractor.
+     * Content crudo extracted por el Extractor.
      * Típicamente: array de strings (una por página o sección).
      * @var array
      */
     private array $rawText;
 
     /**
-     * Metadatos adicionales del documento.
+     * Metadata adicionales del documento.
      * Ej: ['mime_type' => 'application/pdf', 'page_count' => 5, ...]
      * @var array
      */
@@ -48,9 +48,9 @@ class DocumentContext
      * Constructor.
      * 
      * @param string $documentPath Ruta o identificador único
-     * @param string $documentName Nombre amigable (ej: "curriculum.pdf")
-     * @param array $rawText Contenido crudo extraído
-     * @param array $metadata Metadatos opcionales
+     * @param string $documentName Name amigable (ej: "curriculum.pdf")
+     * @param array $rawText Content crudo extracted
+     * @param array $metadata Metadata opcionales
      */
     public function __construct(
         string $documentPath,
@@ -74,7 +74,7 @@ class DocumentContext
     }
 
     /**
-     * Obtiene el nombre del documento.
+     * Obtiene el name del documento.
      * @return string
      */
     public function getDocumentName(): string
@@ -83,7 +83,7 @@ class DocumentContext
     }
 
     /**
-     * Obtiene el contenido crudo.
+     * Obtiene el content crudo.
      * @return array
      */
     public function getRawText(): array
@@ -92,7 +92,7 @@ class DocumentContext
     }
 
     /**
-     * Obtiene el contenido crudo combinado en un string.
+     * Obtiene el content crudo combinado en un string.
      * Útil para búsquedas y pattern matching.
      * @return string
      */
@@ -102,14 +102,14 @@ class DocumentContext
     }
 
     /**
-     * Obtiene los metadatos.
+     * Obtiene los metadata.
      * 
      * Si se proporciona $key, obtiene un metadato específico.
-     * Si no se proporciona, obtiene todos los metadatos.
+     * Si no se proporciona, obtiene todos los metadata.
      * 
      * @param string|null $key Clave del metadato (opcional)
-     * @param mixed $default Valor por defecto si no existe
-     * @return mixed Array de metadatos o valor específico
+     * @param mixed $default Valor por defecto si does not exist
+     * @return mixed Array de metadata o valor específico
      */
     public function getMetadata(?string $key = null, $default = null)
     {

@@ -1,15 +1,15 @@
 <?php
 
 /**
- * BLOQUE 5 - Ejemplo de Integración: Laravel + Seguridad
+ * BLOCK 5 - Ejemplo de Integración: Laravel + Seguridad
  * 
  * Demuestra cómo usar Content Processor en Laravel con:
- * - Validación de seguridad automática
+ * - Validation de seguridad automática
  * - Manejo seguro de excepciones
  * - Respuestas JSON seguras
- * - Logging de errores de seguridad
+ * - Logging de errors de seguridad
  * 
- * Contexto: Laravel Controller ejecutando validación de documentos
+ * Context: Laravel Controller ejecutando validation de documentos
  * Ejecutar: php examples/example_bloque5_laravel_integration.php
  */
 
@@ -22,8 +22,8 @@ use ContentProcessor\Structurers\RuleBasedStructurer;
 use ContentProcessor\Security\SecurityException;
 
 echo "╔════════════════════════════════════════╗\n";
-echo "║  BLOQUE 5: Laravel + Seguridad        ║\n";
-echo "║         Validación Segura de Docs      ║\n";
+echo "║  BLOCK 5: Laravel + Seguridad        ║\n";
+echo "║         Validation Segura de Docs      ║\n";
 echo "╚════════════════════════════════════════╝\n\n";
 
 /**
@@ -35,20 +35,20 @@ class DocumentController
 {
 
     /**
-     * Procesar documentos subidos por usuario
+     * Process documentos subidos por usuario
      * Similar a: POST /documents/process
      */
     public function processDocuments(array $filePaths): array
     {
 
         $schema = new ArraySchema([
-            'nombre' => ['type' => 'string', 'required' => true],
+            'name' => ['type' => 'string', 'required' => true],
             'email' => ['type' => 'string', 'required' => false],
             'telefono' => ['type' => 'string', 'required' => false],
         ]);
 
         try {
-            // La validación de seguridad ocurre automáticamente
+            // La  de seguridad ocurre automáticamente
             $result = ContentProcessor::make()
                 ->withSchema($schema)
                 ->withExtractor(new PdfTextExtractor())
@@ -94,7 +94,7 @@ class DocumentController
             ];
         } catch (\Throwable $e) {
             // Seguridad: Excepciones genéricas (inesperadas)
-            // NUNCA exponemos stack trace o ruta de archivos
+            // NUNCA exponemos stack trace o ruta de 
 
             \error_log("[ERROR] DocumentController unexpected error: " .
                 $e->getMessage() .
@@ -122,10 +122,10 @@ $testDir = __DIR__ . '/test_laravel_sec';
 echo "═══════════════════════════════════════\n";
 echo "TEST 1: Batch Demasiado Grande\n";
 echo "═══════════════════════════════════════\n";
-echo "Contexto: Usuario intenta subir 65 PDFs\n";
+echo "Context: Usuario intenta subir 65 PDFs\n";
 echo "Esperado: SecurityException capturada, mensaje seguro\n\n";
 
-// Simular 65 archivos maliciosos
+// Simular 65  maliciosos
 $maliciousBatch = array_fill(0, 65, "$testDir/dummy.pdf");
 
 $response = $controller->processDocuments($maliciousBatch);
@@ -140,13 +140,13 @@ echo "✅ Resultado: Cliente recibe mensaje seguro sin exponer detalles internos
 echo "═══════════════════════════════════════\n";
 echo "TEST 2: Batch Válido (3 documentos)\n";
 echo "═══════════════════════════════════════\n";
-echo "Contexto: Usuario sube 3 CVs válidos\n";
-echo "Esperado: Procesamiento exitoso\n\n";
+echo "Context: Usuario sube 3 CVs válidos\n";
+echo "Esperado: Processing successful\n\n";
 
 $validBatch = [];
 for ($i = 1; $i <= 3; $i++) {
     $file = "$testDir/cv_$i.txt";
-    file_put_contents($file, "Nombre: Candidato $i\nEmail: candidato{$i}@example.com\nTelefono: 555-000{$i}");
+    file_put_contents($file, "Name: Candidato $i\nEmail: candidato{$i}@example.com\nTelefono: 555-000{$i}");
     $validBatch[] = $file;
 }
 
@@ -155,29 +155,29 @@ $response = $controller->processDocuments($validBatch);
 echo "Respuesta JSON al cliente (success):\n";
 echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n\n";
 
-echo "✅ Resultado: 3 documentos procesados correctamente con métricas de rendimiento\n\n";
+echo "✅ Resultado: 3 documentos processeds correctamente con métricas de rendimiento\n\n";
 
 // ============ TEST 3 ============
 
 echo "═══════════════════════════════════════\n";
 echo "TEST 3: Documentos PDF Corruptos\n";
 echo "═══════════════════════════════════════\n";
-echo "Contexto: Usuario sube archivos que no son PDF\n";
-echo "Esperado: Errores capturados de forma segura\n\n";
+echo "Context: Usuario sube files que no son PDF\n";
+echo "Esperado: Errors capturados de forma segura\n\n";
 
 $corruptBatch = [];
 for ($i = 1; $i <= 2; $i++) {
     $file = "$testDir/fake_$i.pdf";
-    file_put_contents($file, "Este archivo no es un PDF real");
+    file_put_contents($file, "Este file is not un PDF real");
     $corruptBatch[] = $file;
 }
 
 $response = $controller->processDocuments($corruptBatch);
 
-echo "Respuesta JSON al cliente (con errores):\n";
+echo "Respuesta JSON al cliente (con errors):\n";
 echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n\n";
 
-echo "✅ Resultado: Errores reportados sin exponer rutas internas\n\n";
+echo "✅ Resultado: Errors reportados sin exponer rutas internas\n\n";
 
 // ============ CARACTERÍSTICAS DE SEGURIDAD ============
 
@@ -187,11 +187,11 @@ echo "════════════════════════�
 
 $features = [
     'Batch Size Limit' => 'Máximo 50 documentos por solicitud',
-    'File Size Limit' => 'PDFs máximo 10 MB, archivos 5 MB',
-    'PDF Validation' => 'Verifica firma %PDF- antes de procesar',
+    'File Size Limit' => 'PDFs máximo 10 MB, files 5 MB',
+    'PDF Validation' => 'Verifica firma %PDF- antes de process',
     'Path Traversal' => 'Bloquea intentos de ../ en rutas',
     'Exception Safety' => 'getClientMessage() sin detalles internos',
-    'Error Logging' => 'getInternalMessage() con contexto para logs',
+    'Error Logging' => 'getInternalMessage() con context para logs',
     'Type Safety' => 'PHP 8.1 strict types en toda la librería',
     'Interface Contracts' => 'Inyección de dependencias validada',
 ];
@@ -202,7 +202,7 @@ foreach ($features as $feature => $description) {
 }
 
 // Limpieza
-echo "🧹 Limpiando archivos de prueba...\n";
+echo "🧹 Limpiando files de prueba...\n";
 foreach (glob("$testDir/*") as $file) {
     @unlink($file);
 }

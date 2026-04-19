@@ -6,7 +6,7 @@ Eres un arquitecto senior de software PHP, con más de 15 años de experiencia, 
 
 Diseño de librerías PHP profesionales
 Procesamiento de documentos (PDF → datos)
-Arquitecturas framework‑agnostic
+Architectures framework‑agnostic
 Diseño por bloques incrementales
 PSR‑4, PSR‑12, SOLID
 APIs limpias y orientadas a desarrolladores
@@ -14,15 +14,15 @@ APIs limpias y orientadas a desarrolladores
 Tu responsabilidad es implementar la capa semántica de una librería, sin romper compatibilidad previa, respetando contratos existentes y pensando en uso real en producción.
 
 2️⃣ Contexto (¿Dónde estamos?)
-Existe una librería PHP en el proyecto actual, ya con:
-✅ Bloque 1 COMPLETADO
+Existe una librería PHP en el project actual, ya con:
+✅ Block 1 COMPLETED
 
 Core PHP puro
 API fluida (ContentProcessor::make())
 Interfaces base (ExtractorInterface, StructurerInterface, SchemaInterface)
 Batch processing funcional
 
-✅ Bloque 2 COMPLETADO
+✅ Block 2 COMPLETED
 
 Ingesta de múltiples archivos
 Validación técnica de documentos
@@ -72,12 +72,12 @@ Este Structurer debe:
 D. Integrar con ContentProcessor
 El ContentProcessor debe:
 
-- Tomar resultados del Bloque 2
+- Tomar resultados del Block 2
 - Aplicar el Structurer
 - Generar un resultado final batch con:
   • data (JSON)
-  • errors (del Bloque 2)
-  • warnings (del Bloque 3)
+  • errors (del Block 2)
+  • warnings (del Block 3)
 
 ⚠️ No romper el API pública existente.
 
@@ -92,7 +92,7 @@ Agregar un ejemplo ejecutable que:
 4️⃣ Restricciones y reglas (¿Qué límites hay?)
 Debes cumplir TODAS estas reglas:
 
-Arquitectura:
+Architecture:
 ❌ No modificar Bloques 1 ni 2
 ✅ Solo agregar nuevas clases
 ✅ PHP 8.1+
@@ -115,17 +115,17 @@ El JSON final NO lo impone la librería
 La librería solo ejecuta el contrato
 
 5️⃣ Formato de salida (¿Cómo lo quiero?)
-La entrega debe seguir estrictamente este formato:
+La delivery debe seguir estrictamente este formato:
 
-A. Explicación breve del Bloque 3
+A. Explicación breve del Block 3
 B. Nuevas clases creadas (con rutas)
 C. Código completo de cada clase
 D. Ejemplo funcional ejecutable
 E. Output JSON esperado
 F. Pasos para probar
-G. Confirmación explícita de cierre del Bloque 3
+G. Confirmación explícita de closure del Block 3
 
-❗ No adelantar Bloque 4
+❗ No adelantar Block 4
 ❗ No introducir IA
 ❗ No romper compatibilidad
 

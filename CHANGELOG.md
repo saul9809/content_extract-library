@@ -65,7 +65,7 @@ php examples/example_bloque4_basic.php
 
 ### Added
 
-- Bloque 5: Security hardening (SecurityValidator, SecurityConfig, SecurityException)
+- Block 5: Security hardening (SecurityValidator, SecurityConfig, SecurityException)
 - FinalResult unified API with data(), errors(), warnings(), summary()
 - Complete documentation for Packagist publication
 - Verification scripts for Packagist compatibility
@@ -87,7 +87,7 @@ php examples/example_bloque4_basic.php
 
 ### Added
 
-- Bloque 3: Semantic structuring with RuleBasedStructurer
+- Block 3: Semantic structuring with RuleBasedStructurer
 - Warning system for validation feedback
 - SemanticStructurerInterface for advanced structuring
 - DocumentContext for metadata support
@@ -98,7 +98,7 @@ php examples/example_bloque4_basic.php
 
 ### Added
 
-- Bloque 2: PDF text extraction with PdfTextExtractor
+- Block 2: PDF text extraction with PdfTextExtractor
 - Batch processing support
 - smalot/pdfparser integration
 
@@ -108,7 +108,7 @@ php examples/example_bloque4_basic.php
 
 ### Added
 
-- Bloque 1: Core content extraction framework
+- Block 1: Core content extraction framework
 - TextFileExtractor for plain text files
 - SimpleLineStructurer for basic structuring
 - Extractor and Structurer interfaces
