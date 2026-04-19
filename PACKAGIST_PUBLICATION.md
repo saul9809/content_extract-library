@@ -14,7 +14,7 @@
 - ✅ Namespace PSR-4: `ContentProcessor\` → `src/`
 - ✅ README.md actualizado con ejemplos correctos
 - ✅ LICENSE (MIT) presente y válido
-- ✅ SECURITY.md con documentation de seguridad
+- ✅ SECURITY.md con documentation de security
 - ✅ .gitignore configurado correctamente
 - ✅ No hay dependencias innecesarias en "require"
 - ✅ `require-dev` contiene solo herramientas de desarrollo
@@ -27,7 +27,7 @@
 - ✅ API pública estable (FinalResult)
 - ✅ Ejemplos funcionando correctamente
 - ✅ Código PSR-12 compliant
-- ✅ Seguridad hardened (Block 5)
+- ✅ Security hardened (Block 5)
 
 ### Control de Versiones
 
@@ -43,7 +43,7 @@
 ```json
 {
   "name": "content-extract/content-processor",
-  "description": "Librería PHP robusta para procesamiento batch de PDFs y documentos. Extrae contenido y genera JSON estructurado según esquema definido por el usuario. Production-ready, segura, sin dependencias innecesarias.",
+  "description": "Librería PHP robusta para procesamiento batch of PDFs y documentos. Extrae contenido y genera JSON estructurado según esquema definido por el usuario. Production-ready, segura, sin dependencias innecesarias.",
   "keywords": [
     "pdf",
     "content-extraction",
@@ -113,7 +113,7 @@
 | --------------- | -------------- | -------------------------------------- |
 | `README.md`     | ✅ Actualizado | API 4.0, ejemplos frescos, Bloques 1-5 |
 | `LICENSE`       | ✅ MIT válido  | Completa, 2026 Copyright               |
-| `SECURITY.md`   | ✅ Presente    | Políticas y límites de seguridad       |
+| `SECURITY.md`   | ✅ Presente    | Políticas y límites de security       |
 | `.gitignore`    | ✅ Completo    | vendor/, .vscode/, logs, cache         |
 | `composer.json` | ✅ Optimizado  | PSR-4, estable, sin dev deps           |
 
@@ -133,13 +133,13 @@ v1.3.0
 **v1.3.0** Rationale:
 
 - **1.x** = API pública estable (FinalResult API)
-- **1.3** = Block 5 completed (seguridad, hardening)
+- **1.3** = Block 5 completed (security, hardening)
 - **1.3.0** = Primera release pública
 
 ### Pasos Git (en terminal)
 
 ```bash
-# 1. Verificar status limpio
+# 1. Verify status limpio
 git status
 # Esperado: "working tree clean"
 
@@ -156,7 +156,7 @@ Includes:
 # 3. Push tag a remote
 git push origin v1.3.0
 
-# 4. Verificar tag
+# 4. Verify tag
 git tag -v v1.3.0
 git ls-remote --tags origin | grep v1.3.0
 ```
@@ -184,7 +184,7 @@ git ls-remote --tags origin
 
 1. Ir a: https://github.com/content-extract/content-processor/settings
 2. En "Danger Zone", hacer público el repositorio
-3. Verificar que sea accesible: `https://github.com/content-extract/content-processor`
+3. Verify que sea accesible: `https://github.com/content-extract/content-processor`
 
 **Si ya es público**: ✅ Listo
 
@@ -193,7 +193,7 @@ git ls-remote --tags origin
 1. Ir a: https://packagist.org
 2. Click en "Sign Up" (esquina superior derecha)
 3. Usar email profesional
-4. Verificar email
+4. Verify email
 5. Configurar perfil
 
 ### Paso 2: Conectar GitHub a Packagist
@@ -234,7 +234,7 @@ curl -X POST https://packagist.org/api/update-package \
   -d "username=TU_USERNAME&apiToken=TU_TOKEN&repository=https://github.com/content-extract/content-processor"
 ```
 
-### Paso 5: Verificar en Packagist
+### Paso 5: Verify en Packagist
 
 1. Ir a: https://packagist.org/packages/content-extract/content-processor
 2. Debe mostrar:
@@ -245,7 +245,7 @@ curl -X POST https://packagist.org/api/update-package \
    - ✅ Require: php ^8.1
    - ✅ Ejemplos de instalación
 
-### Paso 6: Verificar resolución en Composer
+### Paso 6: Verify resolución en Composer
 
 ```bash
 # En cualquier directorio
@@ -279,11 +279,11 @@ cd test-content-processor
 # 2. Instalar nuestro paquete
 composer require content-extract/content-processor
 
-# 3. Verificar que se instaló
+# 3. Verify que se instaló
 composer show content-extract/content-processor
 ```
 
-### Test 3: Verificar autoload en Laravel
+### Test 3: Verify autoload en Laravel
 
 ```bash
 # En project de prueba, crear archivo: routes/test-processor.php
@@ -357,16 +357,16 @@ php test_processor.php
 
 | Error                              | Causa                         | Solución                                                |
 | ---------------------------------- | ----------------------------- | ------------------------------------------------------- |
-| "Package not found in Packagist"   | Nombre incorrecto             | Verificar `name` en composer.json                       |
+| "Package not found in Packagist"   | Nombre incorrecto             | Verify `name` en composer.json                       |
 | "Package name must be vendor/name" | Formato incorrecto            | Debe ser `content-extract/content-processor` (2 partes) |
-| "Repository not found"             | Repo privado o URL incorrecta | Hacer público en GitHub, verificar URL                  |
+| "Repository not found"             | Repo privado o URL incorrecta | Hacer público en GitHub, verify URL                  |
 | "version not found"                | Tag no creado o incorrecto    | `git tag v1.3.0 && git push origin v1.3.0`              |
 
 ### ❌ Errores de Autoload
 
 | Error                    | Causa               | Solución                                                |
 | ------------------------ | ------------------- | ------------------------------------------------------- |
-| Class not found          | PSR-4 mal definido  | Verificar que namespace = "ContentProcessor\\" → "src/" |
+| Class not found          | PSR-4 mal definido  | Verify que namespace = "ContentProcessor\\" → "src/" |
 | Multiple declarations    | Namespace duplicado | Buscar `namespace ContentProcessor` en múltiples paths  |
 | Composer autoload cached | Cache viejo         | `composer dump-autoload`                                |
 
@@ -376,7 +376,7 @@ php test_processor.php
 | ------------------- | ---------------------------------- | --------------------------------------------- |
 | Circular dependency | Require en require-dev             | Mover solo a require-dev                      |
 | Version conflict    | require ^8.2 pero project usa 8.1 | Cambiar a `^8.1`                              |
-| Package too heavy   | Incluir vendor en repo             | Verificar .gitignore, limpiar con `git clean` |
+| Package too heavy   | Incluir vendor en repo             | Verify .gitignore, limpiar con `git clean` |
 
 ### ❌ Errores de Versionado
 

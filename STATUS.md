@@ -2,7 +2,7 @@
 
 **Última actualización:** 19 de Abril, 2026  
 **Versión:** 1.4.0  
-**Estatus:** ✅ **BLOQUE 5 COMPLETED | SEGURIDAD & COMPLIANCE LISTO | PACKAGIST READY**
+**Estatus:** ✅ **BLOCK 5 COMPLETED | SEGURIDAD & COMPLIANCE LISTO | PACKAGIST READY**
 
 ---
 
@@ -15,11 +15,11 @@
 | **PHP**                | ✅ 8.1+      | Type-safe                                                                                                                                             |
 | **Dependencias**       | ✅ Mínimas   | Solo smalot/pdfparser para feature                                                                                                                    |
 | **Interfaces**         | ✅ 4/4       | ExtractorInterface, StructurerInterface, SemanticStructurerInterface, SchemaInterface                                                                 |
-| **Modelos**            | ✅ 9/9       | +4 nuevos para resultado final + 3 nuevos para seguridad (FinalResult, Error, Warning, Summary, SecurityConfig, SecurityException, SecurityValidator) |
+| **Modelos**            | ✅ 9/9       | +4 nuevos para final result + 3 nuevos para security (FinalResult, Error, Warning, Summary, SecurityConfig, SecurityException, SecurityValidator) |
 | **Extractores**        | ✅ 2/2       | TextFileExtractor + PdfTextExtractor                                                                                                                  |
 | **Estructuradores**    | ✅ 2/2       | SimpleLineStructurer (B1) + RuleBasedStructurer (B3)                                                                                                  |
 | **Implementaciones**   | ✅ 13/13     | +4 nuevas para Block 4                                                                                                                               |
-| **Pruebas**            | ✅ Funcional | 8+ tests exitosos (B1 B2 B3 B4) + Robustez & Security (B5)                                                                                            |
+| **Pruebas**            | ✅ Funcional | 8+ tests exitosos (B1 B2 B3 B4) + Robustness & Security (B5)                                                                                            |
 | **Framework-agnostic** | ✅ Sí        | Laravel, Symfony, CLI, APIs REST, etc.                                                                                                                |
 | **API Final**          | ✅ Block 4  | processFinal() → FinalResult con errores, warnings, métricas                                                                                          |
 
@@ -27,11 +27,11 @@
 
 ## 📦 Deliverybles del Block 2
 
-### ✅ Extracción de PDF Digitales
+### ✅ PDF extraction Digitales
 
 **Nuevos archivos:**
 
-- ✅ [src/Extractors/PdfTextExtractor.php](./src/Extractors/PdfTextExtractor.php) — Extractor de PDFs
+- ✅ [src/Extractors/PdfTextExtractor.php](./src/Extractors/PdfTextExtractor.php) — Extractor of PDFs
 - ✅ [examples/generate_sample_pdf.php](./examples/generate_sample_pdf.php) — Generador de PDF
 - ✅ [examples/test_pdf_simple.php](./examples/test_pdf_simple.php) — Test de extracción pura
 - ✅ [examples/test_pdf_extraction.php](./examples/test_pdf_extraction.php) — Test completo
@@ -39,11 +39,11 @@
 
 **Dependencias agregadas:**
 
-- ✅ `smalot/pdfparser ^2.0` — Parser profesional de PDFs
+- ✅ `smalot/pdfparser ^2.0` — Parser profesional of PDFs
 
 **Características:**
 
-- ✅ Extracción de texto real desde PDFs digitales
+- ✅ Extracción de texto real desof PDFs digital
 - ✅ Multipage support (si aplica)
 - ✅ Validación robusta de archivos
 - ✅ Manejo de excepciones completo
@@ -55,14 +55,14 @@
 - ✅ Implementación: COMPLETA
 - ✅ Pruebas: EXITOSAS
 - ✅ Documentation: COMPLETA
-- ✅ Compatibilidad B1: ÍNTACTA
-- Ver [BLOQUE_2_COMPLETED.md](./BLOQUE_2_COMPLETED.md)
+- ✅ Compatibility B1: ÍNTACTA
+- Ver [BLOCK_2_COMPLETED.md](./BLOCK_2_COMPLETED.md)
 
 ---
 
 ## 📦 Deliverybles del Block 3
 
-### ✅ Estructuración Semántica con Warnings
+### ✅ Estructuración Semantic con Warnings
 
 **Nuevos archivos:**
 
@@ -90,9 +90,9 @@
 - ✅ Implementación: COMPLETA
 - ✅ Pruebas: EXITOSAS (3 ejemplos ejecutados correctamente)
 - ✅ Documentation: COMPLETA (formato A-G)
-- ✅ Compatibilidad B1+B2: ÍNTACTA (verificado)
+- ✅ Compatibility B1+B2: ÍNTACTA (verificado)
 - ✅ Separación warnings vs errores: FUNCIONAL
-- Ver [BLOQUE_3_COMPLETED.md](./BLOQUE_3_COMPLETED.md)
+- Ver [BLOCK_3_COMPLETED.md](./BLOCK_3_COMPLETED.md)
 
 ---
 
@@ -107,7 +107,7 @@
 - ✅ [README.md](./README.md) — Documentation principal
 - ✅ [ARCHITECTURE.md](./ARCHITECTURE.md) — Diseño de componentes
 - ✅ [GUIA_RAPIDA.md](./GUIA_RAPIDA.md) — Guide de inicio
-- ✅ [BLOQUE_1_COMPLETED.md](./BLOQUE_1_COMPLETED.md) — Status de este bloque
+- ✅ [BLOCK_1_COMPLETED.md](./BLOCK_1_COMPLETED.md) — Status de este block
 
 ### Código fuente (src/)
 
@@ -150,7 +150,7 @@
 
 ## 📦 Deliverybles del Block 4
 
-### ✅ Resultado Final, Robustez y DX
+### ✅ Final Result, Robustness y DX
 
 **Nuevos archivos:**
 
@@ -158,15 +158,15 @@
 - ✅ [src/Models/Error.php](./src/Models/Error.php) — Normalización de errores
 - ✅ [src/Models/Warning.php](./src/Models/Warning.php) — Normalización de warnings
 - ✅ [src/Models/Summary.php](./src/Models/Summary.php) — Estadísticas y métricas
-- ✅ [examples/example_bloque4_basic.php](./examples/example_bloque4_basic.php) — Ejemplo básico
-- ✅ [examples/example_bloque4_advanced.php](./examples/example_bloque4_advanced.php) — Batch robusto
-- ✅ [examples/example_bloque4_laravel_style.php](./examples/example_bloque4_laravel_style.php) — Consumo API
-- ✅ [BLOQUE_4_COMPLETED.md](./BLOQUE_4_COMPLETED.md) — Documentation completa
+- ✅ [examples/example_block4_basic.php](./examples/example_block4_basic.php) — Ejemplo básico
+- ✅ [examples/example_block4_advanced.php](./examples/example_block4_advanced.php) — Batch robusto
+- ✅ [examples/example_block4_laravel_style.php](./examples/example_block4_laravel_style.php) — Consumo API
+- ✅ [BLOCK_4_COMPLETED.md](./BLOCK_4_COMPLETED.md) — Documentation completa
 
 **Cambios a ContentProcessor:**
 
 - ✅ Nuevo método `processFinal(): FinalResult`
-- ✅ Métodos antiguos mantienen compatibilidad
+- ✅ Métodos antiguos mantienen compatibility
 - ✅ Normalización de errores y warnings
 - ✅ Construcción automática de Summary
 
@@ -179,16 +179,16 @@
 - ✅ Export a JSON directo
 - ✅ Debugging completo
 - ✅ 100% compatible con ContentProcessor
-- ✅ Backward compatible (Bloques 1-3 intactos)
+- ✅ Backward compatible (Bloques 1-3 intact)
 
 **Status Block 4:**
 
 - ✅ Implementación: COMPLETA
 - ✅ Pruebas: EXITOSAS (3 ejemplos ejecutados correctamente)
 - ✅ Documentation: COMPLETA
-- ✅ Compatibilidad B1+B2+B3: ÍNTACTA (VERIFICADA)
+- ✅ Compatibility B1+B2+B3: ÍNTACTA (VERIFICADA)
 - ✅ DX (Developer Experience): MEJORADA
-- Ver [BLOQUE_4_COMPLETED.md](./BLOQUE_4_COMPLETED.md)
+- Ver [BLOCK_4_COMPLETED.md](./BLOCK_4_COMPLETED.md)
 
 ---
 
@@ -276,7 +276,7 @@
 
 ---
 
-## 🚀 Capacidades desbloqueadas
+## 🚀 Capacidades desblockadas
 
 Con el Block 1 completed, ahora se puede:
 
@@ -289,7 +289,7 @@ Con el Block 1 completed, ahora se puede:
 
 ---
 
-## 📈 Roadmap de bloques
+## 📈 Roadmap de blocks
 
 ### ✅ Block 1: Fundaciones (COMPLETED)
 
@@ -365,7 +365,7 @@ Con el Block 1 completed, ahora se puede:
 | [README.md](./README.md)                           | Introducción y uso básico         |
 | [GUIA_RAPIDA.md](./GUIA_RAPIDA.md)                 | Primeros pasos y ejemplos         |
 | [ARCHITECTURE.md](./ARCHITECTURE.md)               | Diseño de componentes y extensión |
-| [BLOQUE_1_COMPLETED.md](./BLOQUE_1_COMPLETED.md) | Status detallado del bloque       |
+| [BLOCK_1_COMPLETED.md](./BLOCK_1_COMPLETED.md) | Status detallado del block       |
 | [STATUS.md](./STATUS.md)                           | Este archivo                      |
 
 ---
@@ -384,7 +384,7 @@ Con el Block 1 completed, ahora se puede:
 
 ### Preparados para futuro:
 
-- 🔄 Extractor de PDFs
+- 🔄 Extractor of PDFs
 - 🔄 Extractor con OCR
 - 🔄 Estructurador con regex avanzado
 - 🔄 Estructurador con IA/ML
@@ -400,7 +400,7 @@ Con el Block 1 completed, ahora se puede:
 
 ✅ **100% COMPLETED (Bloques 1-5)**  
 ✅ **FUNCIONAL (Batch processing, PDF extraction, structuring)**  
-✅ **PROBADO (30+ tests, robustez 5/5)**  
+✅ **PROBADO (30+ tests, robustness 5/5)**  
 ✅ **DOCUMENTADO (10 secciones SECURITY.md)**  
 ✅ **SECURITY HARDENED (6 protecciones contra DoS, path traversal, etc.)**  
 ✅ **PACKAGIST READY (composer.json validado)**  
@@ -415,14 +415,14 @@ Con el Block 1 completed, ahora se puede:
 
 ### Links de Deliverybles por Bloque
 
-- [BLOQUE_1_COMPLETED.md](./BLOQUE_1_COMPLETED.md) — Fundaciones
-- [BLOQUE_2_COMPLETED.md](./BLOQUE_2_COMPLETED.md) — Extracción PDF
-- [BLOQUE_3_COMPLETED.md](./BLOQUE_3_COMPLETED.md) — Estructuración Inteligente
-- [BLOQUE_4_COMPLETED.md](./BLOQUE_4_COMPLETED.md) — Resultado Unificado
-- [BLOQUE_5_COMPLETED.md](./BLOQUE_5_COMPLETED.md) — Seguridad & Publication
+- [BLOCK_1_COMPLETED.md](./BLOCK_1_COMPLETED.md) — Fundaciones
+- [BLOCK_2_COMPLETED.md](./BLOCK_2_COMPLETED.md) — Extracción PDF
+- [BLOCK_3_COMPLETED.md](./BLOCK_3_COMPLETED.md) — Estructuración Inteligente
+- [BLOCK_4_COMPLETED.md](./BLOCK_4_COMPLETED.md) — Resultado Unificado
+- [BLOCK_5_COMPLETED.md](./BLOCK_5_COMPLETED.md) — Security & Publication
 
-### Archivos de Seguridad Block 5
+### Archivos de Security Block 5
 
 - [LICENSE](./LICENSE) — MIT License
-- [SECURITY.md](./SECURITY.md) — Documentation de Seguridad
-- [src/Security/](./src/Security/) — Clases de seguridad (3 archivos)
+- [SECURITY.md](./SECURITY.md) — Documentation de Security
+- [src/Security/](./src/Security/) — Clases de security (3 archivos)

@@ -37,7 +37,7 @@
 
 ---
 
-## 🎯 BLOQUES BREAKDOWN
+## 🎯 BLOCKS BREAKDOWN
 
 ```
 Block 1 ✅  → TextFileExtractor, SimpleLineStructurer

@@ -46,7 +46,7 @@ foreach ($data as $item) { $db->insert($item); } // Batch job
 | ------ | --------- | --------------------------------------- | ------ |
 | **1**  | API base  | Core + Schemas + Structurers            | ✅     |
 | **2**  | PDF real  | PdfTextExtractor + smalot/pdfparser     | ✅     |
-| **3**  | Semántica | RuleBasedStructurer + warnings          | ✅     |
+| **3**  | Semantic | RuleBasedStructurer + warnings          | ✅     |
 | **4**  | Resultado | FinalResult + Error + Warning + Summary | ✅     |
 
 ---
@@ -71,7 +71,7 @@ foreach ($data as $item) { $db->insert($item); } // Batch job
 - Array PHP (para BD)
 - String legible (para logs)
 
-🛡️ **Robustez**
+🛡️ **Robustness**
 
 - Manejo completo de excepciones
 - Validación de esquema integrada
@@ -97,9 +97,9 @@ src/
     └── Summary.php           # NUEVO (Block 4)
 
 examples/
-├── example_bloque4_basic.php
-├── example_bloque4_advanced.php
-└── example_bloque4_laravel_style.php
+├── example_block4_basic.php
+├── example_block4_advanced.php
+└── example_block4_laravel_style.php
 ```
 
 ---
@@ -117,11 +117,11 @@ composer install
 
 ```bash
 # Test Block 4
-php examples/example_bloque4_basic.php
-php examples/example_bloque4_advanced.php
-php examples/example_bloque4_laravel_style.php
+php examples/example_block4_basic.php
+php examples/example_block4_advanced.php
+php examples/example_block4_laravel_style.php
 
-# Verificar backwards compat
+# Verify backwards compat
 php examples/example_basic.php          # Block 1
 php examples/test_structuring.php       # Block 3
 ```
@@ -208,9 +208,9 @@ php batch_process.php /documentos --schema=schema.json > resultado.json
 
 ## Próximos Pasos (Opcionales, No Incluidos)
 
-- 🔐 Seguridad: CORS, rate limiting, JWT
+- 🔐 Security: CORS, rate limiting, JWT
 - 🧠 IA: Clasificación automática con ML
-- 📱 OCR: Tesseract para PDFs escaneados
+- 📱 OCR: Tesseract for PDFs scanned
 - ⚡ CLI: Shell script para batch masivo
 - 📊 Monitoreo: Métricas de performance
 

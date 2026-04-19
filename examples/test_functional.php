@@ -112,25 +112,25 @@ try {
     echo "║   VALIDACIONES STRUCTURELES                                 ║\n";
     echo "╚══════════════════════════════════════════════════════════════╝\n\n";
 
-    // Verificar autoload PSR-4
+    // Verify autoload PSR-4
     echo "✅ Autoload PSR-4: FUNCIONANDO\n";
     echo "   • Namespace resuelto: ContentProcessor\\Core\\ContentProcessor\n";
     echo "   • File ubicado en: src/Core/ContentProcessor.php\n\n";
 
-    // Verificar interfaces
+    // Verify interfaces
     echo "✅ Interfaces Base: IMPLEMENTADAS\n";
     echo "   • ExtractorInterface: ✓\n";
     echo "   • StructurerInterface: ✓\n";
     echo "   • SchemaInterface: ✓\n\n";
 
-    // Verificar s
+    // Verify s
     echo "✅ Classs de Implementation: FUNCIONALES\n";
     echo "   • ContentProcessor: ✓ (orquestación)\n";
     echo "   • ArraySchema: ✓ (validation)\n";
     echo "   • TextFileExtractor: ✓ (extraction)\n";
     echo "   • SimpleLineStructurer: ✓ (structureción)\n\n";
 
-    // Verificar pipeline
+    // Verify pipeline
     echo "✅ Pipeline de Processing: COMPLETO\n";
     echo "   • Extraction de content: ✓\n";
     echo "   • Structureción según esquema: ✓\n";

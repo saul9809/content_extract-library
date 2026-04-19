@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BLOCK 5 - Ejemplo de Robustez: Pruebas de Límites de Seguridad
+ * BLOCK 5 - Ejemplo de Robustness: Pruebas de Límites de Security
  * 
  * Demuestra cómo Content Processor maneja:
  * - PDFs vacíos
@@ -10,7 +10,7 @@
  * - Batch demasiado grande
  * - Files inválidos
  * 
- * Ejecutar: php examples/test_robustez_bloque5.php
+ * Ejecutar: php examples/test_robustness_block5.php
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -23,12 +23,12 @@ use ContentProcessor\Security\SecurityConfig;
 use ContentProcessor\Security\SecurityException;
 
 echo "╔════════════════════════════════════════╗\n";
-echo "║  BLOCK 5: Pruebas de Robustez        ║\n";
-echo "║         (Límites de Seguridad)         ║\n";
+echo "║  BLOCK 5: Pruebas de Robustness        ║\n";
+echo "║         (Límites de Security)         ║\n";
 echo "╚════════════════════════════════════════╝\n\n";
 
 // Crear directorio de pruebas
-$testDir = __DIR__ . '/test_robustez_security';
+$testDir = __DIR__ . '/test_robustness_security';
 @mkdir($testDir, 0777, true);
 
 // Configuración
@@ -145,8 +145,8 @@ try {
 }
 
 // Test 5:  de  (5 - No exponer detalles)
-echo "5️⃣  Prueba: Seguridad de Excepciones\n";
-echo "   Acción: Verificar que getClientMessage() no expone detalles\n";
+echo "5️⃣  Prueba: Security de Excepciones\n";
+echo "   Acción: Verify que getClientMessage() no expone detalles\n";
 
 try {
     $processor = ContentProcessor::make()
@@ -171,11 +171,11 @@ foreach (glob("$testDir/*") as $file) {
 }
 @rmdir($testDir);
 
-echo "✨ Pruebas de robustez completadas\n";
+echo "✨ Pruebas de robustness completadas\n";
 echo "\n📊 RESUMEN DE CONF IGURACION DE SEGURIDAD\n";
 echo "─────────────────────────────────────────\n";
 foreach (SecurityConfig::getSummary() as $key => $value) {
     echo "  $key: $value\n";
 }
 
-echo "\n✅ El Block 5 de Seguridad está activo y funcional\n";
+echo "\n✅ El Block 5 de Security está activo y funcional\n";

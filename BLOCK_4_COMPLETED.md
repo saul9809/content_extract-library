@@ -1,4 +1,4 @@
-# BLOQUE 4 - Resultado Final, Robustez y DX
+# BLOCK 4 - Final Result, Robustness y DX
 
 **Versión:** 1.3.0 (Block 4)  
 **Fecha:** Abril 2026  
@@ -8,7 +8,7 @@
 
 ## 🎯 Objetivo del Block 4
 
-Proveer un resultado final único, robusto y fácil de consumir para desarrolladores que utilizan Laravel, PHP puro, o cualquier framework.
+Proveer un final result único, robusto y fácil de consumir para desarrolladores que utilizan Laravel, PHP puro, o cualquier framework.
 
 **Principios:**
 
@@ -17,7 +17,7 @@ Proveer un resultado final único, robusto y fácil de consumir para desarrollad
 - ✅ Métricas y estadísticas integradas
 - ✅ Debuggability completa
 - ✅ Export a JSON directo
-- ✅ Backward compatible (Bloques 1-3 intactos)
+- ✅ Backward compatible (Bloques 1-3 intact)
 
 ---
 
@@ -189,7 +189,7 @@ $summary->__toString()              // igual a getSummaryString()
 public function processFinal(): FinalResult
 ```
 
-### Métodos Antiguos: Mantienen Compatibilidad
+### Métodos Antiguos: Mantienen Compatibility
 
 ```php
 // Block 1-3: Seguir funcionando igual
@@ -324,16 +324,16 @@ composer install
 
 ```bash
 # Block 4 - Básico
-php examples/example_bloque4_basic.php
+php examples/example_block4_basic.php
 
 # Block 4 - Avanzado (batch con errores)
-php examples/example_bloque4_advanced.php
+php examples/example_block4_advanced.php
 
 # Block 4 - Laravel-style (consumo API)
-php examples/example_bloque4_laravel_style.php
+php examples/example_block4_laravel_style.php
 ```
 
-### Verificar Compatibilidad (Bloques 1-3)
+### Verify Compatibility (Bloques 1-3)
 
 ```bash
 # Block 1 - Debe seguir funcionando
@@ -344,7 +344,7 @@ php examples/test_structuring.php
 php examples/test_structuring_advanced.php
 ```
 
-### Verificar Autoload
+### Verify Autoload
 
 ```bash
 # Si Composer no está disponible
@@ -355,10 +355,10 @@ php -r "require 'autoload_manual.php'; echo 'OK';"
 
 ## 📤 Output Esperado
 
-### ejemplo_bloque4_basic.php
+### ejemplo_block4_basic.php
 
 ```
-=== BLOQUE 4: Resultado Final Robusto ===
+=== BLOCK 4: Final Result Robusto ===
 
 📦 Procesando archivos...
 
@@ -408,10 +408,10 @@ php -r "require 'autoload_manual.php'; echo 'OK';"
 ✨ ¡Block 4 Completed!
 ```
 
-### ejemplo_bloque4_advanced.php
+### ejemplo_block4_advanced.php
 
 ```
-=== BLOQUE 4: Batch Processing Robusto ===
+=== BLOCK 4: Batch Processing Robusto ===
 
 📁 Directorio de prueba creado con 5 archivos
    ✅ 2 válidos
@@ -477,11 +477,11 @@ Guardado en: /tmp/.../resultado_batch.json
 - [x] **Clase Warning** — Normaliza warnings semánticos
 - [x] **Clase Summary** — Proporciona métricas
 - [x] **Método ContentProcessor::processFinal()** — API nueva
-- [x] **Ejemplos básicos** — example_bloque4_basic.php
-- [x] **Ejemplos avanzados** — example_bloque4_advanced.php
-- [x] **Ejemplos Laravel-style** — example_bloque4_laravel_style.php
+- [x] **Basic examples** — example_block4_basic.php
+- [x] **Advanced examples** — example_block4_advanced.php
+- [x] **Laravel-style examples** — example_block4_laravel_style.php
 - [x] **Documentation** — Este archivo
-- [x] **Backward compatibility** — Bloques 1-3 intactos
+- [x] **Backward compatibility** — Bloques 1-3 intact
 - [x] **PSR-4 / PSR-12** — Código limpio y namespaced
 
 ---
@@ -562,7 +562,7 @@ El **Block 4** cierra el contrato final del Content Processor proporcionando:
 3. **Normalización completa** — Errores y warnings estructurados
 4. **Métricas integradas** — Summary con estadísticas útiles
 5. **Experiencia de desarrollo mejorada** — DX (Developer Experience)
-6. **100% Backward compatible** — Bloques 1-3 sin cambios
+6. **100% Backward compatible** — Bloques 1-3 no changes
 
 **La librería está lista para producción.**
 

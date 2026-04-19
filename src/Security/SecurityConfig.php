@@ -3,7 +3,7 @@
 namespace ContentProcessor\Security;
 
 /**
- * Configuración centralizada de límites de seguridad.
+ * Configuración centralizada de límites de security.
  * 
  * Define los umbrales máximos para:
  * - Tamaño de files PDF
@@ -94,7 +94,7 @@ class SecurityConfig
     }
 
     /**
-     * Obtiene un resumen de la configuración de seguridad.
+     * Obtiene un resumen de la configuración de security.
      * Útil para logging y debugging.
      * 
      * @return array

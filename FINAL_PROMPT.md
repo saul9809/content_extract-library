@@ -1,4 +1,4 @@
-# ✅ PROMPT PARA CLAUDE CODE - BLOQUE 2: EXTRACCIÓN DE PDF DIGITALES
+# ✅ PROMPT PARA CLAUDE CODE - BLOCK 2: PDF EXTRACTION DIGITAL
 
 (Cópialo tal cual. No hace falta modificarlo.)
 
@@ -18,7 +18,7 @@ Tu responsabilidad es diseñar y generar código production‑ready, bien estruc
 
 Estoy construyendo una librería FREE y open‑source en PHP puro, cuyo objetivo es:
 
-Procesar PDFs multipágina (digitales u opcionalmente escaneados)
+Procesar PDFs multipágina (digital u opcionalmente scanned)
 Extraer su contenido textual
 Convertir ese contenido en una estructura JSON configurable
 Pensada para carga masiva de documentos (ej. currículos)
@@ -47,9 +47,9 @@ Status actual confirmado del Block 1:
 
 3️⃣ Tarea exacta (¿Qué necesito?)
 
-Necesito que generes paso a paso la extensión BLOQUE 2, comenzando SOLO por la base:
+Necesito que generes paso a paso la extensión BLOCK 2, comenzando SOLO por la base:
 
-📦 Extracción REAL de texto desde PDF DIGITALES (no escaneados)
+📦 Extracción REAL de texto desde PDF DIGITAL (no scanned)
 ✅ Crear nuevo extractor: PdfTextExtractor
 ✅ Implementa ExtractorInterface
 ✅ Extrae texto REAL desde archivos .pdf
@@ -63,7 +63,7 @@ El extractor debe:
 - Retornar string
 - Lanzar excepción controlada si falla
 
-Mantener 100% compatibilidad con:
+Mantener 100% compatibility con:
 
 - ContentProcessor
 - Extractores existentes
@@ -102,7 +102,7 @@ Alcance funcional
 ❌ NO IA
 ❌ NO heurísticas avanzadas
 ❌ NO regex complejos
-✅ PDFs DIGITALES solamente
+✅ PDFs DIGITAL solamente
 ✅ Multipágina (si el parser lo permite)
 ✅ Batch compatible
 
@@ -126,7 +126,7 @@ No simplifiques en exceso.
 
 ✅ Resultado esperado
 
-Al terminar el bloque, yo pueda:
+Al terminar el block, yo pueda:
 composer install
 php examples/test_pdf_extraction.php
 

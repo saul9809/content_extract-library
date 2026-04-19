@@ -32,7 +32,7 @@ librery/
     ├── ✅ README.md                    (intro principal)
     ├── ✅ GUIA_RAPIDA.md               (primeros pasos)
     ├── ✅ ARCHITECTURE.md              (diseño)
-    ├── ✅ BLOQUE_1_COMPLETED.md       (status del bloque)
+    ├── ✅ BLOCK_1_COMPLETED.md       (status del block)
     └── ✅ STATUS.md                    (summary general)
 ```
 
@@ -40,7 +40,7 @@ librery/
 
 ## 🧪 Prueba que funciona
 
-### Terminal 1: Verificar PHP
+### Terminal 1: Verify PHP
 
 ```powershell
 PS> php -v
@@ -58,7 +58,7 @@ PS> php test_functional.php
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║   ✅ BLOQUE 1 COMPLETED EXITOSAMENTE                       ║
+║   ✅ BLOCK 1 COMPLETED EXITOSAMENTE                       ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -91,7 +91,7 @@ PS> php test_functional.php
 - [ ] ✅ `README.md` existe
 - [ ] ✅ `GUIA_RAPIDA.md` existe
 - [ ] ✅ `ARCHITECTURE.md` existe
-- [ ] ✅ `BLOQUE_1_COMPLETED.md` existe
+- [ ] ✅ `BLOCK_1_COMPLETED.md` existe
 - [ ] ✅ `STATUS.md` existe (este archivo)
 
 ### Configuración
@@ -125,7 +125,7 @@ tree /F
 composer validate
 ```
 
-### Verificar autoload
+### Verify autoload
 
 ```powershell
 composer dump-autoload
@@ -207,6 +207,6 @@ composer dump-autoload
 
 ---
 
-**Status:** ✅ **BLOQUE 1 COMPLETED Y VERIFICADO**
+**Status:** ✅ **BLOCK 1 COMPLETED Y VERIFICADO**
 
 _Última verification: 18 de Abril, 2026_

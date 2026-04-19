@@ -3,9 +3,9 @@
 namespace ContentProcessor\Security;
 
 /**
- * Excepción de seguridad genérica.
+ * Excepción de security genérica.
  * 
- * Se lanza cuando se detecta una violación de seguridad
+ * Se lanza cuando se detecta una violación de security
  * (límite excedido, file malicioso, path traversal, etc.)
  * 
  * IMPORTANTE: Nunca expone detalles internos del filesystem
@@ -17,7 +17,7 @@ namespace ContentProcessor\Security;
 class SecurityException extends \Exception
 {
     /**
-     * Tipo de excepción de seguridad.
+     * Tipo de excepción de security.
      * @var string
      */
     private string $securityType;
@@ -48,7 +48,7 @@ class SecurityException extends \Exception
     }
 
     /**
-     * Obtiene el tipo de violación de seguridad.
+     * Obtiene el tipo de violación de security.
      * @return string
      */
     public function getSecurityType(): string
@@ -146,7 +146,7 @@ class SecurityException extends \Exception
      */
     public function getClientMessage(): string
     {
-        return $this->getMessage() ?: 'Error of seguridad detectado.';
+        return $this->getMessage() ?: 'Error of security detectado.';
     }
 
     /**

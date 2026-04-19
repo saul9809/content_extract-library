@@ -2,7 +2,7 @@
 
 ## Instalación y primeras pruebas
 
-### 1. Verificar que PHP está instalado
+### 1. Verify que PHP está instalado
 
 ```powershell
 php -v
@@ -257,6 +257,6 @@ Sí. El diseño está optimizado para batch processing.
 
 ## Soporte y reportar bugs
 
-Por ahora, la librería está en fase alpha. Cambios pueden ocurrir en cada bloque.
+Por ahora, la librería está en fase alpha. Cambios pueden ocurrir en each block.
 
 **Status actual:** ✅ Block 1 funcional, lista para extensión.

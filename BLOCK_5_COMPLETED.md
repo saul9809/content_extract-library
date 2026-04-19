@@ -1,18 +1,18 @@
-# 🔒 BLOQUE 5: SEGURIDAD, COMPLIANCE Y PUBLICATION
+# 🔒 BLOCK 5: SEGURIDAD, COMPLIANCE Y PUBLICATION
 
 **Fecha de Delivery:** Abril 2026  
 **Versión Librería:** v1.4.0  
 **Status:** ✅ **COMPLETED**  
-**Equipo:** Architecture de Software / Seguridad
+**Equipo:** Architecture de Software / Security
 
 ---
 
 ## SUMMARY EXECUTIVE
 
-El Block 5 implementa la **capa de seguridad y hardening** de Content Processor, preparando la librería para **producción y distribución pública** en Packagist. Se añadieron:
+El Block 5 implementa la **capa de security y hardening** de Content Processor, preparando la librería para **producción y distribución pública** en Packagist. Se añadieron:
 
-✅ **3 clases de seguridad** (SecurityConfig, SecurityException, SecurityValidator)  
-✅ **0 cambios en API** (transparencia total)  
+✅ **3 clases de security** (SecurityConfig, SecurityException, SecurityValidator)  
+✅ **0 changes en API** (transparencia total)  
 ✅ **Protección contra DoS, path traversal, PDF spoofing**  
 ✅ **Documentation legal** (LICENSE, SECURITY.md)  
 ✅ **composer.json listo para Packagist**
@@ -21,7 +21,7 @@ El Block 5 implementa la **capa de seguridad y hardening** de Content Processor,
 
 ## I. OBJETIVOS CUMPLIDOS (Block 5)
 
-### A. Seguridad y Hardening ✅
+### A. Security y Hardening ✅
 
 #### 1. **Límites de Recursos Configurables**
 
@@ -39,7 +39,7 @@ PDF_HEADER_SIGNATURE       = "%PDF-"
 - Limita solicitudes batch a evitar DoS
 - Permite procesamiento predecible con límites claros
 
-#### 2. **Validaciones de Seguridad**
+#### 2. **Validaciones de Security**
 
 | Validación         | Ubicación                        | Descripción                  |
 | ------------------ | -------------------------------- | ---------------------------- |
@@ -58,7 +58,7 @@ PDF_HEADER_SIGNATURE       = "%PDF-"
 $e->getClientMessage()
 // → "Batch contiene 60 documentos (máximo: 50)."
 
-// Logs internos - CON contexto de seguridad
+// Logs internos - CON contexto de security
 $e->getInternalMessage()
 // → "[batch_size_exceeded] Batch contiene 60... | Context: {"count":60,"max":50}"
 
@@ -69,9 +69,9 @@ $e->getSecurityContext() // Array con detalles para auditoria
 
 ---
 
-### B. Pruebas de Robustez ✅
+### B. Pruebas de Robustness ✅
 
-#### Archivo: `examples/test_robustez_bloque5.php`
+#### Archivo: `examples/test_robustness_block5.php`
 
 **5 pruebas ejecutadas exitosamente:**
 
@@ -81,7 +81,7 @@ $e->getSecurityContext() // Array con detalles para auditoria
 | 2️⃣  | PDF Corrupto (sin firma) | ✅ Detectado "Invalid PDF data"         |
 | 3️⃣  | Batch >60 documentos     | ✅ SecurityException lanzada            |
 | 4️⃣  | Batch válido (3 docs)    | ✅ Procesados correctamente             |
-| 5️⃣  | Seguridad de excepciones | ✅ Mensajes públicos/privados separados |
+| 5️⃣  | Security de excepciones | ✅ Mensajes públicos/privados separados |
 
 **Output de ejecución:**
 
@@ -93,7 +93,7 @@ $e->getSecurityContext() // Array con detalles para auditoria
    Tipo: batch_size_exceeded
    Mensaje seguro: "Batch contiene 60 documentos (máximo: 50)."
 
-✅ Prueba 5: Seguridad
+✅ Prueba 5: Security
    getClientMessage(): "Batch contiene 100 documentos..."
    (✅ Seguro - sin paths internos)
    getInternalMessage(): [batch_size_exceeded] Batch contiene...
@@ -107,7 +107,7 @@ $e->getSecurityContext() // Array con detalles para auditoria
 #### 1. **Archivo LICENSE**
 
 - Tipo: MIT License (estándar)
-- Compatibilidad: 100% con smalot/pdfparser (MIT)
+- Compatibility: 100% con smalot/pdfparser (MIT)
 - Cumplimiento: Packagist requerido
 
 ```
@@ -118,7 +118,7 @@ of this software...
 #### 2. **Archivo SECURITY.md**
 
 - Secciones: 10 áreas de cobertura
-- Público: Guide para usuarios, equipos de seguridad
+- Público: Guide para usuarios, equipos de security
 - Referencias: RFC 9116 (Responsible Disclosure)
 
 **Contenido:**
@@ -128,17 +128,17 @@ of this software...
 | **1. Security Responsibility** | Responsabilidades compartidas                             |
 | **2. Limits**                  | Configuración de límites, bypass en contextos seguros     |
 | **3. Risk Mitigation**         | Protecciones implementadas                                |
-| **4. Auditing**                | SecurityContext para análisis de seguridad                |
+| **4. Auditing**                | SecurityContext para análisis de security                |
 | **5. Dependencies**            | Changelog de smalot/pdfparser                             |
 | **6. Security Principles**     | Input validation, fail-safe defaults, separation concerns |
 | **7. Integrator Duties**       | Obligaciones del usuario (logging, monitoreo)             |
 | **8. Reporting**               | Proceso de reporte de vulnerabilidades                    |
-| **9. Changelog**               | Historial de cambios de seguridad                         |
+| **9. Changelog**               | Historial de changes de security                         |
 | **10. Compliance**             | Alineación con estándares (OWASP Top 10)                  |
 
 ---
 
-### D. Preparación para Packagist ✅
+### D. Preparation for Packagist ✅
 
 #### composer.json Actualizado
 
@@ -169,7 +169,7 @@ of this software...
 
 ### E. Uso Final Validado (Laravel) ✅
 
-#### Archivo: `examples/example_bloque5_laravel_integration.php`
+#### Archivo: `examples/example_block5_laravel_integration.php`
 
 **Simulación de Laravel Controller (http://app:8000/documents/process)**
 
@@ -239,7 +239,7 @@ SecurityValidator::validatePdfSignature() ← Verifica %PDF-
 RESPONSE (FinalResult)
 ```
 
-### Excepciones de Seguridad
+### Excepciones de Security
 
 ```
 SecurityException
@@ -265,11 +265,11 @@ SecurityException
 | -------------------------------------------------- | ------ | -------------------------------------------------- |
 | `src/Security/SecurityConfig.php`                  | 46     | Configuración centralizada de límites              |
 | `src/Security/SecurityException.php`               | 89     | Excepciones seguras con separación público/privado |
-| `src/Security/SecurityValidator.php`               | 118    | Lógica de validación de seguridad                  |
+| `src/Security/SecurityValidator.php`               | 118    | Lógica de validación de security                  |
 | `LICENSE`                                          | 21     | MIT License (Packagist)                            |
-| `SECURITY.md`                                      | 280+   | Documentation completa de seguridad                |
-| `examples/test_robustez_bloque5.php`               | 165    | 5 pruebas de robustez                              |
-| `examples/example_bloque5_laravel_integration.php` | 215    | Integración Laravel + Seguridad                    |
+| `SECURITY.md`                                      | 280+   | Documentation completa de security                |
+| `examples/test_robustness_block5.php`               | 165    | 5 pruebas de robustness                              |
+| `examples/example_block5_laravel_integration.php` | 215    | Integración Laravel + Security                    |
 
 ### Modificados (Actualizaciones)
 
@@ -278,12 +278,12 @@ SecurityException
 | `src/Core/ContentProcessor.php` | +3 edits: imports, batch validation, exception catch |
 | `composer.json`                 | +3 edits: name, description, version constraint      |
 
-### Compatibilidad
+### Compatibility
 
-Todos los archivos existentes de **Bloques 1-4** permanecen **100% intactos**:
+Todos los archivos existentes de **Bloques 1-4** permanecen **100% intact**:
 
-- ✅ `src/Models/FinalResult.php` (sin cambios)
-- ✅ `src/Extractors/*` (sin cambios)
+- ✅ `src/Models/FinalResult.php` (no changes)
+- ✅ `src/Extractors/*` (no changes)
 - ✅ Ejemplos previos funcionales
 
 ---
@@ -298,50 +298,50 @@ $ php -l src/Security/*.php
 # → Exit Code: 0 ✅
 ```
 
-### 2. Ejecución de Tests de Robustez
+### 2. Ejecución de Tests de Robustness
 
 ```bash
-$ php examples/test_robustez_bloque5.php
+$ php examples/test_robustness_block5.php
 # Prueba 1: PDF Vacío → ✅ Error capturado
 # Prueba 2: PDF Corrupto → ✅ Error capturado
 # Prueba 3: Batch >50 → ✅ SecurityException
 # Prueba 4: Batch válido → ✅ 3 documentos procesados
-# Prueba 5: Seguridad → ✅ Mensajes públicos/privados
+# Prueba 5: Security → ✅ Mensajes públicos/privados
 ```
 
 ### 3. Integración Laravel
 
 ```bash
-$ php examples/example_bloque5_laravel_integration.php
+$ php examples/example_block5_laravel_integration.php
 # TEST 1: Batch >50 → ✅ JSON seguro (sin paths)
 # TEST 2: Batch válido → ✅ Procesamiento exitoso
 # TEST 3: PDF corrupto → ✅ Errores seguros
 ```
 
-### 4. Compatibilidad Backward
+### 4. Compatibility Backward
 
 ```bash
-$ php examples/example_bloque4_basic.php            # ✅ Funciona
-$ php examples/example_bloque4_advanced.php         # ✅ Funciona
-$ php examples/example_bloque4_laravel_style.php    # ✅ Funciona
+$ php examples/example_block4_basic.php            # ✅ Funciona
+$ php examples/example_block4_advanced.php         # ✅ Funciona
+$ php examples/example_block4_laravel_style.php    # ✅ Funciona
 ```
 
 ---
 
-## V. CHECKLIST DE CUMPLIMIENTO BLOQUE 5
+## V. CHECKLIST DE CUMPLIMIENTO BLOCK 5
 
 ### Security & Hardening
 
 - [x] Límites de batch size (50 docs máximo)
 - [x] Límites de tamaño de archivo (10MB PDF, 5MB texto)
 - [x] Validación de firma PDF (%PDF-)
-- [x] Protección contra path traversal (../bloqueo)
+- [x] Protección contra path traversal (../blocko)
 - [x] Control de avisos por documento (100 máximo)
 - [x] Excepciones seguras sin exposición de rutas
 - [x] Mensajes públicos vs. privados separados
-- [x] Contexto de seguridad para auditoría
+- [x] Contexto de security para auditoría
 
-### Pruebas de Robustez
+### Pruebas de Robustness
 
 - [x] Prueba PDFs vacíos
 - [x] Prueba PDFs corruptos
@@ -355,13 +355,13 @@ $ php examples/example_bloque4_laravel_style.php    # ✅ Funciona
 - [x] SECURITY.md (10 secciones, 280+ líneas)
 - [x] composer.json (Packagist-ready)
 - [x] Dependencias documentadas
-- [x] Changelog de seguridad
+- [x] Changelog de security
 
 ### Documentation
 
 - [x] Código comentado (docblocks PHP)
 - [x] README de cada clase nueva
-- [x] Ejemplos de uso (robustez + Laravel)
+- [x] Ejemplos de uso (robustness + Laravel)
 - [x] Guide de integración
 
 ### Packagist Support
@@ -375,7 +375,7 @@ $ php examples/example_bloque4_laravel_style.php    # ✅ Funciona
 ### Backward Compatibility
 
 - [x] API de Bloques 1-4 intacta
-- [x] Seguridad transparente (sin breaking changes)
+- [x] Security transparente (sin breaking changes)
 - [x] Ejemplos previos funcionan sin modificación
 
 ---
@@ -446,13 +446,13 @@ public function upload(Request $request) {
 
 ---
 
-## VIII. ROADMAP POST-BLOQUE 5
+## VIII. ROADMAP POST-BLOCK 5
 
 ### Versión 1.4.1 (Próxima)
 
 - [ ] Validador de integridad de PDF (checksums)
 - [ ] Rate limiting para APIs
-- [ ] Métricas de seguridad (eventos de bloqueo)
+- [ ] Métricas de security (eventos de blocko)
 
 ### Versión 1.5.0 (Futuro)
 
@@ -466,9 +466,9 @@ public function upload(Request $request) {
 
 ### Logros de Block 5
 
-✅ **Seguridad:** Capa completa de hardening sin cambios de API  
-✅ **Compliance:** Documentation legal y de seguridad lista  
-✅ **Robustez:** Probadas protecciones contra DoS, path traversal, PDF spoofing  
+✅ **Security:** Capa completa de hardening no changes de API  
+✅ **Compliance:** Documentation legal y de security lista  
+✅ **Robustness:** Probadas protecciones contra DoS, path traversal, PDF spoofing  
 ✅ **Producción:** composer.json listo para Packagist  
 ✅ **Integración:** Laravel examples validados completamente
 
@@ -485,10 +485,10 @@ public function upload(Request $request) {
 
 **La librería está lista para distribución pública en Packagist con:**
 
-- ✅ 100% backward compatibility (Bloques 1-4 intactos)
+- ✅ 100% backward compatibility (Bloques 1-4 intact)
 - ✅ Security layer transparente (0 breaking changes)
 - ✅ MIT license compatible (open-source)
-- ✅ Ejemplos completos (robustez, Laravel)
+- ✅ Ejemplos completos (robustness, Laravel)
 - ✅ Documentation completa (techniques, risks, reporting)
 
 **RECOMENDACIÓN:** Publicar con tag de versión `v1.4.0` 🚀
@@ -505,8 +505,8 @@ public function upload(Request $request) {
    └── SecurityValidator.php
 
    examples/
-   ├── test_robustez_bloque5.php
-   └── example_bloque5_laravel_integration.php
+   ├── test_robustness_block5.php
+   └── example_block5_laravel_integration.php
 
    Raíz/
    ├── LICENSE
@@ -518,13 +518,13 @@ public function upload(Request $request) {
 
 ✅ COMPATIBILIDAD:
    - Bloques 1-4: 100% funcionales
-   - Ejemplos previos: 0 cambios requeridos
+   - Ejemplos previos: 0 changes requeridos
    - API pública: 0 breaking changes
 ```
 
 ---
 
-**STATUS FINAL:** ✅ **BLOQUE 5 COMPLETED Y VALIDADO**
+**STATUS FINAL:** ✅ **BLOCK 5 COMPLETED Y VALIDADO**
 
 _Generado en: Abril 2026_  
 _Versión: Content Processor v1.4.0_

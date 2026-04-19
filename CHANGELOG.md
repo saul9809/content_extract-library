@@ -56,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 php examples/test_pdf_extraction.php
 
 # Verify all extractors work correctly
-php examples/example_bloque4_basic.php
+php examples/example_block4_basic.php
 ```
 
 ---

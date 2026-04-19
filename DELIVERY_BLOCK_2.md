@@ -1,14 +1,14 @@
-# ✅ BLOQUE 2: EXTRACCIÓN DE PDF DIGITALES - DELIVERY COMPLETA
+# ✅ BLOCK 2: PDF EXTRACTION DIGITAL - DELIVERY COMPLETA
 
 ---
 
 ## A. EXPLICACIÓN BREVE
 
-El Block 2 agrega soporte completo para **extracción de texto desde archivos PDF digitales** (no escaneados, sin OCR). Se implementó mediante:
+El Block 2 agrega soporte completo para **extracción de texto desde archivos PDF digital** (no scanned, sin OCR). Se implementó mediante:
 
 - ✅ **Nueva clase `PdfTextExtractor`** que implementa `ExtractorInterface`
-- ✅ **Dependencia `smalot/pdfparser ^2.0`** para parsing profesional de PDFs
-- ✅ **Compatibilidad 100%** con ContentProcessor y architecture existente
+- ✅ **Dependencia `smalot/pdfparser ^2.0`** para parsing profesional of PDFs
+- ✅ **Compatibility 100%** con ContentProcessor y architecture existente
 - ✅ **Ejemplos funcionales** que procesan PDFs reales en batch
 
 ---
@@ -47,9 +47,9 @@ examples/
 └── sample_cv.pdf                  ← PDF de prueba
 
 documentation/
-├── BLOQUE_2_COMPLETED.md         ← Documentation técnica
-├── PROMPT_BLOQUE_2.md             ← Prompt para Claude Code
-└── DELIVERY_BLOQUE_2.md            ← Este archivo
+├── BLOCK_2_COMPLETED.md         ← Documentation técnica
+├── PROMPT_BLOCK_2.md             ← Prompt para Claude Code
+└── DELIVERY_BLOCK_2.md            ← Este archivo
 
 Actualizados:
 ├── composer.json                  ← Agregada dependencia
@@ -71,10 +71,10 @@ use ContentProcessor\Contracts\ExtractorInterface;
 use Smalot\PdfParser\Parser;
 
 /**
- * Extractor de contenido desde archivos PDF digitales.
+ * Extractor de contenido desde archivos PDF digital.
  *
- * Utiliza smalot/pdfparser para extraer el texto de PDFs digitales
- * (no escaneados, no requiere OCR).
+ * Utiliza smalot/pdfparser para extraer el texto of PDFs digital
+ * (no scanned, no requiere OCR).
  */
 class PdfTextExtractor implements ExtractorInterface
 {
@@ -86,7 +86,7 @@ class PdfTextExtractor implements ExtractorInterface
 
     /**
      * Constructor.
-     * Inicializa el parser de PDFs.
+     * Inicializa el parser of PDFs.
      */
     public function __construct()
     {
@@ -201,7 +201,7 @@ use ContentProcessor\Core\ContentProcessor;
 use ContentProcessor\Structurers\SimpleLineStructurer;
 use ContentProcessor\Schemas\ArraySchema;
 
-echo "📋 BLOQUE 2: Extracción PDF → JSON\n";
+echo "📋 BLOCK 2: Extracción PDF → JSON\n";
 echo "=".str_repeat("=", 50)."\n\n";
 
 // PDF de prueba
@@ -265,13 +265,13 @@ foreach ($results['results'] as $file => $result) {
 }
 
 echo json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n\n";
-echo "✅ BLOQUE 2: PDF → JSON COMPLETED\n";
+echo "✅ BLOCK 2: PDF → JSON COMPLETED\n";
 ```
 
 ### Salida al ejecutar (✅ FUNCIONAL):
 
 ```
-📋 BLOQUE 2: Extracción PDF → JSON
+📋 BLOCK 2: Extracción PDF → JSON
 ===================================================
 
 📖 PASO 1: Extracción de Texto desde PDF
@@ -304,7 +304,7 @@ Anos de Experiencia: 8
     }
 ]
 
-✅ BLOQUE 2: PDF → JSON COMPLETED
+✅ BLOCK 2: PDF → JSON COMPLETED
 ```
 
 ---
@@ -349,12 +349,12 @@ php examples/pdf_batch_example.php
 **Salida esperada:**
 
 ```
-✅ BLOQUE 2: PDF → JSON COMPLETED
+✅ BLOCK 2: PDF → JSON COMPLETED
 📤 PASO 3: Salida JSON
 [JSON válido con datos procesados]
 ```
 
-### Paso 5: Verificar compatibilidad con Block 1
+### Paso 5: Verify compatibility con Block 1
 
 ```bash
 php examples/test_functional.php
@@ -363,15 +363,15 @@ php examples/test_functional.php
 **Salida esperada:**
 
 ```
-✅ BLOQUE 1 COMPLETED EXITOSAMENTE
+✅ BLOCK 1 COMPLETED EXITOSAMENTE
 2/2 documentos procesados
 ```
 
 ---
 
-## G. CONFIRMACIÓN EXPLÍCITA DE CLOSURE DEL BLOQUE 2
+## G. CONFIRMACIÓN EXPLÍCITA DE CLOSURE DEL BLOCK 2
 
-### ✅ BLOQUE 2: COMPLETED Y VERIFICADO
+### ✅ BLOCK 2: COMPLETED Y VERIFICADO
 
 | Aspecto                  | Status | Detalles                          |
 | ------------------------ | ------ | --------------------------------- |
@@ -382,13 +382,13 @@ php examples/test_functional.php
 | **PDF → JSON**           | ✅     | Pipeline completo operativo       |
 | **Block 1 intacto**     | ✅     | 0 modificaciones, tests pasan     |
 | **Batch processing**     | ✅     | fromFiles() y fromDirectory()     |
-| **Documentation**        | ✅     | BLOQUE_2_COMPLETED.md            |
+| **Documentation**        | ✅     | BLOCK_2_COMPLETED.md            |
 | **Git commits**          | ✅     | 7 commits registrados             |
 | **Tests exitosos**       | ✅     | 100% (test_pdf_simple.php)        |
 
 ### ✨ Características Implementadas
 
-- ✅ Extracción de texto real desde PDFs digitales (no escaneados)
+- ✅ Extracción de texto real desof PDFs digital (no scanned)
 - ✅ Soporte multipágina
 - ✅ Validación de archivos PDF
 - ✅ Manejo robusto de excepciones
@@ -398,11 +398,11 @@ php examples/test_functional.php
 - ✅ Dependency Injection (sin singletons)
 - ✅ Documentation completa en PHPDoc
 
-### ✅ BLOQUE 2 LISTO PARA PRODUCCIÓN
+### ✅ BLOCK 2 LISTO PARA PRODUCCIÓN
 
-**Próximos bloques preparados para:**
+**Next blocks preparados para:**
 
-- Block 3: OCR para PDFs escaneados
+- Block 3: OCR for PDFs scanned
 - Block 4: Estructuradores avanzados
 - Block 5: Validadores personalizados
 

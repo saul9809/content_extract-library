@@ -3,9 +3,9 @@
 namespace ContentProcessor\Security;
 
 /**
- * Validator de seguridad para operaciones de file.
+ * Validator de security para operaciones de file.
  * 
- * Centraliza todas las verificaciones de seguridad:
+ * Centraliza todas las verificaciones de security:
  * - Tamaño de file
  * - Integridad de PDF
  * - Path traversal

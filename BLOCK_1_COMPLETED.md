@@ -1,4 +1,4 @@
-# ✅ BLOQUE 1: FUNDACIONES COMPLETED
+# ✅ BLOCK 1: FOUNDATIONS COMPLETED
 
 **Fecha:** 18 de Abril, 2026  
 **Status:** EXITOSO  
@@ -35,7 +35,7 @@ src/
 │   └── ArraySchema.php
 ├── Extractors/         # Estrategias de extracción
 │   └── TextFileExtractor.php
-└── Structurers/        # Estrategias de estructuración
+└── Structurers/        # Estrategias de structuring
     └── SimpleLineStructurer.php
 
 examples/
@@ -134,7 +134,7 @@ $results = ContentProcessor::make()
    • ContentProcessor: orquestación
    • ArraySchema: validación
    • TextFileExtractor: extracción
-   • SimpleLineStructurer: estructuración
+   • SimpleLineStructurer: structuring
 
 ✅ Pipeline completo: EXITOSO
    • Extracción: 2/2 archivos procesados
@@ -178,11 +178,11 @@ $results = ContentProcessor::make()
 
 ---
 
-## 🚀 Próximos bloques (planificados)
+## 🚀 Next blocks (planned)
 
 ### Block 2: Extracción avanzada
 
-- [ ] Extractor para PDFs multipágina
+- [ ] Extractor for PDFs multipágina
 - [ ] Supporto para varios formatos
 - [ ] Manejo de errores de lectura
 
@@ -245,4 +245,4 @@ class MiSchema implements SchemaInterface { ... }
 
 ---
 
-**✅ BLOQUE 1 CONFIRMADO COMPLETED Y FUNCIONAL.**
+**✅ BLOCK 1 CONFIRMADO COMPLETED Y FUNCIONAL.**

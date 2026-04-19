@@ -1,4 +1,4 @@
-# PROMPT PARA CLAUDE CODE - BLOQUE 2: EXTRACCIÓN DE PDF DIGITALES
+# PROMPT PARA CLAUDE CODE - BLOCK 2: PDF EXTRACTION DIGITAL
 
 ## 1️⃣ Rol (¿Quién eres?)
 
@@ -9,9 +9,9 @@ Eres un arquitecto senior de software PHP con más de 15 años de experiencia, e
 - PSR‑4, PSR‑12, SOLID
 - Procesamiento de documentos (PDF)
 - Architectures framework‑agnostic
-- Evolución por bloques sin romper compatibilidad
+- Evolución por blocks sin romper compatibility
 
-Tu misión es extender una librería existente, respetando estrictamente su architecture, sin introducir acoplamientos innecesarios ni romper bloques ya validados.
+Tu misión es extender una librería existente, respetando estrictamente su architecture, sin introducir acoplamientos innecesarios ni romper blocks ya validados.
 
 ---
 
@@ -41,9 +41,9 @@ Existe una librería PHP llamada **Content Processor**, ya en producción intern
 
 ## 3️⃣ Tarea exacta (¿Qué necesito?)
 
-Debes implementar **EL BLOQUE 2 COMPLETO**, con foco exclusivo en:
+Debes implementar **EL BLOCK 2 COMPLETO**, con foco exclusivo en:
 
-✅ Extracción REAL de texto desde PDF DIGITALES (no escaneados)
+✅ Extracción REAL de texto desde PDF DIGITAL (no scanned)
 
 ### Concretamente:
 
@@ -65,7 +65,7 @@ Debes implementar **EL BLOQUE 2 COMPLETO**, con foco exclusivo en:
 - Retornar string
 - Lanzar excepción controlada si falla
 
-### Mantener 100% compatibilidad con:
+### Mantener 100% compatibility con:
 
 - ContentProcessor
 - Extractores existentes
@@ -100,11 +100,11 @@ Debes cumplir TODAS estas reglas sin excepción:
 ❌ NO IA
 ❌ NO heurísticas avanzadas
 ❌ NO regex complejos
-✅ PDFs DIGITALES solamente
+✅ PDFs DIGITAL solamente
 ✅ Multipágina (si el parser lo permite)
 ✅ Batch compatible
 
-**Si algo no corresponde a este bloque, déjalo explícitamente fuera.**
+**Si algo no corresponde a este block, déjalo explícitamente fuera.**
 
 ---
 
@@ -128,7 +128,7 @@ Delivery el resultado de forma estrictamente ordenada, siguiendo este esquema:
 
 ### ❗ RESTRICCIONES DE DELIVERY
 
-- No adelantes bloques futuros
+- No adelantes blocks futuros
 - No generes código innecesario
 - No reformules la architecture existente
 
@@ -136,7 +136,7 @@ Delivery el resultado de forma estrictamente ordenada, siguiendo este esquema:
 
 ## ✅ Resultado esperado
 
-Al terminar este bloque, debo poder hacer:
+Al terminar este block, debo poder hacer:
 
 ```bash
 composer install
@@ -164,7 +164,7 @@ La librería ya tiene estos archivos que debes respetar:
 
 ---
 
-**FIN DEL PROMPT**
+**END OF PROMPT**
 
 ---
 

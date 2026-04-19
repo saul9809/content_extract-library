@@ -29,7 +29,7 @@
 |---------|-----------|----------|
 | **README.md** | ✅ | Actualizado con API v1.3.0, ejemplos, Bloques 1-5 |
 | **LICENSE** | ✅ | MIT completo, 2026 Copyright |
-| **SECURITY.md** | ✅ | Políticas de seguridad, límites configurables |
+| **SECURITY.md** | ✅ | Políticas de security, límites configurables |
 | **.gitignore** | ✅ | vendor/, .vscode/, logs, cache |
 
 ### ✅ Actualización de Documentation
@@ -60,7 +60,7 @@
 ```json
 {
   "name": "content-extract/content-processor",
-  "description": "Librería PHP robusta para procesamiento batch de PDFs y documentos. Extrae contenido y genera JSON estructurado según esquema definido por el usuario. Production-ready, segura, sin dependencias innecesarias.",
+  "description": "Librería PHP robusta para procesamiento batch of PDFs y documentos. Extrae contenido y genera JSON estructurado según esquema definido por el usuario. Production-ready, segura, sin dependencias innecesarias.",
   "keywords": [
     "pdf",
     "content-extraction",
@@ -133,7 +133,7 @@
 
 ### ✅ SECURITY.md
 **Status**: Completo con políticas  
-**Contiene**: Límites de seguridad, responsabilidades, configuración
+**Contiene**: Límites de security, responsabilidades, configuración
 
 ### ✅ .gitignore
 **Status**: Configurado correctamente  
@@ -169,7 +169,7 @@ v1.3.0
 
 **Justificación**:
 - **1.x**: API pública estable (FinalResult)
-- **1.3**: Block 5 completed (seguridad, hardening)
+- **1.3**: Block 5 completed (security, hardening)
 - **1.3.0**: Primera release pública en Packagist
 
 ### Últimos Commits
@@ -191,7 +191,7 @@ b83f929 (HEAD -> main, tag: v1.3.0, origin/main)
 1. Ir a: https://packagist.org
 2. Sign Up
 3. Usar email profesional
-4. Verificar email
+4. Verify email
 5. Confirmar perfil
 ```
 
@@ -297,7 +297,7 @@ Route::get('/test-processor', function () {
     ];
 });
 
-// Verificar en navegador: http://localhost:8000/test-processor
+// Verify en navegador: http://localhost:8000/test-processor
 ```
 
 ---

@@ -1,5 +1,5 @@
-✅ PROMPT PARA CLAUDE CODE — BLOQUE 3
-Estructuración semántica: PDF → JSON configurable
+✅ PROMPT PARA CLAUDE CODE — BLOCK 3
+Estructuración semantic: PDF → JSON configurable
 
 1️⃣ Rol (¿Quién eres?)
 Eres un arquitecto senior de software PHP, con más de 15 años de experiencia, especializado en:
@@ -7,11 +7,11 @@ Eres un arquitecto senior de software PHP, con más de 15 años de experiencia, 
 Diseño de librerías PHP profesionales
 Procesamiento de documentos (PDF → datos)
 Architectures framework‑agnostic
-Diseño por bloques incrementales
+Diseño por blocks incrementales
 PSR‑4, PSR‑12, SOLID
 APIs limpias y orientadas a desarrolladores
 
-Tu responsabilidad es implementar la capa semántica de una librería, sin romper compatibilidad previa, respetando contratos existentes y pensando en uso real en producción.
+Tu responsabilidad es implementar la capa semantic de una librería, sin romper compatibility previa, respetando contratos existentes y pensando en uso real en producción.
 
 2️⃣ Contexto (¿Dónde estamos?)
 Existe una librería PHP en el project actual, ya con:
@@ -26,7 +26,7 @@ Batch processing funcional
 
 Ingesta de múltiples archivos
 Validación técnica de documentos
-Extracción REAL de texto desde PDFs digitales
+Extracción REAL de texto desof PDFs digital
 PdfTextExtractor funcionando
 Separación correcta de:
 
@@ -38,7 +38,7 @@ Backward compatibility garantizada
 📌 NO se debe modificar código de Bloques 1 o 2.
 
 3️⃣ Tarea exacta (¿Qué necesito?)
-Debes implementar EL BLOQUE 3 COMPLETO, cuyo objetivo es:
+Debes implementar EL BLOCK 3 COMPLETO, cuyo objetivo es:
 
 Convertir el texto crudo extraído del PDF en un
 JSON estructurado definido por el usuario técnico,
@@ -74,7 +74,7 @@ El ContentProcessor debe:
 
 - Tomar resultados del Block 2
 - Aplicar el Structurer
-- Generar un resultado final batch con:
+- Generar un final result batch con:
   • data (JSON)
   • errors (del Block 2)
   • warnings (del Block 3)
@@ -127,15 +127,15 @@ G. Confirmación explícita de closure del Block 3
 
 ❗ No adelantar Block 4
 ❗ No introducir IA
-❗ No romper compatibilidad
+❗ No romper compatibility
 
 ✅ Resultado esperado
-Al finalizar este bloque, debe ser posible:
+Al finalizar este block, debe ser posible:
 Shellphp examples/test_structuring.phpShow more lines
 Y obtener:
 ✅ JSON estructurado por documento
 ✅ Warnings por campos ambiguos
-✅ Errores técnicos intactos
+✅ Errores técnicos intact
 ✅ API usable directamente desde Laravel
 
 🔚 Fin del prompt

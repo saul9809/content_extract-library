@@ -6,7 +6,7 @@
  * Demuestra cómo consumir FinalResult en un context Laravel-like
  * o en APIs REST comunes.
  * 
- * Ejecutar: php examples/example_bloque4_laravel_style.php
+ * Ejecutar: php examples/example_block4_laravel_style.php
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';

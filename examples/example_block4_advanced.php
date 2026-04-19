@@ -9,7 +9,7 @@
  * - Captura de errors y warnings
  * - Generación de reportes
  * 
- * Ejecutar: php examples/example_bloque4_advanced.php
+ * Ejecutar: php examples/example_block4_advanced.php
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -22,7 +22,7 @@ use ContentProcessor\Structurers\RuleBasedStructurer;
 echo "=== BLOCK 4: Batch Processing Robusto ===\n\n";
 
 // 1. Crear  de prueba con  simulados
-$testDir = __DIR__ . '/test_bloque4_batch';
+$testDir = __DIR__ . '/test_block4_batch';
 @mkdir($testDir, 0777, true);
 
 //  válido 1

@@ -7,10 +7,10 @@ namespace ContentProcessor\Models;
  * 
  * Agrupa la information de referencia de un documento junto con
  * su content crudo extracted, para que el Structurer pueda
- * generar structures semánticas ricas en context.
+ * generar structures semantics ricas en context.
  * 
  * En Block 3, el DocumentContext es la entrada principal para
- * la structureción semántica. Permite que los Structurers accedan
+ * la structureción semantic. Permite que los Structurers accedan
  * tanto al content como a los metadata del documento.
  * 
  * @package ContentProcessor\Models

@@ -122,7 +122,7 @@ $results = $processor->process();
 
 echo "\n";
 echo "╔═══════════════════════════════════════════════════════════════╗\n";
-echo "║        BLOCK 3: STRUCTURECIÓN SEMÁNTICA AVANZADA             ║\n";
+echo "║        BLOCK 3: STRUCTURECIÓN SEMANTIC AVANZADA             ║\n";
 echo "║     Batch Processing con Warnings y Análisis de Calidad        ║\n";
 echo "╚═══════════════════════════════════════════════════════════════╝\n";
 echo "\n";

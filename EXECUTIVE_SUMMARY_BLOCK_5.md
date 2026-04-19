@@ -1,4 +1,4 @@
-# 📌 SUMMARY EXECUTIVE: BLOQUE 5 COMPLETED
+# 📌 SUMMARY EXECUTIVE: BLOCK 5 COMPLETED
 
 **Fecha:** 19 de Abril, 2026  
 **Project:** Content Processor  
@@ -9,7 +9,7 @@
 
 ## 🎯 OBJETIVO CUMPLIDO
 
-Implementar la **capa de seguridad y compliance** de Content Processor para:
+Implementar la **capa de security y compliance** de Content Processor para:
 
 - ✅ Proteger contra DoS, path traversal, PDF spoofing
 - ✅ Documentation legal (MIT license + SECURITY.md)
@@ -18,15 +18,15 @@ Implementar la **capa de seguridad y compliance** de Content Processor para:
 
 ---
 
-## ✨ DELIVERYBLES BLOQUE 5
+## ✨ DELIVERYBLES BLOCK 5
 
-### 🛡️ Capa de Seguridad (3 clases)
+### 🛡️ Capa de Security (3 clases)
 
 | Clase                 | Responsabilidad                           | Líneas |
 | --------------------- | ----------------------------------------- | ------ |
 | **SecurityConfig**    | Configuración centralizada de límites     | 46     |
 | **SecurityException** | Excepciones seguras (cliente vs. interno) | 89     |
-| **SecurityValidator** | 6 validaciones de seguridad               | 118    |
+| **SecurityValidator** | 6 validaciones de security               | 118    |
 
 ### 📜 Compliance (2 archivos)
 
@@ -39,21 +39,21 @@ Implementar la **capa de seguridad y compliance** de Content Processor para:
 
 | Archivo                                     | Descripción                       |
 | ------------------------------------------- | --------------------------------- |
-| **test_robustez_bloque5.php**               | 5 pruebas de seguridad (todas ✅) |
-| **example_bloque5_laravel_integration.php** | Integración Laravel con seguridad |
+| **test_robustness_block5.php**               | 5 pruebas de security (todas ✅) |
+| **example_block5_laravel_integration.php** | Integración Laravel con security |
 
 ### 📋 Documentation (2 archivos)
 
 | Archivo                         | Descripción                 |
 | ------------------------------- | --------------------------- |
-| **BLOQUE_5_COMPLETED.md**      | Status detallado del bloque |
-| **CLOSURE_BLOQUE_5_PROJECT.md** | Closure final del project   |
+| **BLOCK_5_COMPLETED.md**      | Status detallado del block |
+| **CLOSURE_BLOCK_5_PROJECT.md** | Closure final del project   |
 
 ---
 
 ## 🛡️ PROTECCIONES IMPLEMENTADAS
 
-### 6 Mecanismos de Seguridad
+### 6 Mecanismos de Security
 
 ```
 1. Batch Size Limit          → 50 docs máximo (previene DoS)
@@ -84,7 +84,7 @@ processFinal()      ← validateWarningCount()
 
 ## ✅ RESULTADOS DE PRUEBAS
 
-### Test de Robustez (5/5 EXITOSOS)
+### Test de Robustness (5/5 EXITOSOS)
 
 ```
 ✅ Prueba 1: PDF Vacío
@@ -135,9 +135,9 @@ processFinal()      ← validateWarningCount()
 | Métrica                        | Valor                     |
 | ------------------------------ | ------------------------- |
 | **Líneas de código Block 5**  | ~500                      |
-| **Clases de seguridad**        | 3                         |
+| **Clases de security**        | 3                         |
 | **Validaciones implementadas** | 6                         |
-| **Pruebas de robustez**        | 5 (5/5 ✅)                |
+| **Pruebas de robustness**        | 5 (5/5 ✅)                |
 | **Ejemplos de integración**    | 1 (Laravel)               |
 | **Documentation**              | 280+ líneas (SECURITY.md) |
 
@@ -157,14 +157,14 @@ processFinal()      ← validateWarningCount()
 
 ## 🔄 BACKWARD COMPATIBILITY
 
-**✅ 100% de Bloques 1-4 funcionando sin cambios**
+**✅ 100% de Bloques 1-4 funcionando no changes**
 
 - [x] Block 1 (Fundaciones) - ejemplos funcionales
 - [x] Block 2 (PDF Extraction) - ejemplos funcionales
 - [x] Block 3 (Structuring) - ejemplos funcionales
 - [x] Block 4 (FinalResult) - ejemplos funcionales
 - [x] API pública: 0 breaking changes
-- [x] Seguridad: transparente para users
+- [x] Security: transparente para users
 
 ---
 
@@ -195,7 +195,7 @@ composer require content-extract/content-processor:^1.4
 
 ## 📋 COMPLIANCE CHECKLIST
 
-### Seguridad
+### Security
 
 - [x] 6 protecciones contra ataques comunes
 - [x] Validación en puntos de entrada
@@ -207,7 +207,7 @@ composer require content-extract/content-processor:^1.4
 
 - [x] MIT License completo
 - [x] SECURITY.md (10 secciones)
-- [x] Compatibilidad smalot/pdfparser (MIT)
+- [x] Compatibility smalot/pdfparser (MIT)
 - [x] Términos de responsabilidad documentados
 
 ### Packagist
@@ -258,8 +258,8 @@ composer require content-extract/content-processor:^1.4
 | [README.md](./README.md)                                     | Getting started                     |
 | [SECURITY.md](./SECURITY.md)                                 | Security details & responsibilities |
 | [ARCHITECTURE.md](./ARCHITECTURE.md)                         | Architecture overview               |
-| [BLOQUE_5_COMPLETED.md](./BLOQUE_5_COMPLETED.md)           | Block 5 deliverables               |
-| [CLOSURE_BLOQUE_5_PROJECT.md](./CLOSURE_BLOQUE_5_PROJECT.md) | Project closure                     |
+| [BLOCK_5_COMPLETED.md](./BLOCK_5_COMPLETED.md)           | Block 5 deliverables               |
+| [CLOSURE_BLOCK_5_PROJECT.md](./CLOSURE_BLOCK_5_PROJECT.md) | Project closure                     |
 
 ---
 

@@ -252,8 +252,8 @@
 │
 ├── 📁 examples/                          Functional examples
 │   ├── example_basic.php
-│   ├── example_bloque4_*.php
-│   ├── example_bloque5_*.php
+│   ├── example_block4_*.php
+│   ├── example_block5_*.php
 │   └── ... (10+ examples)
 │
 └── 📁 vendor/                            Dependencies

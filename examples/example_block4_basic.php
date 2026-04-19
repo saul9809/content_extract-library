@@ -6,7 +6,7 @@
  * Demuestra cómo usar la nueva API robusta del Block 4
  * para process documentos y obtener resultados limpios.
  * 
- * Ejecutar: php examples/example_bloque4_basic.php
+ * Ejecutar: php examples/example_block4_basic.php
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -16,7 +16,7 @@ use ContentProcessor\Schemas\ArraySchema;
 use ContentProcessor\Extractors\TextFileExtractor;
 use ContentProcessor\Structurers\RuleBasedStructurer;
 
-echo "=== BLOCK 4: Resultado Final Robusto === \n\n";
+echo "=== BLOCK 4: Final Result Robusto === \n\n";
 
 // 1. Definir el esquema
 $schema = new ArraySchema([

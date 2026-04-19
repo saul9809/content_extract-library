@@ -1,13 +1,13 @@
 # SECURITY.md
 
-## Política de Seguridad
+## Política de Security
 
 **Version:** 1.4.0 (Block 5)  
 **Last Updated:** Abril 18, 2026
 
 ---
 
-## 1. Responsabilidades de Seguridad
+## 1. Responsabilidades de Security
 
 ### Lo que Content Processor HACE:
 
@@ -43,7 +43,7 @@
 
 ---
 
-## 2. Límites de Seguridad Configurados
+## 2. Límites de Security Configurados
 
 ### Defaults Recomendados
 
@@ -88,7 +88,7 @@ define('MAX_BATCH_DOCUMENTS', 100);
 **Responsabilidad del integrador**:
 
 - Usar Content Processor en entorno seguro
-- Validar origen de PDFs si es crítico
+- Validar origen of PDFs si es crítico
 - Ejecutar antivirus en endpoint si es required
 
 ### 3.2 DoS por Upload Masivo
@@ -125,7 +125,7 @@ define('MAX_BATCH_DOCUMENTS', 100);
 
 ### 3.4 Excepción con Stack Trace Expuesto
 
-**Riesgo**: Error de seguridad muestra paths internos del servidor
+**Riesgo**: Error de security muestra paths internos del servidor
 
 **Mitigación**:
 
@@ -169,7 +169,7 @@ $e->getTrace(); // ❌ NUNCA en respuesta API
 
 ```php
 // ✅ Loguear (interno):
-- Tipo de excepción de seguridad
+- Tipo de excepción de security
 - Archivo/documento afectado
 - Hora del evento
 - IP del cliente (si aplica)
@@ -189,8 +189,8 @@ $e->getTrace(); // ❌ NUNCA en respuesta API
 ### Dependency: smalot/pdfparser
 
 - **Versión:** ^2.0
-- **Uso:** Parsing de PDFs digitales
-- **Seguridad**: Ampliamente utilizado en producción
+- **Uso:** Parsing of PDFs digital
+- **Security**: Ampliamente utilizado en producción
 - **Mantenimiento**: Comunidad activa
 - **Auditoría**: Código abierto, puede ser revisado
 
@@ -200,7 +200,7 @@ $e->getTrace(); // ❌ NUNCA en respuesta API
 # Ver dependencia segura
 composer show smalot/pdfparser
 
-# Verificar vulnerabilidades conocidas
+# Verify vulnerabilidades conocidas
 composer audit
 
 # Actualizar si hay parches
@@ -209,7 +209,7 @@ composer update smalot/pdfparser --with-dependencies
 
 ---
 
-## 6. Principios de Seguridad Aplicados
+## 6. Principios de Security Aplicados
 
 ### Defense in Depth
 
@@ -273,7 +273,7 @@ Route::post('/documents', function (Request $request) {
 
 - [ ] Usar autenticación en endpoints que reciben PDFs
 - [ ] Validar tamaño en application-level antes de procesar
-- [ ] Loguear eventos de seguridad internamente
+- [ ] Loguear eventos de security internamente
 - [ ] Monitorear uso de memoria y CPU
 - [ ] Usar HTTPS/TLS para upload
 - [ ] Ratelimit los endpoints
@@ -285,7 +285,7 @@ Route::post('/documents', function (Request $request) {
 
 ## 8. Reportar Vulnerabilidades
 
-Si descubre una vulnerabilidad de seguridad:
+Si descubre una vulnerabilidad de security:
 
 1. **NO** publique en issue tracker público
 2. Contacte privadamente a los maintainers
@@ -296,7 +296,7 @@ Email de contacto: `security@content-extract.org`
 
 ---
 
-## 9. Changelog de Seguridad
+## 9. Changelog de Security
 
 ### v1.4.0 (Block 5) - Abril 18, 2026
 
@@ -305,7 +305,7 @@ Email de contacto: `security@content-extract.org`
 ✅ Protección contra path traversal  
 ✅ Manejo seguro de SecurityException  
 ✅ Validación de cabecera PDF  
-✅ Documentation de seguridad completa
+✅ Documentation de security completa
 
 ---
 
@@ -316,12 +316,12 @@ Content Processor está diseñado respetando:
 - ✅ OWASP Top 10
 - ✅ PSR-12 (PHP Standards)
 - ✅ MIT License
-- ✅ Seguridad en input/output
+- ✅ Security en input/output
 
-No es un producto de seguridad certificado. Úsalo como parte de una estrategia de seguridad más amplia.
+No es un producto de security certificado. Úsalo como parte de una estrategia de security más amplia.
 
 ---
 
-**Para más información:** Ver README.md y BLOQUE_5_COMPLETED.md
+**Para más información:** Ver README.md y BLOCK_5_COMPLETED.md
 
-_Este documento es de consulta pública. La seguridad es responsabilidad compartida._
+_Este documento es de consulta pública. La security es responsabilidad compartida._

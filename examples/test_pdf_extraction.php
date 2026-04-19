@@ -4,7 +4,7 @@
  * Prueba funcional del Block 2: Extraction desde PDF
  * 
  * Este script demuestra el uso de PdfTextExtractor para process
- * files PDF digitales completos con la arquitectura de ContentProcessor.
+ * files PDF digital completos con la arquitectura de ContentProcessor.
  */
 
 // Importar autoload de Composer

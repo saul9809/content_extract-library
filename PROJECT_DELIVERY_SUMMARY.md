@@ -43,9 +43,9 @@
 
 ---
 
-## 🎯 BLOQUES IMPLEMENTED
+## 🎯 BLOCKS IMPLEMENTED
 
-### BLOQUE 1: Core Content Extraction
+### BLOCK 1: Core Content Extraction
 
 ```
 ✅ TextFileExtractor
@@ -59,11 +59,11 @@
    - API simplificada
 ```
 
-### BLOQUE 2: PDF Processing & Batch
+### BLOCK 2: PDF Processing & Batch
 
 ```
 ✅ PdfTextExtractor
-   - Extrae texto de PDFs con smalot/pdfparser
+   - Extrae texto of PDFs con smalot/pdfparser
    - Soporte para múltiples archivos
    - Batch processing API
 
@@ -73,7 +73,7 @@
    - Resultados consolidados
 ```
 
-### BLOQUE 3: Semantic Structuring
+### BLOCK 3: Semantic Structuring
 
 ```
 ✅ RuleBasedStructurer
@@ -87,7 +87,7 @@
    - Información de contexto
 ```
 
-### BLOQUE 4: Final Result API
+### BLOCK 4: Final Result API
 
 ```
 ✅ FinalResult Object
@@ -97,12 +97,12 @@
    - Serialización JSON
 
 ✅ Normalized Classes
-   - Error: estructura estándar de errores
-   - Warning: estructura estándar de advertencias
+   - Error: structure isndar de errores
+   - Warning: structure isndar de advertencias
    - Summary: estadísticas y metadatos
 ```
 
-### BLOQUE 5: Security Hardening
+### BLOCK 5: Security Hardening
 
 ```
 ✅ SecurityValidator
@@ -116,7 +116,7 @@
    - TIMEOUT: límite de ejecución
 
 ✅ SecurityException
-   - Excepciones específicas de seguridad
+   - Excepciones específicas de security
    - Stack traces informativos
    - GDPR compliance
 ```
@@ -163,8 +163,8 @@
 │
 ├── 📁 examples/                          ✅ 10+ functional examples
 │   ├── example_basic.php
-│   ├── example_bloque4_*.php (3)
-│   ├── example_bloque5_laravel_integration.php
+│   ├── example_block4_*.php (3)
+│   ├── example_block5_laravel_integration.php
 │   ├── generate_sample_pdf.php
 │   ├── test_*.php (8)
 │   └── sample_cv_*.txt (2)

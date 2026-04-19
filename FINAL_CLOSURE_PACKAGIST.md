@@ -33,13 +33,13 @@ El paquete **content-extract/content-processor** está 100% listo para publicati
 
 ### Block 2: PDF Processing & Batch
 
-- ✅ `PdfTextExtractor`: Extrae texto de PDFs con smalot/pdfparser
+- ✅ `PdfTextExtractor`: Extrae texto of PDFs con smalot/pdfparser
 - ✅ Soporte para batch: procesar múltiples archivos
 - ✅ Manejo de errores en conversión
 
 ### Block 3: Semantic Structuring & Warnings
 
-- ✅ `RuleBasedStructurer`: Estructuración semántica avanzada
+- ✅ `RuleBasedStructurer`: Estructuración semantic avanzada
 - ✅ Sistema de warnings: validaciones y alertas
 - ✅ `Warning` class: normalización de advertencias
 
@@ -147,8 +147,8 @@ Verifica la carga de clases y métodos públicos.
 ### 3. Ejemplos Funcionales
 
 ```bash
-php examples/example_bloque4_basic.php
-php examples/example_bloque5_laravel_integration.php
+php examples/example_block4_basic.php
+php examples/example_block5_laravel_integration.php
 ```
 
 Todos ejecutan sin errores.
@@ -219,7 +219,7 @@ $result->toJSON()    // string JSON
 
 ---
 
-## 🔐 Seguridad
+## 🔐 Security
 
 ### Implementación de Block 5
 
@@ -240,7 +240,7 @@ $result->toJSON()    // string JSON
 
 ### v1.3.0 (Actual)
 
-- ✅ Preparación para Packagist (documentation, scripts, verificaciones)
+- ✅ Preparation for Packagist (documentation, scripts, verificaciones)
 - ✅ composer.json optimizado (removida la sección repository inválida)
 - ✅ Todos los Bloques 1-5 implementados y verificados
 - ✅ API estable y documentada
@@ -248,9 +248,9 @@ $result->toJSON()    // string JSON
 
 ### Backward Compatibility
 
-- ✅ Todas las clases de v1.2.0 funcionan sin cambios
+- ✅ Todas las clases de v1.2.0 funcionan no changes
 - ✅ Métodos públicos mantenidos
-- ✅ Interfaces sin cambios
+- ✅ Interfaces no changes
 
 ---
 
@@ -266,7 +266,7 @@ $result->toJSON()    // string JSON
 - [x] Todos los ejemplos funcionales
 - [x] 15 verificaciones Packagist: PASSED
 - [x] Documentation A-G: COMPLETE
-- [x] Seguridad Block 5: HARDENED
+- [x] Security Block 5: HARDENED
 - [x] PHP >=8.1: VERIFIED
 
 ---
@@ -284,7 +284,7 @@ $result->toJSON()    // string JSON
 
 **El project content-extract/content-processor v1.3.0 está 100% listo para publication en Packagist.**
 
-Todos los requisitos técnicos, de seguridad y de documentation han sido cumplidos y verificados. El paquete es production-ready y puede ser instalado en cualquier project PHP que use Composer.
+Todos los requisitos técnicos, de security y de documentation han sido cumplidos y verificados. El paquete es production-ready y puede ser instalado en cualquier project PHP que use Composer.
 
 ```bash
 composer require content-extract/content-processor

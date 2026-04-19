@@ -1,6 +1,6 @@
 # Content Processor
 
-**Librería PHP para procesamiento batch de documentos con extracción y estructuración de contenido.**
+**Librería PHP para procesamiento batch de documentos con extracción y structuring de contenido.**
 
 Diseñada para ser framework-agnostic, escalable y production-ready desde el inicio.
 
@@ -90,7 +90,7 @@ $result = ContentProcessor::make()
 ### 3. Consumir resultados
 
 ```php
-// Verificar estatus
+// Verify estatus
 if (!$result->isSuccessful()) {
     echo "Algunos documentos fallaron:\n";
     foreach ($result->errors() as $error) {
@@ -121,8 +121,8 @@ echo $result->toJSONPretty();
 
 ```bash
 cd examples
-php example_bloque4_basic.php
-php example_bloque4_laravel_style.php
+php example_block4_basic.php
+php example_block4_laravel_style.php
 ```
 
 ### Full test suite
@@ -215,7 +215,7 @@ $processor->withOptions([
 
 ## 📚 Documentation
 
-- [SECURITY.md](SECURITY.md) - Política de seguridad y límites configurables
+- [SECURITY.md](SECURITY.md) - Política de security y límites configurables
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Diseño arquitectónico completo
 - [GUIA_RAPIDA.md](GUIA_RAPIDA.md) - Referencia quick de uso
 

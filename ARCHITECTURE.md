@@ -12,7 +12,7 @@ Documentation:
 ├── README.md ← Introducción
 ├── GUIA_RAPIDA.md ← Primeros pasos
 ├── ARCHITECTURE.md ← Diseño completo
-├── BLOQUE_1_COMPLETED.md ← Status detallado
+├── BLOCK_1_COMPLETED.md ← Status detallado
 ├── STATUS.md ← Summary executive
 └── VERIFICACION.md ← Checklistsrc/ ← Código fuente (PSR-4)
 ├── Contracts/ ← 3 interfaces
@@ -28,7 +28,7 @@ Documentation:
 ├── README.md ← Introducción
 ├── GUIA_RAPIDA.md ← Primeros pasos
 ├── ARCHITECTURE.md ← Diseño completo
-├── BLOQUE_1_COMPLETED.md ← Status detallado
+├── BLOCK_1_COMPLETED.md ← Status detallado
 ├── STATUS.md ← Summary executive
 └── VERIFICACION.md ← Checklist# Content Processor - Architecture del Project
 
@@ -38,7 +38,7 @@ Documentation:
 librery/
 ├── 📄 composer.json                    # Configuración de Composer
 ├── 📄 README.md                        # Documentation principal
-├── 📄 BLOQUE_1_COMPLETED.md          # Status del bloque 1
+├── 📄 BLOCK_1_COMPLETED.md          # Status del block 1
 ├── 📄 .gitignore                       # Exclusiones de git
 ├── 📄 autoload_manual.php              # Autoloader fallback
 ├── 📁 src/                             # Código fuente (PSR-4)
@@ -224,7 +224,7 @@ $processor = ContentProcessor::make()
     ->process();
 ```
 
-### Caso 2: Batch de PDFs (v2.0 - Futuro)
+### Caso 2: Batch of PDFs (v2.0 - Futuro)
 
 ```php
 $processor = ContentProcessor::make()

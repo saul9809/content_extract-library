@@ -107,7 +107,7 @@ class ContentProcessor
      */
     public function fromFiles(array $files): self
     {
-        // Validar tamaño del batch (5 - Seguridad)
+        // Validar tamaño del batch (5 - Security)
         SecurityValidator::validateBatchSize($files);
 
         $this->sources = array_merge($this->sources, $files);
@@ -133,7 +133,7 @@ class ContentProcessor
         $files = glob(rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $pattern);
         $files = $files === false ? [] : $files;
 
-        // Validar tamaño del batch (5 - Seguridad)
+        // Validar tamaño del batch (5 - Security)
         SecurityValidator::validateBatchSize($files);
 
         $this->sources = array_merge($this->sources, $files);
@@ -219,7 +219,7 @@ class ContentProcessor
 
             // Detecta si es un SemanticStructurer (Block 3) o un Structurer tradicional (1)
             if ($this->structurer instanceof SemanticStructurerInterface) {
-                // 3: ción Semántica con warnings
+                // 3: ción Semantic con warnings
                 $documentName = basename($source);
                 $context = new DocumentContext($source, $documentName, $content);
                 $result = $this->structurer->structureWithContext($context, $this->schema);
@@ -243,7 +243,7 @@ class ContentProcessor
 
             $this->recordResult($source, true, $structured, null, $warnings);
         } catch (SecurityException $se) {
-            // 5: Manejo seguro de excepciones de seguridad
+            // 5: Manejo seguro de excepciones de security
             // Nunca exponemos detalles internos del filesystem o stack traces
             $this->recordResult($source, false, null, $se->getClientMessage());
         } catch (\Throwable $e) {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ejemplo: Structureción Semántica de PDFs (Block 3)
+ * Ejemplo: Structureción Semantic of PDFs (Block 3)
  * 
  * Demuestra el flujo completo:
  * 1. Extracta texto de múltiples PDFs (Block 2)
@@ -12,7 +12,7 @@
  * Uso:
  *     php examples/test_structuring.php
  * 
- * @since Block 3 - Structureción Semántica
+ * @since Block 3 - Structureción Semantic
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -81,7 +81,7 @@ $results = $processor->process();
 
 echo "\n";
 echo "═══════════════════════════════════════════════════════════════\n";
-echo "  BLOCK 3: STRUCTURECIÓN SEMÁNTICA DE PDFs\n";
+echo "  BLOCK 3: STRUCTURECIÓN SEMANTIC DE PDFs\n";
 echo "═══════════════════════════════════════════════════════════════\n";
 echo "\n";
 

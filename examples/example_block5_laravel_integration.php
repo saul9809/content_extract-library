@@ -1,16 +1,16 @@
 <?php
 
 /**
- * BLOCK 5 - Ejemplo de Integración: Laravel + Seguridad
+ * BLOCK 5 - Ejemplo de Integración: Laravel + Security
  * 
  * Demuestra cómo usar Content Processor en Laravel con:
- * - Validation de seguridad automática
+ * - Validation de security automática
  * - Manejo seguro de excepciones
  * - Respuestas JSON seguras
- * - Logging de errors de seguridad
+ * - Logging de errors de security
  * 
  * Context: Laravel Controller ejecutando validation de documentos
- * Ejecutar: php examples/example_bloque5_laravel_integration.php
+ * Ejecutar: php examples/example_block5_laravel_integration.php
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -22,7 +22,7 @@ use ContentProcessor\Structurers\RuleBasedStructurer;
 use ContentProcessor\Security\SecurityException;
 
 echo "╔════════════════════════════════════════╗\n";
-echo "║  BLOCK 5: Laravel + Seguridad        ║\n";
+echo "║  BLOCK 5: Laravel + Security        ║\n";
 echo "║         Validation Segura de Docs      ║\n";
 echo "╚════════════════════════════════════════╝\n\n";
 
@@ -48,7 +48,7 @@ class DocumentController
         ]);
 
         try {
-            // La  de seguridad ocurre automáticamente
+            // La  de security ocurre automáticamente
             $result = ContentProcessor::make()
                 ->withSchema($schema)
                 ->withExtractor(new PdfTextExtractor())
@@ -77,7 +77,7 @@ class DocumentController
                 ],
             ];
         } catch (SecurityException $e) {
-            // Seguridad: Excepción específica conocida
+            // Security: Excepción específica conocida
             // NUNCA exponemos detalles internos al cliente
 
             \error_log("[SECURITY] DocumentController detected security issue: " .
@@ -93,7 +93,7 @@ class DocumentController
                 'timestamp' => date('Y-m-d H:i:s'),
             ];
         } catch (\Throwable $e) {
-            // Seguridad: Excepciones genéricas (inesperadas)
+            // Security: Excepciones genéricas (inesperadas)
             // NUNCA exponemos stack trace o ruta de 
 
             \error_log("[ERROR] DocumentController unexpected error: " .
@@ -208,5 +208,5 @@ foreach (glob("$testDir/*") as $file) {
 }
 @rmdir($testDir);
 
-echo "\n✨ Integración Laravel + Seguridad validada\n";
+echo "\n✨ Integración Laravel + Security validada\n";
 echo "📌 Conclusión: La librería está lista para producción\n";

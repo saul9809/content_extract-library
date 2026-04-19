@@ -1,8 +1,8 @@
-# 📋 Block 3: Estructuración Semántica - Delivery Completa
+# 📋 Block 3: Estructuración Semantic - Delivery Completa
 
 **Fecha:** 18 de Abril, 2026  
 **Status:** ✅ **COMPLETED Y TESTEADO**  
-**Compatibilidad:** ✅ Bloques 1 y 2 Intactos
+**Compatibility:** ✅ Bloques 1 y 2 Intact
 
 ---
 
@@ -10,11 +10,11 @@
 
 ### Objetivo
 
-Convertir el texto crudo extraído de PDFs (Block 2) en **JSON estructurado y valido**, definido por el usuario técnico, con soporte para **warnings semánticos** sin afectar errores técnicos previos.
+Convertir el texto crudo extraído of PDFs (Block 2) en **JSON estructurado y valido**, definido por el usuario técnico, con soporte para **warnings semánticos** sin afectar errores técnicos previos.
 
 ### Alcance
 
-El Block 3 implementa la **capa semántica** de procesamiento:
+El Block 3 implementa la **capa semantic** de procesamiento:
 
 ```
 Block 2: PDF → Texto Crudo
@@ -24,7 +24,7 @@ Block 3: Texto Crudo → JSON Estructurado + Warnings
 Output: {
   "data": {...},
   "warnings": {"field": "descripción"},
-  "errors": {...}  // del Block 2, intactos
+  "errors": {...}  // del Block 2, intact
 }
 ```
 
@@ -35,7 +35,7 @@ Output: {
 - **`DocumentContext`**: Encapsula documento + contenido + metadatos
 - **`StructuredDocumentResult`**: Resultado con data + warnings por documento
 
-#### 2️⃣ Interfaz Semántica
+#### 2️⃣ Interfaz Semantic
 
 - **`SemanticStructurerInterface`**: Extiende `StructurerInterface` con soporte para warnings
 
@@ -61,8 +61,8 @@ Output: {
 | `src/Models/DocumentContext.php`                | `DocumentContext`             | Contexto: documento + contenido + metadatos   |
 | `src/Models/StructuredDocumentResult.php`       | `StructuredDocumentResult`    | Resultado: data + warnings por documento      |
 | `src/Contracts/SemanticStructurerInterface.php` | `SemanticStructurerInterface` | Contrato para estructuradores con warnings    |
-| `src/Structurers/RuleBasedStructurer.php`       | `RuleBasedStructurer`         | Implementación determinista de estructuración |
-| `examples/test_structuring.php`                 | -                             | Ejemplo básico de estructuración              |
+| `src/Structurers/RuleBasedStructurer.php`       | `RuleBasedStructurer`         | Implementación determinista de structuring |
+| `examples/test_structuring.php`                 | -                             | Ejemplo básico de structuring              |
 | `examples/test_structuring_advanced.php`        | -                             | Ejemplo avanzado: batch + warnings            |
 | `examples/generate_structured_pdf.php`          | -                             | Generador de PDF estructurado                 |
 
@@ -72,7 +72,7 @@ Output: {
 
 ### 1. DocumentContext
 
-**Responsabilidad:** Encapsular contexto del documento para estructuración semántica
+**Responsabilidad:** Encapsular contexto del documento para structuring semantic
 
 ```php
 <?php
@@ -137,7 +137,7 @@ class DocumentContext
 namespace ContentProcessor\Models;
 
 /**
- * Resultado de estructuración semántica.
+ * Resultado de structuring semantic.
  * Incluye: JSON + warnings semánticos (distintos de errores técnicos)
  *
  * @since Block 3
@@ -218,9 +218,9 @@ interface SemanticStructurerInterface extends StructurerInterface
      * Estructura un documento en contexto, con soporte para warnings.
      *
      * @param DocumentContext $context Contexto: documento + contenido
-     * @param SchemaInterface $schema Esquema de estructuración
+     * @param SchemaInterface $schema Esquema de structuring
      * @return StructuredDocumentResult Resultado con data + warnings
-     * @throws \Exception Si la estructuración es completamente imposible
+     * @throws \Exception Si la structuring es completamente imposible
      */
     public function structureWithContext(
         DocumentContext $context,
@@ -231,7 +231,7 @@ interface SemanticStructurerInterface extends StructurerInterface
 
 **Notas:**
 
-- Extiende `StructurerInterface` para máxima compatibilidad
+- Extiende `StructurerInterface` para máxima compatibility
 - Los estructuradores que la implementan DEBEN también implementar `structure()` del padre
 
 ---
@@ -276,7 +276,7 @@ class RuleBasedStructurer implements SemanticStructurerInterface
 
     /**
      * Implementa el método heredado de StructurerInterface.
-     * Mantiene compatibilidad hacia atrás.
+     * Mantiene compatibility hacia atrás.
      */
     public function structure(array $content, SchemaInterface $schema): array {
         try {
@@ -429,7 +429,7 @@ php examples/test_structuring.php
 
 ```
 ═══════════════════════════════════════════════════════════════
-  BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA DE PDFs
+  BLOCK 3: STRUCTURING SEMANTIC DE PDFs
 ═══════════════════════════════════════════════════════════════
 
 📊 SUMMARY DE PROCESAMIENTO
@@ -465,7 +465,7 @@ php examples/test_structuring_advanced.php
 
 ```
 ╔═══════════════════════════════════════════════════════════════╗
-║        BLOQUE 3: ESTRUCTURACIÓN SEMÁNTICA AVANZADA             ║
+║        BLOCK 3: STRUCTURING SEMANTIC AVANZADA             ║
 ║     Batch Processing con Warnings y Análisis de Calidad        ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -503,7 +503,7 @@ Documentos con warnings: 0
 Total warnings generados: 0
 Tasa de éxito: 50%
 
-✅ BLOQUE 3 COMPLETED
+✅ BLOCK 3 COMPLETED
 ```
 
 ---
@@ -598,14 +598,14 @@ Tasa de éxito: 50%
 
 ## F. Pasos para Probar
 
-### 1. Verificar Integridad General
+### 1. Verify Integridad General
 
 ```bash
 cd /ruta/a/project
 php examples/test_functional.php  # Block 1 (debe pasar)
 ```
 
-**Resultado esperado:** ✅ Block 1 funciona sin cambios
+**Resultado esperado:** ✅ Block 1 funciona no changes
 
 ### 2. Probar Estructuración Básica
 
@@ -676,7 +676,7 @@ foreach ($result['results'] as $path => $item) {
 
 - ✅ **Contratos/Interfaces**
   - `SemanticStructurerInterface`: ✓ Estendió StructurerInterface sin romper
-  - Compatibilidad: ✓ Block 1 sigue funcionando
+  - Compatibility: ✓ Block 1 sigue funcionando
 
 - ✅ **Implementación**
   - `RuleBasedStructurer`: ✓ Determinista, sin IA/OCR, con reglas simples
@@ -685,7 +685,7 @@ foreach ($result['results'] as $path => $item) {
 - ✅ **Integración**
   - `ContentProcessor` modificado: ✓ Detección de SemanticStructurer
   - Captura de warnings: ✓ Transparente en resultados
-  - API pública: ✓ Sin cambios (backward compatible)
+  - API pública: ✓ Sin changes (backward compatible)
 
 - ✅ **Ejemplos**
   - Ejemplo básico: ✓ `test_structuring.php`
@@ -722,7 +722,7 @@ foreach ($result['results'] as $path => $item) {
    - Detección en `processSource()`
    - Captura de warnings en `recordResult()`
 
-**Archivos SIN Cambios (Intactos):**
+**Archivos SIN Cambios (Intact):**
 
 - ✓ `src/Contracts/StructurerInterface.php`
 - ✓ `src/Contracts/ExtractorInterface.php`
@@ -740,7 +740,7 @@ foreach ($result['results'] as $path => $item) {
 | Nuevas interfaces          | 1     |
 | Líneas de código nuevas    | ~950  |
 | Cobertura de casos de uso  | 100%  |
-| Compatibilidad hacia atrás | 100%  |
+| Compatibility hacia atrás | 100%  |
 | Tests ejecutados           | 3 ✅  |
 | Ejemplos funcionales       | 3 ✅  |
 
@@ -778,4 +778,4 @@ foreach ($processor->getResults()['results'] as $file => $result) {
 
 ---
 
-**🔚 FIN DEL BLOQUE 3**
+**🔚 END OF BLOCK 3**

@@ -5,7 +5,7 @@ namespace ContentProcessor\Models;
 /**
  * Normalization de warnings semánticos.
  * 
- * Los warnings son warnings semánticas generadas durante
+ * Los warnings son warnings semantics generadas durante
  * la structureción de documentos (Block 3).
  * 
  * A diferencia de los errors, los warnings NO impiden

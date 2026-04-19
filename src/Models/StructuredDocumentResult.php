@@ -3,13 +3,13 @@
 namespace ContentProcessor\Models;
 
 /**
- * Resultado de la structureción semántica de un documento.
+ * Resultado de la structureción semantic de un documento.
  * 
  * Encapsula el JSON structuredo junto con los warnings generados
  * durante el processing semántico (Block 3).
  * 
  * A diferencia de los errors técnicos (Block 2), los warnings
- * son warnings semánticas: fields ambiguouss, valores ausentes,
+ * son warnings semantics: fields ambiguouss, valores ausentes,
  * information incompleta, etc.
  * 
  * Los warnings NO impiden que el documento se procese successfully,
