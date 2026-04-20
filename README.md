@@ -1,28 +1,28 @@
 # Content Processor
 
-**Librería PHP para procesamiento batch de documentos con extracción y structuring de contenido.**
+**Production-ready PHP library for batch document processing with intelligent content extraction and structuring.**
 
-Diseñada para ser framework-agnostic, escalable y production-ready desde el inicio.
+Framework-agnostic, scalable, and optimized for real-world document pipelines from day one.
 
-## 🎯 Objetivo
+## 🎯 Purpose
 
-Procesar múltiples documentos (PDFs, textos, etc.), extraer su contenido y convertirlo en estructuras JSON configurables, preparadas para carga masiva en bases de datos o servicios.
+Process multiple documents (PDFs, text files, images, etc.), extract their content, and convert it into configurable JSON structures ready for bulk loading into databases or services.
 
-### Ejemplo inicial esperado:
+### Quick Example
 
 ```php
 $result = ContentProcessor::make()
     ->withSchema($schema)
     ->withExtractor(new PdfTextExtractor())
-    ->withStructurer(new RuleBasedStructurer())
-    ->fromDirectory('/cvs')
-    ->processFinal();  // Retorna FinalResult con API limpia
+    ->withStructurer(new SchemaAwareStructurer())
+    ->fromDirectory('/documents')
+    ->processFinal();  // Returns FinalResult with clean API
 ```
 
-## 📦 Instalación
+## 📦 Installation
 
 ```bash
-composer require content-extract/content-processor
+composer require content-extract/content-processor:^1.4.0
 ```
 
 Or add to your `composer.json`:
@@ -30,114 +30,139 @@ Or add to your `composer.json`:
 ```json
 {
   "require": {
-    "content-extract/content-processor": "^1.3.0"
+    "content-extract/content-processor": "^1.4.0"
   }
 }
 ```
 
-## 🏗️ Estructura del project
+## 🏗️ Project Structure
 
 ```
 src/
-├── Contracts/          # Interfaces que definen el contrato
+├── Contracts/              # Interfaces defining the contract
 │   ├── ExtractorInterface.php
 │   ├── StructurerInterface.php
 │   └── SchemaInterface.php
-├── Core/               # Clases principales
+├── Core/                   # Main classes
 │   └── ContentProcessor.php
-├── Schemas/            # Implementaciones de esquemas
+├── Extractors/             # Extractor implementations
+│   ├── PdfTextExtractor.php
+│   ├── TextFileExtractor.php
+│   └── PdfOcrExtractor.php (v1.5.0+)
+├── Schemas/                # Schema implementations
 │   └── ArraySchema.php
-├── Extractors/         # Implementaciones de extractores
-│   └── TextFileExtractor.php
-└── Structurers/        # Implementaciones de estructuradores
-    └── SimpleLineStructurer.php
+├── Structurers/            # Structurer implementations
+│   ├── SimpleLineStructurer.php
+│   ├── RuleBasedStructurer.php
+│   ├── SchemaAwareStructurer.php
+│   └── CompositePdfExtractor.php (v1.5.0+)
+├── Utils/                  # Utilities
+│   ├── TextNormalizer.php
+│   └── TextSegmenter.php
+└── Models/                 # Domain models
+    ├── Warning.php
+    ├── Error.php
+    └── FinalResult.php
 
 examples/
-├── example_basic.php   # Ejemplo básico funcional
-├── sample_cv_1.txt     # Archivo de prueba 1
-└── sample_cv_2.txt     # Archivo de prueba 2
+├── example_basic.php
+├── example_semantic_structuring.php
+└── sample_cv_*.txt
 ```
 
-## ⚡ Uso rápido
+## ⚡ Quick Start
 
-### 1. Definir un esquema
+### 1. Define Your Schema
 
 ```php
 use ContentProcessor\Schemas\ArraySchema;
 
 $schema = new ArraySchema([
-    'nombre' => ['type' => 'string', 'required' => true],
-    'email' => ['type' => 'string', 'required' => true],
-    'anos_experiencia' => ['type' => 'integer', 'required' => false],
+    'name' => [
+        'type' => 'string',
+        'required' => true,
+        'aliases' => ['name', 'full name', 'applicant name'],
+    ],
+    'email' => [
+        'type' => 'string',
+        'required' => true,
+        'aliases' => ['email', 'email address'],
+    ],
+    'experience_years' => [
+        'type' => 'integer',
+        'required' => false,
+        'aliases' => ['years of experience', 'experience'],
+    ],
 ]);
 ```
 
-### 2. Configurar el procesador
+### 2. Configure the Processor
 
 ```php
 use ContentProcessor\Core\ContentProcessor;
-use ContentProcessor\Extractors\TextFileExtractor;
-use ContentProcessor\Structurers\RuleBasedStructurer;
+use ContentProcessor\Extractors\PdfTextExtractor;
+use ContentProcessor\Structurers\SchemaAwareStructurer;
 
 $result = ContentProcessor::make()
     ->withSchema($schema)
-    ->withExtractor(new TextFileExtractor())
-    ->withStructurer(new RuleBasedStructurer())
-    ->fromDirectory('/path/to/docs', '*.txt')
-    ->processFinal();  // Returns FinalResult
+    ->withExtractor(new PdfTextExtractor())
+    ->withStructurer(new SchemaAwareStructurer())
+    ->fromDirectory('/path/to/documents', '*.pdf')
+    ->processFinal();
 ```
 
-### 3. Consumir resultados
+### 3. Consume Results
 
 ```php
-// Verify estatus
+// Check status
 if (!$result->isSuccessful()) {
-    echo "Algunos documentos fallaron:\n";
+    echo "Some documents failed:\n";
     foreach ($result->errors() as $error) {
         echo "  - " . $error->getMessage() . "\n";
     }
 }
 
-// Procesar datos exitosos
+// Process successful data
 foreach ($result->data() as $item) {
-    echo "Procesado: " . $item['document'] . "\n";
-    // $item['data'] contiene los datos estructurados
+    echo "Processed: " . $item['document'] . "\n";
+    // $item['data'] contains the structured data
+    var_dump($item['data']);
 }
 
-// Inspeccionar warnings (calidad de datos)
+// Inspect quality warnings
 if ($result->hasWarnings()) {
     foreach ($result->warnings() as $warning) {
-        echo "⚠️ Campo '{$warning->getField()}': {$warning->getMessage()}\n";
+        echo "⚠️ Field '{$warning->getField()}': {$warning->getMessage()}\n";
     }
 }
 
-// Exportar a JSON
+// Export to JSON
 echo $result->toJSONPretty();
 ```
 
 ## 🧪 Testing
 
-### Run examples
+### Run Examples
 
 ```bash
 cd examples
-php example_block4_basic.php
-php example_block4_laravel_style.php
+php example_basic.php
+php example_semantic_structuring.php
 ```
 
-### Full test suite
+### Full Test Suite
 
 ```bash
 composer test
 ```
 
-### Code style
+### Code Quality
 
 ```bash
 composer lint
 ```
 
-## 🔌 Interfaces disponibles
+## 🔌 Available Interfaces
 
 ### ExtractorInterface
 
@@ -168,56 +193,105 @@ interface SchemaInterface {
 }
 ```
 
-## 📝 Opciones del procesador
+## 📋 Processor Options
 
 ```php
 $processor->withOptions([
-    'skip_invalid' => true,    // Saltar documentos que no pasen validación
-    'preserve_empty' => false, // Preservar campos vacíos en resultado
+    'skip_invalid' => true,    // Skip documents that fail validation
+    'preserve_empty' => false, // Preserve empty fields in result
 ]);
 ```
 
-## ✅ Características implementadas (Bloques 1-5)
+## ✅ Implemented Features (Blocks 1-5)
 
 ### Block 1: Core ✅
 
-- Framework-agnostic design con interfaces limpias
+- Framework-agnostic design with clean interfaces
 - Extractor/Structurer pattern
 - JSON schema validation
 - Batch processing
 
 ### Block 2: PDF Support ✅
 
-- PdfTextExtractor con smalot/pdfparser
-- Batch processing con múltiples PDFs
-- Error handling robusto
+- PdfTextExtractor with smalot/pdfparser
+- Batch processing with multiple PDFs
+- Robust error handling
 
 ### Block 3: Semantic Structuring ✅
 
-- RuleBasedStructurer para extracción avanzada
-- DocumentContext para información de procesamiento
-- Warning system para calidad de datos
+- SchemaAwareStructurer for intelligent extraction
+- Field aliases for semantic guidance
+- Text normalization and segmentation
+- Advanced warning system
+- Type conversion and validation
 
 ### Block 4: Final Result API ✅
 
-- FinalResult object unificado
-- Normalización de errores y warnings
-- Summary con estadísticas
-- JSON export y serialización completa
+- Unified FinalResult object
+- Error and warning normalization
+- Summary with statistics
+- JSON export and serialization
 
 ### Block 5: Security & Hardening ✅
 
-- File size limits (10 MB por defecto)
-- Batch document limits (50 documentos por defecto)
+- File size limits (10 MB default)
+- Batch document limits (50 documents default)
 - Path traversal protection
-- Security configuration y validation
+- Configurable security validation
 - Production-ready defaults
+
+### Block 6: OCR Support (v1.5.0+) 🚀
+
+- PdfOcrExtractor for scanned PDFs using Tesseract
+- Automatic fallback when digital extraction fails
+- Transparent OCR processing without code changes
+- Preserves semantic structuring pipeline
+
+## 🔍 OCR Support (Optional)
+
+This library supports OCR for scanned PDFs using **Tesseract OCR**.
+
+### Requirements
+
+- Tesseract OCR installed on the system
+- Language data files (e.g., `eng` for English)
+- Installation is handled by the operating system, not Composer
+
+### Automatic Fallback
+
+OCR is automatically used when:
+- Digital text extraction returns insufficient text
+- Extracted text is empty or below threshold (default: 50 characters)
+- Extracted text contains no alphabetic characters
+
+### Example with OCR
+
+```php
+use ContentProcessor\Extractors\CompositePdfExtractor;
+
+// Automatically tries digital extraction first, then OCR if needed
+$result = ContentProcessor::make()
+    ->withSchema($schema)
+    ->withExtractor(new CompositePdfExtractor())  // Tries PDF text first, then OCR
+    ->withStructurer(new SchemaAwareStructurer())
+    ->fromDirectory('/documents')
+    ->processFinal();
+```
+
+### Important Notes
+
+- OCR is **optional** - the library works fine with digital PDFs
+- OCR is **NOT** installed by Composer
+- OCR support does **not** change schema behavior
+- Aliases are still defined by your application
+- If Tesseract is not available, clear error messages are provided
 
 ## 📚 Documentation
 
-- [SECURITY.md](SECURITY.md) - Política de security y límites configurables
-- [ARCHITECTURE.md](ARCHITECTURE.md) - Diseño arquitectónico completo
-- [GUIA_RAPIDA.md](GUIA_RAPIDA.md) - Referencia quick de uso
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Complete architectural design
+- [SECURITY.md](SECURITY.md) - Security policy and configurable limits
+- [SEMANTIC_STRUCTURING_GUIDE.md](SEMANTIC_STRUCTURING_GUIDE.md) - Schema aliases and matching
+- [QUICK_START_V1.4.0.md](QUICK_START_V1.4.0.md) - Quick reference for v1.4.0+
 
 ## 🔌 API Reference
 
@@ -227,14 +301,14 @@ $processor->withOptions([
 $result = ContentProcessor::make()->...->processFinal();
 
 // Access data
-$result->data();           // Array de documentos exitosos
-$result->errors();         // Array de errores normalizados
-$result->warnings();       // Array de warnings semánticos
-$result->summary();        // Summary con estadísticas
+$result->data();           // Array of successful documents
+$result->errors();         // Array of normalized errors
+$result->warnings();       // Array of semantic warnings
+$result->summary();        // Summary with statistics
 
 // Status checks
-$result->isSuccessful();   // bool - ¿Al menos 1 exitoso?
-$result->isPerfect();      // bool - ¿Sin errores ni warnings?
+$result->isSuccessful();   // bool - At least 1 successful?
+$result->isPerfect();      // bool - No errors or warnings?
 $result->hasErrors();      // bool
 $result->hasWarnings();    // bool
 
@@ -250,15 +324,16 @@ $result->toJSONPretty();   // string (formatted)
 $result->fullResults();    // array (complete audit trail)
 ```
 
-## 🚀 Next steps
+## 🚀 Production Ready
 
-Ready for production. See [SECURITY.md](SECURITY.md) for deployment recommendations.
+The library is tested and ready for production deployment. See [SECURITY.md](SECURITY.md) for deployment recommendations.
 
-## 📋 Requisitos
+## 📋 Requirements
 
 - PHP >= 8.1
 - Composer
+- (Optional) Tesseract OCR for scanned PDF support
 
-## 📄 Licencia
+## 📄 License
 
 MIT

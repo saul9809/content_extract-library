@@ -7,6 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-04-21
+
+### Added
+
+- **OCR Support Phase** - Optional Tesseract integration for scanned PDFs
+  - `PdfOcrExtractor` for extracting text from scanned PDF files using Tesseract OCR
+  - `CompositePdfExtractor` for automatic fallback from digital extraction to OCR
+  - Automatic text insufficiency detection with configurable thresholds
+  - Support for multiple PDF pages in a single file
+  - Graceful fallback when Tesseract unavailable
+- **PDF-to-Image Conversion**
+  - Support for pdftoppm (Poppler) and ImageMagick convert
+  - Automatic page detection and conversion
+  - Temporary file cleanup after processing
+- **Tesseract Detection**
+  - Automatic Tesseract availability check via CLI
+  - Configurable language support (default: English)
+  - Clear error messages if Tesseract not installed
+- **CompositePdfExtractor Features**
+  - Seamless fallback mechanism without code changes
+  - Configurable text insufficiency criteria (character count, alphabetic requirement)
+  - Optional extraction method logging
+  - Method chaining for configuration
+
+### Changed
+
+- Enhanced README.md with OCR documentation
+- All user-facing messages now 100% English (was mixed Spanish/English)
+- Improved documentation clarity and examples
+
+### Technical Details
+
+- OCR is **optional** - not installed by Composer, system dependency only
+- **Backward compatible** - existing code works unchanged
+- **Domain-agnostic** - no coupling to specific frameworks
+- **Deterministic** - no AI/ML/LLM usage, pure Tesseract output
+- **No breaking changes** - all v1.4.0 APIs unchanged
+
+### System Requirements (OCR Support)
+
+- Tesseract OCR (installed separately, not via Composer)
+- pdftoppm (Poppler) or ImageMagick convert for PDF-to-image conversion
+- Tesseract language data files (e.g., `eng` for English)
+
+---
+
 ## [1.4.0] - 2026-04-19
 
 ### Added

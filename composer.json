@@ -1,7 +1,7 @@
 {
   "name": "content-extract/content-processor",
-  "version": "1.4.0",
-  "description": "Robust PHP library for batch document processing. Extracts content from PDFs/text and generates structured JSON according to user-defined schemas. Now with semantic structuring, text normalization, and alias-driven field matching. Production-ready, secure, zero unnecessary dependencies.",
+  "version": "1.5.0",
+  "description": "Robust PHP library for batch document processing. Extracts content from PDFs/text and generates structured JSON according to user-defined schemas. Now with semantic structuring, OCR support for scanned PDFs, text normalization, and alias-driven field matching. Production-ready, secure, zero unnecessary dependencies.",
   "keywords": [
     "pdf",
     "content-extraction",
