@@ -9,6 +9,7 @@ This library now supports OCR (Optical Character Recognition) for processing sca
 ### 1. Install Tesseract OCR
 
 #### Ubuntu/Debian
+
 ```bash
 sudo apt-get update
 sudo apt-get install tesseract-ocr
@@ -17,12 +18,14 @@ sudo apt-get install tesseract-ocr-eng
 ```
 
 #### macOS
+
 ```bash
 brew install tesseract
 brew install poppler
 ```
 
 #### Windows
+
 1. Download from: https://github.com/UB-Mannheim/tesseract/wiki
 2. Run the installer
 3. Add Tesseract to system PATH (installer does this automatically)
@@ -67,6 +70,7 @@ $processor = ContentProcessor::make()
 ```
 
 **Behavior:**
+
 - Tries digital text extraction first
 - If text insufficient (empty, <50 chars, no letters), tries OCR
 - Falls back gracefully if Tesseract unavailable
@@ -109,31 +113,37 @@ $processor = ContentProcessor::make()
 ### Digital Text Extraction (PdfTextExtractor)
 
 **Pros:**
+
 - Fast (no Tesseract needed)
 - High accuracy for digital PDFs
 - No external command execution
 
 **Cons:**
+
 - Fails on scanned PDFs
 - Cannot extract from images
 
 **When to use:**
+
 - Digital PDFs with embedded text
 - Mixed document sets (with CompositePdfExtractor)
 
 ### OCR Extraction (PdfOcrExtractor)
 
 **Pros:**
+
 - Works with scanned PDFs
 - Works with images
 - Language-agnostic
 
 **Cons:**
+
 - Slower than digital extraction
 - Requires Tesseract installed
 - May have accuracy issues with poor scans
 
 **When to use:**
+
 - Scanned PDF documents
 - Business documents from copiers/scanners
 - As fallback in composite extractor
@@ -143,6 +153,7 @@ $processor = ContentProcessor::make()
 ### Text Insufficiency Criteria
 
 CompositePdfExtractor triggers OCR fallback when extracted text:
+
 1. **Is empty** - No content extracted
 2. **Below character threshold** - Default: 50 characters (configurable)
 3. **No alphabetic characters** - If requirement enabled (default: true)
@@ -171,6 +182,7 @@ $extractor->setLanguage('fra');  // French
 ```
 
 **Common language codes:**
+
 - `eng` - English
 - `spa` - Spanish
 - `fra` - French
@@ -351,6 +363,7 @@ Error: Tesseract OCR is not installed or not available in system PATH.
 ```
 
 **Solution:**
+
 1. Install Tesseract (see Installation section)
 2. Verify: `tesseract --version`
 3. Check system PATH includes Tesseract directory
@@ -362,6 +375,7 @@ Error: Neither pdftoppm nor ImageMagick convert is available.
 ```
 
 **Solution:**
+
 ```bash
 # Ubuntu/Debian
 sudo apt-get install poppler-utils imagemagick
@@ -373,6 +387,7 @@ brew install poppler imagemagick
 ### Low OCR Accuracy
 
 **Solutions:**
+
 1. Improve image quality (higher DPI in PDF)
 2. Pre-process images (contrast, rotation)
 3. Try different Tesseract language settings
@@ -381,6 +396,7 @@ brew install poppler imagemagick
 ### Processing Hangs
 
 **Solutions:**
+
 1. Set reasonable file size limits (security config)
 2. Use batch processing with timeouts
 3. Monitor system resources

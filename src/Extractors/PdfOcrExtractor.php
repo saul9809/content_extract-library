@@ -78,7 +78,7 @@ class PdfOcrExtractor implements ExtractorInterface
         if (!$this->isTesseractAvailable()) {
             throw new \RuntimeException(
                 "Tesseract OCR is not installed or not available in system PATH. " .
-                "Please install Tesseract OCR and ensure it is in your system PATH."
+                    "Please install Tesseract OCR and ensure it is in your system PATH."
             );
         }
 
@@ -183,7 +183,7 @@ class PdfOcrExtractor implements ExtractorInterface
             fclose($pipes[1]);
             fclose($pipes[2]);
             $exitCode = proc_close($process);
-            
+
             $this->tesseractAvailable = ($exitCode === 0);
         } else {
             // Fallback to shell_exec
@@ -236,7 +236,7 @@ class PdfOcrExtractor implements ExtractorInterface
 
         throw new \RuntimeException(
             "Neither pdftoppm nor ImageMagick convert is available. " .
-            "Please install one of them: 'pdftoppm' (from Poppler) or 'convert' (ImageMagick)"
+                "Please install one of them: 'pdftoppm' (from Poppler) or 'convert' (ImageMagick)"
         );
     }
 

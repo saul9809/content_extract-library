@@ -132,7 +132,7 @@ class CompositePdfExtractor implements ExtractorInterface
 
         throw new \RuntimeException(
             "Failed to extract text from '{$source}'. Both methods failed:\n" .
-            implode("\n", $errorMessages)
+                implode("\n", $errorMessages)
         );
     }
 

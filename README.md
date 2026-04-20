@@ -260,6 +260,7 @@ This library supports OCR for scanned PDFs using **Tesseract OCR**.
 ### Automatic Fallback
 
 OCR is automatically used when:
+
 - Digital text extraction returns insufficient text
 - Extracted text is empty or below threshold (default: 50 characters)
 - Extracted text contains no alphabetic characters
